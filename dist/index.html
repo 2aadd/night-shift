@@ -28,7 +28,7 @@
 <button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button><button id="fire" class="fire" hidden>F · Ateş et</button><span id="ammo" class="ammo" aria-live="polite" hidden></span>
 <span>WASD ile yürü · Sürükle veya oklarla dön · E ile etkileş · Sol tıkla ateş et</span>
 </div></section>
-<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>7 KARŞILAŞMA · 2 SON</span></footer>
+<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>7 KARŞILAŞMA · 3 SON</span></footer>
 </main>
 <script>
 'use strict';
@@ -39,9 +39,9 @@ const scene = [
   {time:'00:17', name:'Fötr şapkalı adam', line:'“Her zamankinden.” Şapkasında tek damla yağmur yok.', order:'Şekersiz çay', camera:'Kamera aynı dakikayı gösteriyor. Pencerenin önü boş.', receipt:'Kendi el yazınla: “Teslim edildi · 00:17.”', serve:'Adam çayı alıyor. Camda bir anlığına avucunun izi kalıyor.', deny:'Servis kapağını kapatınca adam, geri çekilmeden kayboluyor.'},
   {time:'01:42', name:'Yağmurluklu kadın', line:'“Bir çay alabilir miyim? Son otobüsü kaçırdım. İki şeker olsun.”', order:'İki şekerli çay', camera:'Kadın kamera görüntüsünde de var. Durağa kadar ıslak ayak izleri uzanıyor.', receipt:'Islak bozukluklar tezgahta küçük bir gölcük bırakmış. Fiş henüz basılmamış.', serve:'Bardağı iki eliyle kavrıyor. “Yağmur kesilince kepengi indir,” diyor.', deny:'Kadın paralarını toplayıp durağa dönüyor. Her adımında bir su birikintisi sıçrıyor.'},
   {time:'02:11', name:'Motorlu kurye', line:'“Bir gazoz. Şişeyi açma. Telefonum beni yarım saat sonrasına götürüyor.”', order:'Kapalı gazoz', recipe:'soda', camera:'Kaskı ve motoru ekranda. Farı, kontak kapalıyken iki kez yanıp sönüyor.', receipt:'Kurye fişin arkasına bir adres yazmış: Büfe 07. Gönderim saati 02:41.', serve:'Şişeyi çantasına sıkıştırıyor. Motor çalışırken telefonundan büfenin yazıcı sesi geliyor.', deny:'Kaskının vizörünü indirip gidiyor. Telefonu birkaç saniye daha kaldırımda çalıyor.'},
-  {time:'02:38', name:'Gri paltolu yolcu', line:'“Bir kaşarlı tost. Uzun sürmesin. Durağın tabelasında hâlâ dün yazıyor.”', order:'Kaşarlı tost', recipe:'toast', camera:'Yolcu canlı görüntüde var. Durağın camında ise onun yerine boş bir koltuk yansıyor.', receipt:'Bir otobüs bileti bırakmış. Güzergâhın son durağı “Büfe 07”.', serve:'Tostu ikiye bölüyor. Yarısını durağın boş koltuğuna bırakıp uzaklaşıyor.', deny:'Durağa dönüyor. Bir otobüs yaklaşır gibi oluyor, sonra ışıkları sönüyor.'},
-  {time:'03:12', name:'Gece bekçisi', line:'“Bir şekerli çay. Arka kapıyı bugün kaç kere kilitledin?”', order:'Bir şekerli çay', recipe:'tea', sugar:1, camera:'Bekçi ekranda görünüyor. El feneri arka kapıya çevrili ve kapı kolu kendi kendine oynuyor.', receipt:'Bir kontrol kâğıdı bırakmış: “03:13. İçeride iki görevli.” İkinci isim boş.', serve:'Çayı içmeden önce mandalı kontrol ediyor. “Biri mesaiyi devraldığını söylerse saati karşılaştır,” diyor.', deny:'El fenerini kısa bir an yüzüne tutuyor. Ardından arka sokağa gidiyor.'},
-  {time:'03:46', name:'Kırmızı şemsiyeli kadın', line:'“Bir gazoz. Sonra şemsiyemi geri almaya geleceğim.” Şemsiyesi açık ama altında yağmur yağıyor.', order:'Kapalı gazoz', recipe:'soda', absent:true, camera:'Kaldırım boş. Şemsiye, kadının durduğu yerden iki metre ötede kendi başına bekliyor.', receipt:'Şemsiyenin sapında bir emanet etiketi var. Üzerinde bu geceki vardiya başlangıcın yazıyor.', serve:'Gazozun kapağı kendi kendine açılıyor. Kadın şemsiyesini bırakıp karanlıkta kayboluyor.', deny:'Kadın başını kaldırıyor. Camda yüzü yerine büfenin içi yansıyor.'},
+  {time:'02:38', name:'Gri paltolu yolcu', line:'“Bir mercimek çorbası. Sıcak olsun. Durağın tabelasında hâlâ dün yazıyor.”', order:'Mercimek çorbası', recipe:'soup', camera:'Yolcu canlı görüntüde var. Durağın camında ise onun yerine boş bir koltuk yansıyor.', receipt:'Bir otobüs bileti bırakmış. Güzergâhın son durağı “Büfe 07”.', serve:'Çorbanın buharı cama vuruyor. Buğuda durağın boş koltuğu beliriyor.', deny:'Durağa dönüyor. Bir otobüs yaklaşır gibi oluyor, sonra ışıkları sönüyor.'},
+  {time:'03:12', name:'Gece bekçisi', line:'“Bir sade kahve. Arka kapıyı bugün kaç kere kilitledin?”', order:'Sade kahve', recipe:'coffee', camera:'Bekçi ekranda görünüyor. El feneri arka kapıya çevrili ve kapı kolu kendi kendine oynuyor.', receipt:'Bir kontrol kâğıdı bırakmış: “03:13. İçeride iki görevli.” İkinci isim boş.', serve:'Kahveyi içmeden önce mandalı kontrol ediyor. “Biri mesaiyi devraldığını söylerse saati karşılaştır,” diyor.', deny:'El fenerini kısa bir an yüzüne tutuyor. Ardından arka sokağa gidiyor.'},
+  {time:'03:46', name:'Kırmızı şemsiyeli kadın', line:'“Bir kaşarlı tost. Sonra şemsiyemi geri almaya geleceğim.” Şemsiyesi açık ama altında yağmur yağıyor.', order:'Kaşarlı tost', recipe:'toast', absent:true, camera:'Kaldırım boş. Şemsiye, kadının durduğu yerden iki metre ötede kendi başına bekliyor.', receipt:'Şemsiyenin sapında bir emanet etiketi var. Üzerinde bu geceki vardiya başlangıcın yazıyor.', serve:'Tostun içinden kuru bir şemsiye etiketi çıkıyor. Kadın şemsiyesini bırakıp karanlıkta kayboluyor.', deny:'Kadın başını kaldırıyor. Camda yüzü yerine büfenin içi yansıyor.'},
   {time:'04:07', name:'Mesai devri', line:'Camdaki siluet senin önlüğünü takıyor. “Kapıyı aç. Ben geldim, sen çıkabilirsin.”', order:'Arka kapının anahtarı', camera:'Sokak boş. Kamera saati 04:08. Görüntüde kepenk çoktan inmiş.', receipt:'“04:08 · Anahtar teslim edildi.” İmza yine senin.', serve:'Anahtarı uzattığın anda ışık sönüyor. Arkandaki kilit dönüyor.', deny:'Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Diğer taraftan kendi sesin geliyor.'}
 ];
 const finalStage=scene.length-1;
@@ -70,8 +70,8 @@ const creatureLines={
   5:'Şemsiyenin altından çıkan gölge kaldırıma yayılıyor. Kırmızı şemsiye olduğu yerde kalıyor.',
   6:'Camdaki suret parçalanıp pencerenin önünden çekiliyor. Sokağın öbür ucunda ilk otobüsün ışıkları beliriyor.'
 };
-const recipeNames={tea:'Çay',toast:'Kaşarlı tost',soda:'Gazoz'};
-const serviceNames={tea:'Çayı servis et',toast:'Tostu servis et',soda:'Gazozu servis et'};
+const recipeNames={tea:'Çay',toast:'Kaşarlı tost',soda:'Gazoz',coffee:'Kahve',soup:'Mercimek çorbası'};
+const serviceNames={tea:'Çayı servis et',toast:'Tostu servis et',soda:'Gazozu servis et',coffee:'Kahveyi servis et',soup:'Çorbayı servis et'};
 const radioLines=[
   '“…Bu gece son sefer 01:40’ta. Durağın yanında bekleyen yolculara duyurulur.”',
   'Parazit arasından bir anlığına müşterinin sesini duyuyorsun: “Yağmur kesilince…”',
@@ -147,6 +147,7 @@ function box(mesh, x,y,z, w,h,d, color) {
   }
 }
 const glyphs={
+  K:['101','101','110','101','101'],H:['101','101','111','101','101'],V:['101','101','101','101','010'],R:['110','101','110','101','101'],
   B:['110','101','110','101','110'],U:['101','101','101','101','111'],
   F:['111','100','110','100','100'],E:['111','100','110','100','111'],
   '0':['111','101','101','101','111'],'7':['111','001','010','010','010'],
@@ -240,9 +241,9 @@ function geometry() {
   lettering(mesh,'BUFE 07',-.73,2.85,3.694,.057,0xffd390);
   put(-.464,2.893,3.694,.027,.015,.009,0xffd390);
   put(-.407,2.893,3.694,.027,.015,.009,0xffd390);
-  put(2.4,2.47,3.73,1.36,.65,.078,0xa57a47);
-  put(2.4,2.47,3.684,1.3,.59,.024,0x2b3834);
-  for(const [text,y,width] of [['CAY',2.66,.25],['TOST',2.49,.33],['GAZOZ',2.32,.22]]){
+  put(2.4,2.31,3.73,1.36,.94,.078,0xa57a47);
+  put(2.4,2.31,3.684,1.3,.88,.024,0x2b3834);
+  for(const [text,y,width] of [['CAY',2.66,.25],['TOST',2.49,.33],['GAZOZ',2.32,.22],['KAHVE',2.15,.26],['CORBA',1.98,.27]]){
     lettering(mesh,text,1.87,y,3.665,.026,0xf0c999);
     put(2.54+width/2,y-.048,3.669,width,.021,.009,0x9da58b);
   }
@@ -429,6 +430,16 @@ function orderProp(item){
     box(mesh,x,1.281,z,.26,.015,.214,0xe5ad58);
     box(mesh,x,1.31,z,.275,.04,.225,0xc49351);
     for(let i=0;i<4;i++) box(mesh,x-.084+i*.056,1.332,z,.012,.003,.2,0x80512f);
+  }else if(item==='coffee'){
+    oval(mesh,x,1.21,z,.145,.024,.127,0xb7a490);
+    oval(mesh,x,1.278,z,.086,.077,.083,0x846f5a);
+    oval(mesh,x+.085,1.272,z,.034,.034,.019,0xa39782);
+    oval(mesh,x,1.34,z,.078,.009,.075,0x4b3023);
+  }else if(item==='soup'){
+    oval(mesh,x,1.221,z,.12,.029,.11,0xaaa38b);
+    oval(mesh,x,1.268,z,.157,.056,.146,0xc7c0a8);
+    oval(mesh,x,1.311,z,.141,.011,.131,0xb87336);
+    for(let i=0;i<5;i++) box(mesh,x+Math.sin(i*3)*.09,1.324,z+Math.cos(i*5)*.09,.014,.004,.01,0x677046);
   }else{
     oval(mesh,x,1.32,z,.074,.115,.073,0x618456);
     oval(mesh,x,1.453,z,.037,.063,.036,0x618456);
@@ -558,7 +569,29 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
 }
 let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let showVisitor=false, shutterDown=false, lightsOut=false;
+let showVisitor=false,shutterDown=false,lightsOut=false,customerHit=false;
+let activeSeconds=0,scareAt=-Infinity;
+const scares={
+  1:{after:3,text:'Sokağın karşısında bir gölge hızla geçiyor.'},
+  3:{after:4,text:'Tavan lambası sönmeye yüz tutuyor. Durağın camında kendi yansımanı görüyorsun.'},
+  4:{after:3,text:'Arka kapı üç kez vuruluyor. Bekçi hâlâ pencerenin önünde.'}
+};
+function scareProgress(now,dt){
+  const scare=scares[stage];
+  if(playing&&showVisitor&&scare&&$('panel').hidden&&scareAt===-Infinity){
+    activeSeconds+=dt;
+    if(activeSeconds>=scare.after){
+      scareAt=now;
+      notebook[stage].scare=scare.text;
+      $('note').textContent=scare.text;
+    }
+  }
+  const seconds=(now-scareAt)/1000;
+  if(stage===4&&seconds<1.5&&Math.floor(seconds*4)!==Math.floor((seconds-dt)*4)&&Math.floor(seconds*4)%2===0){
+    chime(92,.15,.11);
+  }
+  return seconds;
+}
 let previous=0;
 const rainSeed=Array.from({length:220},()=>[Math.random()*19-9.5,Math.random()*6,Math.random()*12+4]);
 const rainVertices=new Float32Array(rainSeed.length*12);
@@ -612,6 +645,7 @@ function frame(now){
   const dt=Math.min(.05,(now-previous)/1000);
   previous=now;
   movement(dt);
+  const scareTime=scareProgress(now,dt);
   const ratio=Math.min(window.devicePixelRatio||1,1.6);
   const w=Math.max(1,Math.round(canvas.clientWidth*ratio)), h=Math.max(1,Math.round(canvas.clientHeight*ratio));
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
@@ -626,7 +660,8 @@ function frame(now){
   gl.uniform3f(u.eye,eye.x,eye.y,eye.z);
   gl.uniform4f(u.rotation,Math.sin(eye.angle),Math.cos(eye.angle),Math.sin(eye.pitch),Math.cos(eye.pitch));
   gl.uniform2f(u.scale,viewScale/aspect,viewScale);
-  gl.uniform1f(u.night,lightsOut?.24:1);
+  const dim=stage===3&&!reduceMotion.matches&&scareTime<1.8?.62*Math.sin(scareTime/1.8*Math.PI):0;
+  gl.uniform1f(u.night,lightsOut?.24:1-dim);
   gl.uniform1f(u.mono,cctv?.88:0);
   gl.uniform3f(u.fog,...fog);
   gl.uniform3f(u.offset,0,0,0);
@@ -643,6 +678,13 @@ function frame(now){
     const bob=!reduceMotion.matches&&stage!==finalStage;
     gl.uniform3f(u.offset,bob?Math.sin(now*.0014+stage)*.022:0,bob?Math.sin(now*.002+stage)*.012:0,lean);
     draw(exposed&&creatures[stage]?creatures[stage]:visitors[stage],attributes);
+    gl.uniform3f(u.offset,0,0,0);
+  }
+  if(stage===1&&scareTime<1.5&&!reduceMotion.matches){
+    gl.uniform3f(u.offset,-3.4+scareTime*4.6,0,3.1);
+    gl.uniform1f(u.night,.23);
+    draw(creatures[0],attributes);
+    gl.uniform1f(u.night,1);
     gl.uniform3f(u.offset,0,0,0);
   }
   if(stage===2&&showVisitor) draw(bike,attributes);
@@ -729,7 +771,9 @@ function prepPanel(fromService=false){
       orderReady()&&fromService?servicePanel:()=>prepare(order.recipe,order.sugar),true),
     action('Çayı demle',()=>prepare('tea'),order.recipe==='tea'),
     action('Tostu pişir',()=>prepare('toast'),order.recipe==='toast'),
-    action('Gazozu çıkar',()=>prepare('soda'),order.recipe==='soda')
+    action('Gazozu çıkar',()=>prepare('soda'),order.recipe==='soda'),
+    action('Kahveyi hazırla',()=>prepare('coffee'),order.recipe==='coffee'),
+    action('Çorbayı ısıt',()=>prepare('soup'),order.recipe==='soup')
   ];
   if(prepared==='tea'){
     choices.push(action('Şeker ekle',()=>{sugar=Math.min(3,sugar+1);updateTask();prepPanel(fromService);}));
@@ -748,7 +792,7 @@ function journal(){
   for(let i=0;i<=stage;i++){
     const row=document.createElement('li');
     const entry=notebook[i];
-    const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.decision].filter(Boolean);
+    const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.scare,entry.decision].filter(Boolean);
     row.textContent=scene[i].time+' · '+scene[i].name+' — '+(details.join(' ')||'Henüz kayıt yok.');
     list.append(row);
   }
@@ -819,7 +863,7 @@ function servicePanel(){
   }else{
     options.push(action(info.recipe==='tea'?'Çay hazırlığına geç':'Sipariş hazırlığına geç',()=>prepPanel(true),true));
   }
-  if(armed&&rounds&&creatureLines[stage]){
+  if(armed&&rounds){
     options.push(action('Tüfeği doğrult',()=>{
       closePanel();
       $('note').textContent='Nişangâhı müşteriye getir ve sol tıkla.';
@@ -884,17 +928,13 @@ function fire(){
   if(!playing||!armed||!rounds||!showVisitor||!$('panel').hidden||recoilTimer) return;
   const inSight=targetInSight();
   const monster=Boolean(creatureLines[stage]);
-  if(inSight&&!monster){
-    $('note').textContent='Müşteriyi görünce parmağını tetikten çekiyorsun.';
-    return;
-  }
   rounds-=1;
   updateAmmo();
   shotSound();
   firedAt=performance.now();
   recoilTimer=setTimeout(()=>{recoilTimer=undefined;},260);
-  if(inSight&&monster){
-    exposed=true;
+  if(inSight){
+    exposed=monster;
     impactUntil=performance.now()+320;
     decide(false,true);
   }else{
@@ -906,6 +946,8 @@ function next(){
   prepared='';
   sugar=0;
   showVisitor=true;
+  activeSeconds=0;
+  scareAt=-Infinity;
   repelled=false;
   impactUntil=0;
   exposed=stage===finalStage&&!doorLocked;
@@ -920,13 +962,15 @@ function decide(served,defended=false){
   if(!showVisitor || (served&&stage!==finalStage&&!orderReady())) return;
   showVisitor=false;
   repelled=defended;
-  notebook[stage].decision=defended?'Canavar geri püskürtüldü.':served?'Sipariş verildi.':'Servis kapatıldı.';
+  const wounded=defended&&!creatureLines[stage];
+  if(wounded) customerHit=true;
+  notebook[stage].decision=wounded?'Müşteri vuruldu.':defended?'Canavar geri püskürtüldü.':served?'Sipariş verildi.':'Servis kapatıldı.';
   if(stage===0) servedFirst=served;
   if(stage===finalStage){
     shutterDown=!served&&!defended;
     lightsOut=served;
   }
-  $('note').textContent=defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny;
+  $('note').textContent=wounded?'Müşteri yere düşüyor. Sonra doğrulup büfenin ışığından uzaklaşıyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny;
   panel(scene[stage].name,$('note').textContent,[
     action(stage===finalStage?'Vardiyayı bitir':'Biraz bekle',()=>{
       if(stage===finalStage) end(served,defended);
@@ -941,13 +985,17 @@ function end(served,defended){
   $('controls').hidden=true;
   $('journal').hidden=true;
   $('clock').textContent=served?'04:08':'06:00';
-  $('chapter').textContent=served?'SON 2 / 2':'SON 1 / 2';
+  $('chapter').textContent=served?'SON 2 / 3':customerHit?'SON 3 / 3':'SON 1 / 3';
   $('task').textContent='Vardiya bitti.';
   $('coverTag').textContent='VARDİYA SONU';
   $('coverTitle').textContent=served?'Yeni vardiya':'Sabah oldu';
   $('coverText').textContent=served?'Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.':servedFirst?'Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.':'İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.';
   if(defended) $('coverText').textContent='Sabah servisi başladığında kepenk hâlâ açık. Pencerenin dibinde kendi el yazınla tek bir fiş buluyorsun: Vardiya tamamlandı.';
   if(!served&&!defended&&!doorLocked) $('coverText').textContent+=' Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.';
+  if(customerHit&&!served){
+    $('coverTitle').textContent='Sabah ifadesi';
+    $('coverText').textContent='Gün doğarken iki polis servis penceresine geliyor. Biri vardiya defterini açıp yaralanan müşterinin geldiği saati soruyor.';
+  }
   $('cover').hidden=false;
   $('start').textContent='Yeniden oyna';
   $('start').focus();
@@ -957,7 +1005,7 @@ function start(){
   stage=0;
   for(let i=0;i<scene.length;i++) notebook[i]={};
   playing=true;
-  servedFirst=shutterDown=lightsOut=false;
+  servedFirst=shutterDown=lightsOut=customerHit=false;
   doorLocked=true;
   armed=false;
   rounds=roundCapacity;
@@ -1075,7 +1123,7 @@ try{
   const lockMesh=[];
   box(lockMesh,2.04,1.13,-1.738,.23,.055,.044,0xbb9b67);
   bolt=buffer(lockMesh);
-  props=Object.fromEntries(['tea','toast','soda'].map(item=>[item,buffer(orderProp(item))]));
+  props=Object.fromEntries(Object.keys(recipeNames).map(item=>[item,buffer(orderProp(item))]));
   rain=buffer(rainVertices,true);
   for(const station of stations){
     station.marker=document.createElement('button');
