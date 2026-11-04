@@ -2,245 +2,477 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gece Vardiyası</title>
-<meta name="description" content="Yağmurlu bir gecede, tek başına işlettiğin büfede geçen kısa bir gerilim oyunu.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--ink:#e8e2cf;--muted:#aaa99d;--amber:#f4bd76;--line:#343a33;--green:#a6c1a3}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 45% 5%,#242820,#10130f 64%);color:var(--ink);font:16px/1.55 system-ui,sans-serif;min-height:100vh}main{max-width:1150px;margin:auto;padding:clamp(16px,4vw,48px)}header,.status,.toolbar,.actions,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.mono,.tag,button,.status,footer{font-family:ui-monospace,Consolas,monospace}.tag,.status,footer{color:var(--muted);font-size:.75rem;letter-spacing:.13em}.tag{color:var(--amber)}h1{font:700 clamp(2.5rem,7vw,5.2rem)/.97 Georgia,serif;letter-spacing:-.065em;margin:.16em 0 .27em}button{font-size:.86rem;cursor:pointer;border:1px solid #5b5c49;padding:10px 14px;color:var(--ink);background:#232820;border-radius:3px}button:hover:not(:disabled){border-color:var(--amber);color:var(--amber)}button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}button:disabled{opacity:.58;cursor:default}.primary{background:#d69d5c;color:#17150f;border-color:#d69d5c;font-weight:bold}.primary:hover:not(:disabled){background:#f4bd76;color:#17150f}.board{border:1px solid var(--line);background:#151a15;box-shadow:0 20px 60px #0007}.status,.toolbar{padding:10px 16px}.status{border-bottom:1px solid var(--line)}.status strong{color:var(--green)}.dot{color:#ef986b}.scene{position:relative;overflow:hidden;background:#171d1b;aspect-ratio:2.65;min-height:150px}.scene svg{display:block;width:100%;height:100%;object-fit:cover}.scene:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 80px #000b}.scene.camera svg{filter:saturate(.32) sepia(.32) hue-rotate(55deg) brightness(.85)}.scene.camera:after{background:repeating-linear-gradient(0deg,#020d0680 0 1px,transparent 2px 4px)}.scene-label{position:absolute;z-index:1;top:12px;left:14px;font-size:.75rem;color:#e5ebd7;background:#0b100de0;padding:5px 9px;letter-spacing:.1em}.rain{animation:rain .55s linear infinite}.dry .rain{display:none}@keyframes rain{to{transform:translate(-18px,40px)}}@media(prefers-reduced-motion:reduce){.rain{animation:none}}.toolbar{justify-content:flex-start;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.toolbar [aria-pressed=true]{color:var(--green);border-color:#829880}.layout{display:grid;grid-template-columns:1fr 260px}.story{padding:20px clamp(16px,3vw,28px);min-width:0}.side{border-left:1px solid var(--line);padding:20px 18px;background:#1c211a}.side p{font-size:.89rem;color:#c1bfb0;margin:.5em 0 1.1em}h2{font:700 clamp(1.55rem,3vw,2.25rem)/1.1 Georgia,serif;margin:.22em 0 .38em}.story p{margin:.4em 0 .85em;color:#d1cdbc}.story blockquote{margin:.5em 0 .8em;padding-left:12px;border-left:2px solid #ad7850;color:#ffd4a0;font:italic 1.25rem Georgia,serif}.actions{justify-content:flex-start}.hint{color:var(--green)!important;font-size:.88rem}.hint:empty{display:none}footer{margin-top:14px;letter-spacing:.08em}[hidden]{display:none!important}@media(max-width:680px){.layout{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid var(--line)}.actions button{flex:1 0 auto}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;pointer-events:none;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
-<body>
-<main>
-<header><span class="tag">BÜFE 07 <span aria-hidden="true">/</span> GECE SERVİSİ</span><button id="sound" aria-pressed="false">Ses kapalı</button></header>
+<body><main>
+<header><div class="tag">BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM</div><button id="sound" aria-pressed="false">Ses kapalı</button></header>
 <h1>Gece Vardiyası</h1>
-<section class="board" aria-label="Oyun">
-<div class="status"><strong><span class="dot" aria-hidden="true">●</span> <span id="clock">00:00</span></strong><span id="progress">VARDİYA BEKLİYOR</span></div>
-<div class="scene" id="scene">
-<svg viewBox="0 0 1000 375" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs>
-<linearGradient id="sky" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#10191b"/><stop offset="1" stop-color="#40504a"/></linearGradient>
-<linearGradient id="road" x2="0" y2="1"><stop stop-color="#242c29"/><stop offset="1" stop-color="#0c1414"/></linearGradient>
-<radialGradient id="lamp"><stop stop-color="#ffcb81" stop-opacity=".64"/><stop offset="1" stop-color="#ffbd6e" stop-opacity="0"/></radialGradient>
-<linearGradient id="wood" x2="0" y2="1"><stop stop-color="#614934"/><stop offset=".32" stop-color="#2a241b"/><stop offset="1" stop-color="#151510"/></linearGradient>
-<pattern id="rain" width="72" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-24)"><path d="M8 1v16m33 7v11m22-31v21" stroke="#b4d1ce" opacity=".25"/></pattern>
-<pattern id="metal" width="12" height="15" patternUnits="userSpaceOnUse"><path d="M0 2h12" stroke="#647369" opacity=".4"/></pattern>
-</defs>
-<rect width="1000" height="375" fill="url(#sky)"/>
-<path d="M0 113h98V71h95v163H0zm165 26h51v-35h78v133H165zm450 82V81h86v42h41V66h119v39h139v139z" fill="#192423"/>
-<path d="M40 130h18v27H40zm71-33h17v25h-17zm45 48h12v20h-12zm507-37h14v23h-14zm145-10h23v33h-23zm100 37h22v26h-22z" fill="#a98855" opacity=".33"/>
-<path d="M0 223h1000v152H0z" fill="url(#road)"/>
-<path d="M0 243l1000-3M0 270l1000-3M0 329l1000-8" stroke="#6d7e75" opacity=".33"/>
-<path d="M538 254h169l75 115H414z" fill="#ba8250" opacity=".13"/>
-<path d="M561 268h112m-145 20h183m-175 26h202m-280 30h319" stroke="#dfad70" opacity=".24" stroke-width="3"/>
-<ellipse cx="636" cy="143" rx="196" ry="153" fill="url(#lamp)"/>
-<path d="M704 253V96q0-29-30-29h-35" fill="none" stroke="#111916" stroke-width="8"/>
-<path d="M625 64h30l-4 10h-31z" fill="#fed09a"/>
-<g class="rain"><rect x="-40" y="-40" width="1100" height="460" fill="url(#rain)"/></g>
-<g id="visitor" hidden>
-<path d="M432 324l14-80q10-27 45-33h27q40 9 47 34l12 79z" fill="#111916" stroke="#444943" stroke-width="2"/>
-<path d="M473 185q-4-35 31-40 36 1 39 38l-12 39-25 12-24-17z" fill="#292e27" stroke="#444943" stroke-width="2"/>
-<path d="M484 187q23-14 48-4l-8 29-16 10-17-12z" fill="#796855"/>
-<path d="M485 193l13-2m13 0 16 1" stroke="#282822" stroke-width="3"/>
-<path id="hat" d="M464 177l20-10 8-17h30l12 22 23 8-35 5z" fill="#3d3930"/>
-</g>
-<g id="kiosk">
-<path d="M0 0h1000v22H0zM0 0h36v375H0zM968 0h32v375h-32z" fill="#181b14"/>
-<path d="M0 315h1000v60H0z" fill="url(#wood)"/>
-<path d="M0 317h1000M0 340h1000" stroke="#c19057" opacity=".35"/>
-<path d="M71 311l12-39h105l27 39z" fill="#4b5548"/><rect x="94" y="281" width="76" height="15" rx="2" fill="#b1c39b"/><path d="M107 288h49" stroke="#344b37" stroke-width="2"/>
-<path d="M832 289h32l-4 27h-23z" fill="#c8b691"/><ellipse cx="848" cy="289" rx="16" ry="4" fill="#695143"/>
-<path id="receipt" visibility="hidden" d="M680 331h71l13 22h-77z" fill="#d6c6a2"/>
-</g>
-<g id="shutter" visibility="hidden"><rect width="1000" height="340" fill="#303b31"/><rect width="1000" height="340" fill="url(#metal)"/><rect x="466" y="285" width="68" height="16" rx="3" fill="#101712"/></g>
-</svg>
-<span class="scene-label mono" id="viewLabel">TEZGAH</span>
+<section class="frame" aria-label="Oyun">
+<div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span></div>
+<div class="game" id="game">
+<canvas id="world" aria-label="Büfenin üç boyutlu görünümü"></canvas><div class="cross" aria-hidden="true">+</div>
+<div id="markers" aria-hidden="true"></div><div class="cctv tag" id="cctv" hidden></div>
+<button id="prompt" hidden></button>
+<div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Bir bardak çay, geceyi atlatmaya yeter sanıyorsun. Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor.</p><button class="gold" id="start">Vardiyayı aç</button></div>
+<section class="window" id="panel" aria-labelledby="panelTitle" hidden><h2 id="panelTitle"></h2><p id="panelText"></p><div class="actions" id="actions"></div></section>
 </div>
-<div class="toolbar" id="toolbar" hidden>
-<button id="view" aria-pressed="false">Kameraya bak</button>
-<button id="inspect">Tezgahı incele</button>
+<div class="info">
+<div><div class="tag">GÖREV</div><p id="task">Vardiya başlamayı bekliyor.</p></div>
+<div><div class="tag">VARDİYA DEFTERİ</div><p id="note" aria-live="polite">“Kamera sokağı görür. Fiş saati söyler.”</p></div>
 </div>
-<div class="layout">
-<div class="story" aria-live="polite">
-<div class="tag" id="eyebrow">00:00 / BÜFE 07</div>
-<h2 id="title" tabindex="-1">İlk gecen.</h2>
-<p id="body">Yağmur cama vuruyor. Önceki vardiyadan kalan tek şey bir not ve açık bir güvenlik kamerası.</p>
-<blockquote id="quote" hidden></blockquote>
-<p id="hint" class="hint"></p>
-<div class="actions" id="actions"><button id="start" class="primary">Vardiyayı aç</button></div>
-</div>
-<aside class="side" aria-label="Vardiya defteri">
-<div class="tag">VARDİYA DEFTERİ</div>
-<p>“Kamera sokağı görür. Tezgahtaki fiş saati söyler. İkisini de kontrol et.”</p>
-<div class="tag">SİPARİŞ</div><p id="order">—</p>
-</aside>
-</div>
-</section>
-<footer><span>GECE VARDİYASI / BÖLÜM 01</span><span>TEK OYUNCU · 3 KARŞILAŞMA · 2 SON</span></footer>
+<div class="controls" id="controls" hidden>
+<button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button>
+<span>WASD ile yürü · Görüntüyü sürükleyerek ya da oklarla dön · E ile etkileş</span>
+</div></section>
+<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>3 KARŞILAŞMA · 2 SON</span></footer>
 </main>
 <script>
 'use strict';
-
-const scenes = [
-  {
-    time: '00:17', title: 'Her zamankinden', description: 'Camın önünde fötr şapkalı biri duruyor. Şapkasının üstünde bir damla yağmur yok.',
-    quote: 'Her zamankinden.', order: 'Bir çay. Şekersiz.',
-    camera: 'Kamera 00:17’yi gösteriyor. Tezgahın önü bomboş.',
-    counter: 'Fiş kendi el yazınla doldurulmuş. Altında “Teslim edildi · 00:17” yazıyor.',
-    serve: 'Adam bardağı alıyor. Avucu cama değdiğinde buğu, elinin dış hatlarını çiziyor. Sokak hâlâ boş.',
-    refuse: 'Servis kapağını kapatıyorsun. Adam geri çekilmeden gözden kayboluyor.'
-  },
-  {
-    time: '01:42', title: 'Islak bozukluklar', description: 'Yağmurluklu bir kadın camı iki kez tıklatıyor. Bozuk paralarını sayarken eli titriyor.',
-    quote: 'Bir çay alabilir miyim? Son otobüsü kaçırdım.', order: 'Bir çay. İki şeker.',
-    camera: 'Kadın ekranda da görünüyor. Büfeye kadar uzanan ıslak ayak izleri var.',
-    counter: 'Islak paralar, tezgahın üstünde küçük bir gölcük bırakmış. Yazıcıdan henüz fiş çıkmamış.',
-    serve: 'Bardağı iki eliyle kavrıyor. Gitmeden önce, “Yağmur kesilince kepengi indir,” diyor.',
-    refuse: 'Kadın paralarını topluyor ve durağa dönüyor. Her adımında bir su birikintisi sıçrıyor.'
-  },
-  {
-    time: '02:06', title: 'Mesai devri', description: 'Yağmur bir anda kesiliyor. Camdaki siluet, seninle aynı önlüğü takıyor.',
-    quote: 'Kapıyı aç. Ben geldim, sen çıkabilirsin.', order: 'Arka kapının anahtarı.',
-    camera: 'Sokakta kimse yok. Kameradaki kepenk kapalı ve saati 02:07.',
-    counter: 'Yazıcı bir fiş çıkarıyor. “02:07 · Anahtar teslim edildi.” İmza senin.',
-    serve: 'Anahtarı uzattığın anda büfenin ışığı sönüyor. Arkandaki kilit dönüyor.',
-    refuse: 'Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Bir süre karşı taraftan kendi sesin geliyor.'
-  }
-];
-
 const $ = id => document.getElementById(id);
-let index = 0;
-let active = false;
-let acceptedStranger = false;
-let audioContext;
-let rainSource;
+const canvas = $('world');
+const gl = canvas.getContext('webgl', {antialias:true, alpha:false});
+const scene = [
+  {time:'00:17', name:'Fötr şapkalı adam', line:'“Her zamankinden.” Şapkasında tek damla yağmur yok.', order:'Şekersiz çay', camera:'Kamera aynı dakikayı gösteriyor. Pencerenin önü boş.', receipt:'Kendi el yazınla: “Teslim edildi · 00:17.”', serve:'Adam çayı alıyor. Camda bir anlığına avucunun izi kalıyor.', deny:'Servis kapağını kapatınca adam, geri çekilmeden kayboluyor.'},
+  {time:'01:42', name:'Yağmurluklu kadın', line:'“Bir çay alabilir miyim? Son otobüsü kaçırdım. İki şeker olsun.”', order:'İki şekerli çay', camera:'Kadın kamera görüntüsünde de var. Durağa kadar ıslak ayak izleri uzanıyor.', receipt:'Islak bozukluklar tezgahta küçük bir gölcük bırakmış. Fiş henüz basılmamış.', serve:'Bardağı iki eliyle kavrıyor. “Yağmur kesilince kepengi indir,” diyor.', deny:'Kadın paralarını toplayıp durağa dönüyor. Her adımında bir su birikintisi sıçrıyor.'},
+  {time:'02:06', name:'Mesai devri', line:'Camdaki siluet senin önlüğünü takıyor. “Kapıyı aç. Ben geldim, sen çıkabilirsin.”', order:'Arka kapının anahtarı', camera:'Sokak boş. Kamera saati 02:07. Görüntüde kepenk çoktan inmiş.', receipt:'“02:07 · Anahtar teslim edildi.” İmza yine senin.', serve:'Anahtarı uzattığın anda ışık sönüyor. Arkandaki kilit dönüyor.', deny:'Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Diğer taraftan kendi sesin geliyor.'}
+];
+const stations = [
+  {id:'monitor', label:'Kamera', x:-2.4, z:2.65, y:1.48},
+  {id:'receipt', label:'Fiş', x:-.95, z:3.17, y:1.1},
+  {id:'window', label:'Servis penceresi', x:.3, z:3.3, y:1.65},
+  {id:'tea', label:'Çay ocağı', x:2.05, z:2.75, y:1.45}
+];
+const player = {x:0,z:.75,y:1.62,angle:0,pitch:0};
+const camera = {x:5.7,z:9.4,y:3.4,angle:-2.44,pitch:-.32};
+const held = new Set();
+let stage = 0, playing = false, cctv = false, servedFirst = false, kettle = false, sugar = 0;
+let rainGain, rainSource, audio;
+const viewScale = 1.35;
+const fog = [.065,.09,.082];
 
-function button(label, handler, primary = false) {
-  const element = document.createElement('button');
-  element.textContent = label;
-  element.classList.toggle('primary', primary);
-  element.addEventListener('click', handler);
-  return element;
+function compile(type, source) {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(shader));
+  return shader;
+}
+function setup() {
+  const program = gl.createProgram();
+  gl.attachShader(program, compile(gl.VERTEX_SHADER, `
+    attribute vec3 point; attribute vec3 tint;
+    uniform vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform float night;
+    varying vec3 color; varying float distanceToEye;
+    void main(){
+      vec3 d=point-eye;
+      float side=d.x*rotation.y-d.z*rotation.x;
+      float front=d.z*rotation.y+d.x*rotation.x;
+      float up=d.y*rotation.w-front*rotation.z;
+      float depth=front*rotation.w+d.y*rotation.z;
+      gl_Position=vec4(side*scale.x,up*scale.y,1.003*depth-.13,depth);
+      color=tint*night; distanceToEye=depth;
+    }`));
+  gl.attachShader(program, compile(gl.FRAGMENT_SHADER, `
+    precision mediump float;
+    varying vec3 color; varying float distanceToEye;
+    uniform vec3 fog; uniform float mono;
+    void main(){
+      vec3 c=mix(color,fog,1.0-exp(-max(0.0,distanceToEye)*.038));
+      float l=dot(c,vec3(.3,.55,.15));
+      gl_FragColor=vec4(mix(c,vec3(l*.77,l*1.12,l*.83),mono),1.0);
+    }`));
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(program));
+  gl.useProgram(program);
+  gl.enable(gl.DEPTH_TEST);
+  const attributes = ['point','tint'].map(name => gl.getAttribLocation(program,name));
+  for (const id of attributes) gl.enableVertexAttribArray(id);
+  const uniforms = Object.fromEntries(['eye','rotation','scale','night','fog','mono'].map(name => [name,gl.getUniformLocation(program,name)]));
+  return {attributes,uniforms};
 }
 
-function changeView(camera) {
-  $('scene').classList.toggle('camera', camera);
-  $('viewLabel').textContent = camera ? '● KAMERA 01 / SOKAK' : 'TEZGAH';
-  $('view').setAttribute('aria-pressed', String(camera));
-  $('view').textContent = camera ? 'Tezgaha dön' : 'Kameraya bak';
-  $('kiosk').toggleAttribute('hidden', camera);
-  $('visitor').toggleAttribute('hidden', !active || (camera && index !== 1));
+const faces = [[0,1,2,3,.77],[5,4,7,6,.98],[4,0,3,7,.79],[1,5,6,2,.66],[3,2,6,7,1],[4,5,1,0,.48]];
+function box(mesh, x,y,z, w,h,d, color) {
+  const a=x-w/2,b=x+w/2,c=y-h/2,e=y+h/2,f=z-d/2,g=z+d/2;
+  const p=[[a,c,f],[b,c,f],[b,e,f],[a,e,f],[a,c,g],[b,c,g],[b,e,g],[a,e,g]];
+  const rgb = [16,8,0].map(bits => ((color >> bits)&255)/255);
+  for(const [i,j,k,l,light] of faces){
+    for(const n of [i,j,k,i,k,l]) mesh.push(...p[n],...rgb.map(v=>v*light));
+  }
 }
-
-function showScene() {
-  const scene = scenes[index];
-  active = true;
-  document.getElementById('scene').classList.toggle('dry', index === 2);
-  $('clock').textContent = scene.time;
-  $('progress').textContent = 'KARŞILAŞMA ' + (index + 1) + ' / 3';
-  $('eyebrow').textContent = 'BÜFE 07 / ' + scene.time;
-  $('title').textContent = scene.title;
-  $('body').textContent = scene.description;
-  $('quote').textContent = '“' + scene.quote + '”';
-  $('quote').hidden = false;
-  $('hint').textContent = '';
-  $('order').textContent = scene.order;
-  $('toolbar').hidden = false;
-  $('shutter').setAttribute('visibility', 'hidden');
-  $('hat').setAttribute('visibility', index === 0 ? 'visible' : 'hidden');
-  $('receipt').setAttribute('visibility', index === 1 ? 'hidden' : 'visible');
-  changeView(false);
-  $('actions').replaceChildren(
-    button(index === 2 ? 'Anahtarı ver' : 'Çayı servis et', () => decide(true), true),
-    button(index === 2 ? 'Kepengi indir' : 'Servis kapağını kapat', () => decide(false))
-  );
-  $('title').focus();
+function geometry() {
+  const mesh=[];
+  const put=(...args)=>box(mesh,...args);
+  put(0,-.15,8,35,.2,35,0x222b2c);
+  for(let x=-3;x<=3;x++) for(let z=-2;z<=3;z++){
+    put(x,-.03,z, .98,.07,.98,(x+z)%2 ? 0x41403a : 0x555246);
+  }
+  put(0,3.08,1,7,.18,6,0x494b3c);
+  put(-3.45,1.5,1,.18,3,6,0x655e48);
+  put(3.45,1.5,1,.18,3,6,0x635d4b);
+  put(0,1.5,-1.95,7,3,.14,0x615d4d);
+  put(0,.48,3.93,7,.96,.19,0x5d5242);
+  put(0,2.72,3.93,7,.56,.22,0x595744);
+  for(const x of [-3.2,-1.65,1.57,3.2]) put(x,1.63,3.93,.115,1.6,.16,0x4b493d);
+  put(0,1.0,3.58,6.65,.17,.73,0x907553);
+  put(0,.45,3.56,6.6,.9,.62,0x514537);
+  put(-2.39,.99,2.89,1.24,.16,.75,0x73634a);
+  put(-2.4,1.38,2.8,.74,.55,.32,0x2b3128);
+  put(-2.4,1.4,2.63,.62,.42,.025,0x76a080);
+  for(let i=0;i<7;i++) put(-2.4,1.22+i*.055,2.613,.6,.008,.008,0x45674c);
+  put(-.95,1.10,3.25,.27,.014,.36,0xebd4a9);
+  for(let i=0;i<4;i++) put(-.95,1.111,3.14+i*.055,.19,.003,.01,0x695f4f);
+  put(2.06,.58,2.98,1.48,1.12,1,0x565344);
+  put(2.06,1.14,2.98,1.57,.11,1.05,0x968f71);
+  put(2.03,1.35,2.9,.42,.36,.38,0x9a8462);
+  put(2.03,1.57,2.9,.22,.1,.19,0x292d27);
+  put(2.42,1.24,2.7,.17,.16,.18,0xd5c09b);
+  put(2.6,1.21,3.21,.26,.09,.19,0xbeab90);
+  put(-2.82,1.2,-1.54,.9,.12,.65,0x8e6c44);
+  put(-2.82,1.8,-1.54,.9,.12,.65,0x8e6c44);
+  for(let i=0;i<5;i++) put(-3.13+i*.15,1.34,-1.53,.1,.17,.18,i%2?0xc2a176:0x647c5e);
+  put(0,2.93,.6,2.6,.075,.24,0xffdc9b);
+  put(2.5,1.05,-1.86,1.16,2.06,.08,0x323b31);
+  put(2.15,1.04,-1.79,.13,.047,.08,0xb79b66);
+  for(let i=0;i<8;i++){
+    const x=-13+i*3.6, height=4+i%3;
+    put(x,height/2,15,3.5,height,2,i%2?0x313d3c:0x2b3334);
+    for(let j=0;j<3;j++) put(x-.85+j*.85,2.6+(j%2),13.98,.38,.55,.02,(i+j)%4?0x434b45:0x827654);
+  }
+  put(0,.015,8,33,.03,.19,0x5b6256);
+  put(0,.018,11,33,.03,.08,0x4b4f44);
+  for(let i=-5;i<=5;i++) put(i*2.4,.02,9.45,1.1,.01,.06,0x77715a);
+  put(4.4,2.5,8,.12,5,.12,0x343c33);
+  put(4.02,4.97,8,.86,.1,.11,0x4d5042);
+  put(3.64,4.92,8,.32,.09,.22,0xffc884);
+  for(let i=0;i<18;i++) put(3.62+Math.sin(i*7)*.95,.026,7+i*.23,.25+(i%4)*.29,.006,.028,0x7d6c49);
+  put(-5.15,1.14,10.8,.12,2.28,.12,0x4e5653);
+  put(-5.15,2.16,10.8,.53,.37,.13,0x668071);
+  return mesh;
 }
+function visitor(number){
+  const mesh=[];
+  const coat=[0x373831,0xb88c46,0x425b4d][number];
+  const x=.32, z=4.78;
+  box(mesh,x-.14,.4,z,.2,.8,.24,0x232829);
+  box(mesh,x+.14,.4,z,.2,.8,.24,0x232829);
+  box(mesh,x,1.09,z,.57,.78,.32,coat);
+  box(mesh,x-.34,1.06,z,.13,.58,.19,coat);
+  box(mesh,x+.34,1.06,z,.13,.58,.19,coat);
+  box(mesh,x,1.65,z,.32,.4,.33,number===2?0x696459:0x98785a);
+  box(mesh,x-.077,1.67,z-.168,.048,.025,.009,0x292620);
+  box(mesh,x+.077,1.67,z-.168,.048,.025,.009,0x292620);
+  if(number===0){
+    box(mesh,x,1.82,z,.56,.055,.45,0x45413a);
+    box(mesh,x,1.91,z,.31,.17,.29,0x37362f);
+  }else if(number===1){
+    box(mesh,x,1.89,z,.39,.11,.37,coat);
+    box(mesh,x-.18,1.69,z,.07,.36,.35,coat);
+    box(mesh,x+.18,1.69,z,.07,.36,.35,coat);
+  }else box(mesh,x,1.13,z-.17,.32,.46,.035,0x9d9b79);
+  return mesh;
+}
+function shutters(){
+  const mesh=[];
+  box(mesh,0,1.68,3.98,6.5,1.72,.075,0x535e52);
+  for(let i=0;i<14;i++) box(mesh,0,.88+i*.118,3.93,6.5,.024,.035,0x323c35);
+  return mesh;
+}
+function buffer(mesh, dynamic=false){
+  const object=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,object);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh),dynamic?gl.DYNAMIC_DRAW:gl.STATIC_DRAW);
+  return {object,count:mesh.length/6};
+}
+function draw(mesh,attributes, mode=gl.TRIANGLES){
+  gl.bindBuffer(gl.ARRAY_BUFFER,mesh.object);
+  gl.vertexAttribPointer(attributes[0],3,gl.FLOAT,false,24,0);
+  gl.vertexAttribPointer(attributes[1],3,gl.FLOAT,false,24,12);
+  gl.drawArrays(mode,0,mesh.count);
+}
+let renderer, set, visitors, shutter, rain;
+let showVisitor=false, shutterDown=false, lightsOut=false;
+let previous=0;
+const rainSeed=Array.from({length:220},()=>[Math.random()*19-9.5,Math.random()*6,Math.random()*12+4]);
+const rainVertices=new Float32Array(rainSeed.length*12);
+let nearest=null;
 
-function decide(served) {
-  if (!active) return;
-  active = false;
-  if (index === 0) acceptedStranger = served;
-  $('toolbar').hidden = true;
-  $('quote').hidden = true;
-  $('hint').textContent = '';
-  $('order').textContent = served ? 'Teslim edildi' : 'Servis kapalı';
-  changeView(false);
-  $('body').textContent = served ? scenes[index].serve : scenes[index].refuse;
-  if (index === 2 && !served) $('shutter').setAttribute('visibility', 'visible');
-  $('actions').replaceChildren(button(index === 2 ? 'Vardiyayı bitir' : 'Bekle', () => {
-    if (index === 2) finish(served);
-    else {
-      index += 1;
-      showScene();
+function movement(dt){
+  if(!playing || !$('panel').hidden) return;
+  const has=k=>Number(held.has(k));
+  player.angle+=(has('arrowright')-has('arrowleft'))*dt*1.75;
+  const side=has('d')-has('a'), forward=has('w')-has('s');
+  const speed=dt*2.25/(side&&forward?Math.SQRT2:1);
+  const x=player.x+(Math.sin(player.angle)*forward+Math.cos(player.angle)*side)*speed;
+  const z=player.z+(Math.cos(player.angle)*forward-Math.sin(player.angle)*side)*speed;
+  player.x=Math.max(-3.02,Math.min(3.02,x));
+  const limit=player.x < -1.75 || player.x>1.3 ? 2.36 : 3.02;
+  player.z=Math.max(-1.63,Math.min(limit,z));
+}
+function updateMarkers(aspect){
+  let best=Infinity;
+  nearest=null;
+  for(const station of stations){
+    const dx=station.x-player.x, dz=station.z-player.z, dy=station.y-player.y;
+    const forward=dx*Math.sin(player.angle)+dz*Math.cos(player.angle);
+    const side=dx*Math.cos(player.angle)-dz*Math.sin(player.angle);
+    const depth=forward*Math.cos(player.pitch)+dy*Math.sin(player.pitch);
+    const up=dy*Math.cos(player.pitch)-forward*Math.sin(player.pitch);
+    const x=side*viewScale/(aspect*depth), y=up*viewScale/depth;
+    const marker=station.marker;
+    marker.hidden=!playing || !$('panel').hidden || depth<.25 || Math.abs(x)>.88 || Math.abs(y)>.85;
+    if(!marker.hidden){
+      marker.style.left=(50+x*50)+'%';
+      marker.style.top=(50-y*50)+'%';
     }
-  }, true));
+    const distance=Math.hypot(dx,dz), score=distance+Math.abs(x)*.9;
+    if(!marker.hidden && distance<1.72 && Math.abs(x)<.65 && score<best){
+      nearest=station;
+      best=score;
+    }
+  }
+  $('prompt').hidden=!nearest;
+  if(nearest) $('prompt').textContent='E · '+nearest.label;
+}
+function frame(now){
+  const dt=Math.min(.05,(now-previous)/1000);
+  previous=now;
+  movement(dt);
+  const ratio=Math.min(window.devicePixelRatio||1,1.6);
+  const w=Math.max(1,Math.round(canvas.clientWidth*ratio)), h=Math.max(1,Math.round(canvas.clientHeight*ratio));
+  if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
+  const aspect=w/h;
+  updateMarkers(aspect);
+  const eye=cctv?camera:player;
+  const {attributes,uniforms:u}=renderer;
+  gl.viewport(0,0,w,h);
+  gl.clearColor(...fog,1);
+  gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  gl.uniform3f(u.eye,eye.x,eye.y,eye.z);
+  gl.uniform4f(u.rotation,Math.sin(eye.angle),Math.cos(eye.angle),Math.sin(eye.pitch),Math.cos(eye.pitch));
+  gl.uniform2f(u.scale,viewScale/aspect,viewScale);
+  gl.uniform1f(u.night,lightsOut?.24:1);
+  gl.uniform1f(u.mono,cctv?.88:0);
+  gl.uniform3f(u.fog,...fog);
+  draw(set,attributes);
+  if(showVisitor && (!cctv||stage===1)) draw(visitors[stage],attributes);
+  if(shutterDown || (cctv&&stage===2)) draw(shutter,attributes);
+  if(stage<2){
+    for(let i=0;i<rainSeed.length;i++){
+      const [x,y,z]=rainSeed[i];
+      const height=(y+6-(now*.008)%6)%6;
+      rainVertices.set([x,height,z,.29,.37,.36,x+.05,height+.24,z+.04,.43,.51,.49],i*12);
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER,rain.object);
+    gl.bufferSubData(gl.ARRAY_BUFFER,0,rainVertices);
+    draw(rain,attributes,gl.LINES);
+  }
+  requestAnimationFrame(frame);
+}
+
+function action(label,run,primary=false){
+  const button=document.createElement('button');
+  button.textContent=label;
+  if(primary) button.className='gold';
+  button.onclick=run;
+  return button;
+}
+function panel(title, text, choices=[]){
+  held.clear();
+  $('panelTitle').textContent=title;
+  $('panelText').textContent=text;
+  $('actions').replaceChildren(...choices,action('Kapat',closePanel));
+  $('panel').hidden=false;
   $('actions').firstElementChild.focus();
 }
-
-function finish(gaveKey) {
-  $('clock').textContent = gaveKey ? '02:07' : '06:00';
-  $('progress').textContent = gaveKey ? 'SON 2 / 2' : 'SON 1 / 2';
-  $('eyebrow').textContent = 'VARDİYA SONU';
-  $('title').textContent = gaveKey ? 'Yeni vardiya' : 'Sabah oldu';
-  $('body').textContent = gaveKey
-    ? 'Sokaktan kendi büfene bakıyorsun. Tezgahın arkasında biri, senin el yazınla bir çay fişi dolduruyor.'
-    : acceptedStranger
-      ? 'Kepengi kaldırdığında sokak boş. Tezgahta şekersiz çaydan kalan bir bardak var. Hâlâ sıcak.'
-      : 'İlk otobüs geçerken kepengi kaldırıyorsun. “Her zamankinden” yazılı fişin mürekkebi yağmurda akıp gitmiş.';
-  $('actions').replaceChildren(button('Yeniden oyna', start, true));
-  $('title').focus();
+function closePanel(){
+  $('panel').hidden=true;
+  cctv=false;
+  $('cctv').hidden=true;
+  $('use').focus({preventScroll:true});
 }
-
-function start() {
-  index = 0;
-  acceptedStranger = false;
-  showScene();
-}
-
-$('start').addEventListener('click', start);
-$('view').addEventListener('click', () => {
-  const camera = $('view').getAttribute('aria-pressed') !== 'true';
-  changeView(camera);
-  $('hint').textContent = camera ? scenes[index].camera : '';
-});
-$('inspect').addEventListener('click', () => {
-  changeView(false);
-  $('hint').textContent = scenes[index].counter;
-});
-
-$('sound').addEventListener('click', async () => {
-  if (rainSource) {
-    rainSource.stop();
-    rainSource = null;
-  } else {
-    try {
-      audioContext ??= new AudioContext();
-      await audioContext.resume();
-      if (rainSource) return;
-      const noise = audioContext.createBuffer(1, audioContext.sampleRate * 3, audioContext.sampleRate);
-      const samples = noise.getChannelData(0);
-      for (let i = 0; i < samples.length; i += 1) samples[i] = Math.random() * 2 - 1;
-      const source = audioContext.createBufferSource();
-      const filter = audioContext.createBiquadFilter();
-      const gain = audioContext.createGain();
-      filter.type = 'lowpass';
-      filter.frequency.value = 850;
-      gain.gain.value = .18;
-      source.buffer = noise;
-      source.loop = true;
-      source.connect(filter).connect(gain).connect(audioContext.destination);
-      source.start();
-      rainSource = source;
-    } catch {
-      $('sound').textContent = 'Ses kullanılamıyor';
-      $('sound').disabled = true;
-      return;
-    }
+function updateTask(){
+  if(stage===2){
+    $('task').textContent='Servis penceresine git. Anahtarı ver veya kepengi indir.';
+    return;
   }
-  $('sound').setAttribute('aria-pressed', String(Boolean(rainSource)));
-  $('sound').textContent = rainSource ? 'Ses açık' : 'Ses kapalı';
+  const need=stage===0?0:2;
+  const ready=kettle && sugar===need;
+  $('task').textContent=ready?'Çay hazır. Servis penceresine dön.':scene[stage].order+' hazırla veya servis kapağını kapat.';
+}
+function teaPanel(){
+  const text=(kettle?'Çay demlendi.':'Ocakta sıcak su hazır.')+' Bardakta '+sugar+' şeker var.';
+  panel('Çay ocağı',text,[
+    action('Çayı demle',()=>{kettle=true;updateTask();teaPanel();},true),
+    action('Şeker ekle',()=>{sugar=Math.min(2,sugar+1);updateTask();teaPanel();}),
+    action('Şekeri sıfırla',()=>{sugar=0;updateTask();teaPanel();})
+  ]);
+}
+function interact(){
+  if(!playing||!nearest||!$('panel').hidden) return;
+  const info=scene[stage];
+  if(nearest.id==='monitor'){
+    cctv=true;
+    $('cctv').textContent='● KAMERA 01 / '+(stage===2?'02:07':info.time);
+    $('cctv').hidden=false;
+    $('note').textContent=info.camera;
+    panel('Kamera 01',info.camera);
+  }else if(nearest.id==='receipt'){
+    $('note').textContent=info.receipt;
+    panel('Tezgahtaki fiş',info.receipt);
+  }else if(nearest.id==='tea'){
+    if(stage===2) panel('Çay ocağı','Ocak sönmüş. Sokaktan artık yağmur sesi gelmiyor.');
+    else teaPanel();
+  }else{
+    const options=[];
+    if(stage===2||kettle&&sugar===(stage===0?0:2)){
+      options.push(action(stage===2?'Anahtarı ver':'Çayı servis et',()=>decide(true),true));
+    }
+    options.push(action(stage===2?'Kepengi indir':'Servis kapağını kapat',()=>decide(false)));
+    panel(info.name,info.line,options);
+  }
+}
+function next(){
+  closePanel();
+  kettle=false;
+  sugar=0;
+  showVisitor=true;
+  $('clock').textContent=scene[stage].time;
+  $('chapter').textContent='KARŞILAŞMA '+(stage+1)+' / 3';
+  $('note').textContent=scene[stage].line;
+  updateTask();
+  if(rainGain) rainGain.gain.value=stage===2?0:.18;
+}
+function decide(served){
+  if(!showVisitor) return;
+  showVisitor=false;
+  if(stage===0) servedFirst=served;
+  if(stage===2){
+    shutterDown=!served;
+    lightsOut=served;
+  }
+  $('note').textContent=served?scene[stage].serve:scene[stage].deny;
+  panel(scene[stage].name,$('note').textContent,[
+    action(stage===2?'Vardiyayı bitir':'Biraz bekle',()=>{
+      if(stage===2) end(served);
+      else {stage+=1;next();}
+    },true)
+  ]);
+  $('actions').lastElementChild.remove();
+}
+function end(served){
+  closePanel();
+  playing=false;
+  $('controls').hidden=true;
+  $('clock').textContent=served?'02:07':'06:00';
+  $('chapter').textContent=served?'SON 2 / 2':'SON 1 / 2';
+  $('task').textContent='Vardiya bitti.';
+  $('coverTag').textContent='VARDİYA SONU';
+  $('coverTitle').textContent=served?'Yeni vardiya':'Sabah oldu';
+  $('coverText').textContent=served?'Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.':servedFirst?'Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.':'İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.';
+  $('cover').hidden=false;
+  $('start').textContent='Yeniden oyna';
+  $('start').focus();
+}
+function start(){
+  Object.assign(player,{x:0,z:.75,y:1.62,angle:0,pitch:0});
+  stage=0;
+  playing=true;
+  servedFirst=shutterDown=lightsOut=false;
+  $('cover').hidden=true;
+  $('controls').hidden=false;
+  next();
+}
+
+$('start').onclick=start;
+$('use').onclick=interact;
+$('prompt').onclick=interact;
+document.addEventListener('keydown',event=>{
+  if(!playing) return;
+  const key=event.key.toLowerCase();
+  if(key==='escape'&&!$('panel').hidden&&showVisitor){closePanel();return;}
+  if(!$('panel').hidden) return;
+  if(key==='e'&&!event.repeat){interact();return;}
+  if(!['w','a','s','d','arrowleft','arrowright'].includes(key)) return;
+  event.preventDefault();
+  held.add(key);
 });
+document.addEventListener('keyup',event=>held.delete(event.key.toLowerCase()));
+window.addEventListener('blur',()=>held.clear());
+for(const button of document.querySelectorAll('[data-key]')){
+  const key=button.dataset.key;
+  button.onpointerdown=event=>{button.setPointerCapture(event.pointerId);held.add(key);};
+  button.onpointerup=button.onpointercancel=button.onlostpointercapture=()=>held.delete(key);
+}
+let drag=null;
+canvas.onpointerdown=event=>{
+  if(!playing||!$('panel').hidden) return;
+  canvas.setPointerCapture(event.pointerId);
+  drag={x:event.clientX,y:event.clientY};
+};
+canvas.onpointermove=event=>{
+  if(!drag) return;
+  player.angle+=(event.clientX-drag.x)*.008;
+  player.pitch=Math.max(-.65,Math.min(.55,player.pitch-(event.clientY-drag.y)*.006));
+  drag={x:event.clientX,y:event.clientY};
+};
+canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=()=>{drag=null;};
+
+$('sound').onclick=async()=>{
+  const button=$('sound');
+  button.disabled=true;
+  try{
+    if(rainSource){
+      rainSource.stop();
+      rainSource=null;
+    }else{
+      audio??=new AudioContext();
+      await audio.resume();
+      const noise=audio.createBuffer(1,audio.sampleRate*3,audio.sampleRate);
+      const samples=noise.getChannelData(0);
+      for(let i=0;i<samples.length;i++) samples[i]=Math.random()*2-1;
+      const filter=audio.createBiquadFilter();
+      filter.type='lowpass';
+      filter.frequency.value=920;
+      rainGain=audio.createGain();
+      rainGain.gain.value=stage===2?0:.18;
+      rainSource=audio.createBufferSource();
+      rainSource.buffer=noise;
+      rainSource.loop=true;
+      rainSource.connect(filter).connect(rainGain).connect(audio.destination);
+      rainSource.start();
+    }
+    button.setAttribute('aria-pressed',String(Boolean(rainSource)));
+    button.textContent=rainSource?'Ses açık':'Ses kapalı';
+  }catch{button.textContent='Ses kullanılamıyor';}
+  finally{button.disabled=false;}
+};
+try{
+  if(!gl) throw Error('WebGL kullanılamıyor.');
+  renderer=setup();
+  set=buffer(geometry());
+  visitors=[0,1,2].map(number=>buffer(visitor(number)));
+  shutter=buffer(shutters());
+  rain=buffer(rainVertices,true);
+  for(const station of stations){
+    station.marker=document.createElement('span');
+    station.marker.className='marker';
+    station.marker.textContent=station.label;
+    station.marker.hidden=true;
+    $('markers').append(station.marker);
+  }
+  requestAnimationFrame(frame);
+}catch(error){
+  $('coverText').textContent='3B sahne bu tarayıcıda açılamadı. WebGL destekli bir tarayıcıda tekrar deneyebilirsin.';
+  $('start').hidden=true;
+  console.error(error);
+}
 </script>
 </body>
 </html>
+
 
