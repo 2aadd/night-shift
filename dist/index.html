@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.weapon{position:absolute;z-index:1;bottom:-5px;right:8%;width:clamp(120px,29%,320px);height:auto;pointer-events:none;filter:drop-shadow(0 5px 7px #080b08)}.weapon.recoil{animation:recoil .24s ease-out}.weapon .flash{opacity:0}.weapon.recoil .flash{animation:muzzle .16s ease-out}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}@keyframes recoil{35%{transform:translate(8px,12px) rotate(3deg)}}@keyframes muzzle{0%{opacity:.94}100%{opacity:0}}@media(prefers-reduced-motion:reduce){.weapon.recoil,.weapon.recoil .flash{animation:none}}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
@@ -14,10 +14,21 @@
 <section class="frame" aria-label="Oyun">
 <div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span><button id="journal" hidden>Vardiya defteri</button></div>
 <div class="game" id="game">
-<canvas id="world" aria-label="Büfenin üç boyutlu görünümü"></canvas><div class="cross" aria-hidden="true">+</div>
+<canvas id="world" aria-label="Büfenin üç boyutlu görünümü"></canvas><div class="cross" id="cross" aria-hidden="true">+</div>
+<svg id="weapon" class="weapon" viewBox="0 0 320 205" aria-hidden="true" hidden>
+  <defs><linearGradient id="weaponSteel" x1="0" x2="1"><stop stop-color="#9a9c87"/><stop offset=".38" stop-color="#515b55"/><stop offset="1" stop-color="#282f2a"/></linearGradient><linearGradient id="weaponStock" x1="0" x2="1"><stop stop-color="#916a43"/><stop offset="1" stop-color="#3c2a1f"/></linearGradient></defs>
+  <path class="flash" d="M108 51 75 39l17-8L78 10l26 12 11-21 5 28 24-2-15 14 12 16z" fill="#ffca80"/>
+  <path d="M102 51 125 43 229 151 211 164z" fill="url(#weaponSteel)" stroke="#222922" stroke-width="2"/>
+  <path d="M105 53 125 46 213 141 206 148z" fill="#626b62"/>
+  <ellipse cx="113" cy="47" rx="13" ry="5" transform="rotate(-20 113 47)" fill="#212925" stroke="#a29e86" stroke-width="2"/>
+  <path d="M164 112 178 108 225 147 220 165 203 169z" fill="url(#weaponStock)" stroke="#403126" stroke-width="2"/>
+  <path d="m177 117 35 37m-29-39 37 37m-49-32 32 38" stroke="#c19766" stroke-opacity=".42"/>
+  <path d="m212 148 23-8 31 29-19 24-37-25z" fill="url(#weaponSteel)" stroke="#222922" stroke-width="3"/>
+  <path d="m242 174 19-10 53 41h-73l-14-18z" fill="url(#weaponStock)" stroke="#393126" stroke-width="2"/>
+</svg>
 <div id="markers"></div><div class="cctv tag" id="cctv" hidden></div>
 <button id="prompt" hidden></button>
-<div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Bir bardak çay, geceyi atlatmaya yeter sanıyorsun. Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor.</p><button class="gold" id="start">Vardiyayı aç</button></div>
+<div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor. Gece tuhaflaşırsa arka raftaki tüfeği alabilirsin.</p><button class="gold" id="start">Vardiyayı aç</button></div>
 <section class="window" id="panel" aria-labelledby="panelTitle" hidden><h2 id="panelTitle"></h2><p id="panelText"></p><div class="actions" id="actions"></div></section>
 </div>
 <div class="info">
@@ -25,7 +36,7 @@
 <div><div class="tag">VARDİYA DEFTERİ</div><p id="note" aria-live="polite">“Kamera sokağı görür. Fiş saati söyler.”</p></div>
 </div>
 <div class="controls" id="controls" hidden>
-<button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button>
+<button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button><button id="fire" class="fire" hidden>F · Ateş et</button><span id="ammo" class="ammo" aria-live="polite" hidden></span>
 <span>WASD ile yürü · Görüntüyü sürükleyerek ya da oklarla dön · E ile etkileş</span>
 </div></section>
 <footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>7 KARŞILAŞMA · 2 SON</span></footer>
@@ -54,7 +65,8 @@ const stations = [
   {id:'window', label:'Servis penceresi', x:.3, z:3.3, y:2.07},
   {id:'tea', label:'Hazırlık tezgâhı', x:2.05, z:2.75, y:1.45},
   {id:'radio', label:'Radyo', x:-2.84, z:-1.53, y:1.95},
-  {id:'door', label:'Arka kapı', x:2.5, z:-1.79, y:1.48}
+  {id:'door', label:'Arka kapı', x:2.5, z:-1.79, y:1.48},
+  {id:'rack', label:'Av tüfeği', x:-.65, z:-1.8, y:1.48}
 ];
 const player = {x:0,z:.75,y:1.62,angle:0,pitch:0};
 const camera = {x:5.7,z:9.4,y:3.4,angle:-2.22,pitch:-.3};
@@ -62,6 +74,12 @@ const held = new Set();
 let stage=0, playing=false, cctv=false, servedFirst=false, sugar=0, prepared='';
 let rainGain, rainSource, audio;
 let doorLocked=true;
+let armed=false,rounds=0,exposed=false,repelled=false,recoilTimer,impactUntil=0;
+const creatureLines={
+  0:'Adamın yüzü bir anlığına şapkanın altına doğru uzuyor. Bir adım geri atıp yağmurun içinde dağılıyor.',
+  5:'Şemsiyenin altından çıkan gölge kaldırıma yayılıyor. Kırmızı şemsiye olduğu yerde kalıyor.',
+  6:'Camdaki suret parçalanıp pencerenin önünden çekiliyor. Sokağın öbür ucunda ilk otobüsün ışıkları beliriyor.'
+};
 const recipeNames={tea:'Çay',toast:'Kaşarlı tost',soda:'Gazoz'};
 const serviceNames={tea:'Çayı servis et',toast:'Tostu servis et',soda:'Gazozu servis et'};
 const radioLines=[
@@ -441,6 +459,36 @@ function motorcycle(){
   box(mesh,2.6,.91,6.13,.51,.05,.095,0x666c62);
   return mesh;
 }
+function rackMesh(){
+  const mesh=[];
+  box(mesh,-.65,1.49,-1.81,1.24,.24,.13,0x624e38);
+  for(const x of [-1.13,-.2]) box(mesh,x,1.45,-1.71,.068,.12,.11,0x918570);
+  return mesh;
+}
+function rackWeapon(){
+  const mesh=[];
+  box(mesh,-.49,1.54,-1.66,.81,.045,.057,0x787d6f);
+  box(mesh,-.44,1.507,-1.66,.64,.027,.048,0x575d53);
+  box(mesh,-.69,1.49,-1.653,.29,.053,.072,0x8e6140);
+  box(mesh,-1.02,1.49,-1.655,.34,.108,.087,0x7b5439);
+  box(mesh,-1.193,1.49,-1.65,.028,.111,.091,0x31342c);
+  for(let i=0;i<3;i++){
+    box(mesh,-.39+i*.1,1.41,-1.635,.049,.08,.048,0xa2503e);
+    box(mesh,-.39+i*.1,1.373,-1.635,.051,.02,.05,0xc7a376);
+  }
+  return mesh;
+}
+function creature(number){
+  const mesh=visitor(number);
+  const x=.32,z=4.83,y=[1.7,1.68,1.74][number===0?0:number===5?1:2];
+  oval(mesh,x,y-.017,z-.082,.189,.265,.14,0x41354a);
+  for(const side of [-1,1]){
+    oval(mesh,x+side*.065,y+.045,z-.211,.038,.025,.022,0xe99857);
+    oval(mesh,x+side*.33,1.09,z-.016,.065,.31,.07,0x473c49);
+    for(let i=0;i<3;i++) oval(mesh,x+side*(.31+i*.022),.76,z-.04,.014,.072,.02,0x78605d);
+  }
+  return mesh;
+}
 function shutters(){
   const mesh=[];
   box(mesh,0,1.68,3.98,6.5,1.72,.075,0x535e52);
@@ -459,7 +507,7 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
   gl.vertexAttribPointer(attributes[1],3,gl.FLOAT,false,24,12);
   gl.drawArrays(mode,0,mesh.count);
 }
-let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt;
+let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,creatures,impact;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let showVisitor=false, shutterDown=false, lightsOut=false;
 let previous=0;
@@ -500,7 +548,9 @@ function updateMarkers(aspect){
     }
     const distance=Math.hypot(dx,dz);
     const facing=forward/Math.max(distance,.01);
-    const usable=playing && $('panel').hidden && distance<=1.78 && (facing>.35 || distance<.6);
+    const available=station.id!=='rack'||!armed;
+    if(!available) marker.hidden=true;
+    const usable=available && playing && $('panel').hidden && distance<=1.78 && (facing>.35 || distance<.6);
     const score=distance+(1-facing)*.58;
     marker.disabled=!usable;
     if(usable && score<best){
@@ -520,6 +570,7 @@ function frame(now){
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
   const aspect=w/h;
   updateMarkers(aspect);
+  syncWeapon();
   const eye=cctv?camera:player;
   const {attributes,uniforms:u}=renderer;
   gl.viewport(0,0,w,h);
@@ -533,17 +584,25 @@ function frame(now){
   gl.uniform3f(u.fog,...fog);
   gl.uniform3f(u.offset,0,0,0);
   draw(set,attributes);
+  draw(rack,attributes);
+  if(!armed) draw(weaponMesh,attributes);
   if(doorLocked) draw(bolt,attributes);
   if(prepared&&!cctv&&showVisitor) draw(props[prepared],attributes);
   if(showVisitor && (!cctv||(!scene[stage].absent&&stage!==finalStage))){
-    if(!reduceMotion.matches && stage!==finalStage){
-      gl.uniform3f(u.offset,Math.sin(now*.0014+stage)*.022,Math.sin(now*.002+stage)*.012,0);
-    }
-    draw(visitors[stage],attributes);
+    const lean=creatureOffset();
+    const bob=!reduceMotion.matches&&stage!==finalStage;
+    gl.uniform3f(u.offset,bob?Math.sin(now*.0014+stage)*.022:0,bob?Math.sin(now*.002+stage)*.012:0,lean);
+    draw(exposed&&creatures[stage]?creatures[stage]:visitors[stage],attributes);
     gl.uniform3f(u.offset,0,0,0);
   }
   if(stage===2&&showVisitor) draw(bike,attributes);
-  if(stage===5&&showVisitor) draw(cctv?streetUmbrella:nearUmbrella,attributes);
+  if(stage===5&&(showVisitor||repelled)) draw(cctv?streetUmbrella:nearUmbrella,attributes);
+  if(repelled&&now<impactUntil&&!reduceMotion.matches){
+    const progress=1-(impactUntil-now)/320;
+    gl.uniform3f(u.offset,0,progress*.28,creatureOffset()+progress*.45);
+    draw(impact,attributes,gl.LINES);
+    gl.uniform3f(u.offset,0,0,0);
+  }
   if(shutterDown || (cctv&&stage===finalStage)) draw(shutter,attributes);
   if(stage<finalStage){
     for(let i=0;i<rainSeed.length;i++){
@@ -653,6 +712,7 @@ function interact(station=nearest){
     $('cctv').hidden=false;
     notebook[stage].camera=info.camera;
     $('note').textContent=info.camera;
+    if(info.absent||stage===finalStage) exposed=true;
     panel('Kamera 01',info.camera);
   }else if(station.id==='receipt'){
     notebook[stage].receipt=info.receipt;
@@ -666,6 +726,8 @@ function interact(station=nearest){
     $('note').textContent=radioLines[stage];
     chime(225,.25,.033);
     panel('Radyo · 88.7 FM',radioLines[stage]);
+  }else if(station.id==='rack'&&!armed){
+    panel('Arka raf','Rafta eski bir av tüfeği ve üç fişek var.',[action('Tüfeği al',takeWeapon,true)]);
   }else if(station.id==='door'){
     doorPanel();
   }else{
@@ -675,10 +737,11 @@ function interact(station=nearest){
 function doorPanel(){
   const text=doorLocked
     ? 'Sürgü kapalı. Kapının diğer tarafından '+(stage===finalStage?'üç hafif tık geliyor.':'yağmur sesi geliyor.')
-    : 'Sürgü açık. Kapı, rüzgârla kasasına vuruyor.';
+    : stage===finalStage?'Sürgü açık. Camın önündeki suret pencereye sokuluyor.':'Sürgü açık. Kapı, rüzgârla kasasına vuruyor.';
   panel('Arka kapı',text,[
     action(doorLocked?'Sürgüyü aç':'Kapıyı kilitle',()=>{
       doorLocked=!doorLocked;
+      if(stage===finalStage&&!doorLocked) exposed=true;
       chime(123,.17,.055);
       notebook[stage].door=doorLocked?'Arka kapı kilitlendi.':'Arka kapının sürgüsü açıldı.';
       doorPanel();
@@ -703,14 +766,94 @@ function servicePanel(){
   }else{
     options.push(action(info.recipe==='tea'?'Çay hazırlığına geç':'Sipariş hazırlığına geç',()=>prepPanel(true),true));
   }
+  if(armed&&rounds&&creatureLines[stage]){
+    options.push(action('Tüfeği doğrult',()=>{
+      closePanel();
+      $('note').textContent='Nişangâhı müşteriye getir. F veya Ateş et düğmesini kullan.';
+    }));
+  }
   options.push(action(final?'Kepengi indir':'Servis kapağını kapat',()=>decide(false)));
   panel(info.name,info.line+(final?'':' · Sipariş: '+info.order+'. '+prepStatus()),options);
+}
+function syncWeapon(){
+  const ready=armed&&playing&&$('panel').hidden;
+  $('weapon').hidden=!ready&&!recoilTimer;
+  $('fire').hidden=!armed||!playing;
+  $('fire').disabled=!ready||!rounds;
+  $('ammo').hidden=!armed||!playing;
+  $('cross').toggleAttribute('data-armed',ready);
+  $('cross').toggleAttribute('data-target',Boolean(ready&&rounds&&exposed&&showVisitor&&creatureLines[stage]&&targetInSight()));
+}
+function updateAmmo(){
+  $('ammo').textContent=rounds+' / 3 fişek';
+  syncWeapon();
+}
+function takeWeapon(){
+  if(armed) return;
+  armed=true;
+  rounds=3;
+  closePanel();
+  updateAmmo();
+  $('note').textContent='Av tüfeği alındı. Nişan al ve F’ye bas ya da Ateş et düğmesini kullan.';
+}
+function creatureOffset(){
+  return stage===finalStage&&!doorLocked?-.34:0;
+}
+function targetInSight(){
+  const dx=.32-player.x,dz=4.83+creatureOffset()-player.z;
+  const front=dx*Math.sin(player.angle)+dz*Math.cos(player.angle);
+  if(front<=.5||front>7.5) return false;
+  const side=dx*Math.cos(player.angle)-dz*Math.sin(player.angle);
+  const aimY=player.y+front*Math.tan(player.pitch);
+  return Math.abs(side)<.44&&aimY>1.12&&aimY<2.14;
+}
+function shotSound(){
+  if(!audio||!rainSource) return;
+  const now=audio.currentTime;
+  const burst=audio.createBufferSource();
+  const filter=audio.createBiquadFilter();
+  const volume=audio.createGain();
+  burst.buffer=rainSource.buffer;
+  filter.type='lowpass';
+  filter.frequency.value=1700;
+  volume.gain.setValueAtTime(.32,now);
+  volume.gain.exponentialRampToValueAtTime(.002,now+.17);
+  burst.connect(filter).connect(volume).connect(audio.destination);
+  burst.start(now);
+  burst.stop(now+.18);
+}
+function fire(){
+  if(!playing||!armed||!rounds||!showVisitor||!$('panel').hidden||recoilTimer) return;
+  const inSight=targetInSight();
+  const monster=Boolean(creatureLines[stage]);
+  if(inSight&&!monster){
+    $('note').textContent='Müşteriyi görünce parmağını tetikten çekiyorsun.';
+    return;
+  }
+  rounds-=1;
+  updateAmmo();
+  shotSound();
+  $('weapon').classList.add('recoil');
+  recoilTimer=setTimeout(()=>{
+    $('weapon').classList.remove('recoil');
+    recoilTimer=undefined;
+  },260);
+  if(inSight&&monster){
+    exposed=true;
+    impactUntil=performance.now()+320;
+    decide(false,true);
+  }else{
+    $('note').textContent=rounds?'Atış boşa gitti. Nişangâhı pencereye getir.':'Fişek kalmadı. Servis kapağını hâlâ kapatabilirsin.';
+  }
 }
 function next(){
   closePanel();
   prepared='';
   sugar=0;
   showVisitor=true;
+  repelled=false;
+  impactUntil=0;
+  exposed=stage===finalStage&&!doorLocked;
   chime(stage===finalStage?170:590,.36,.054);
   $('clock').textContent=scene[stage].time;
   $('chapter').textContent='KARŞILAŞMA '+(stage+1)+' / '+scene.length;
@@ -718,25 +861,26 @@ function next(){
   updateTask();
   if(rainGain) rainGain.gain.value=stage===finalStage?0:.18;
 }
-function decide(served){
+function decide(served,defended=false){
   if(!showVisitor || (served&&stage!==finalStage&&!orderReady())) return;
   showVisitor=false;
-  notebook[stage].decision=served?'Sipariş verildi.':'Servis kapatıldı.';
+  repelled=defended;
+  notebook[stage].decision=defended?'Canavar geri püskürtüldü.':served?'Sipariş verildi.':'Servis kapatıldı.';
   if(stage===0) servedFirst=served;
   if(stage===finalStage){
-    shutterDown=!served;
+    shutterDown=!served&&!defended;
     lightsOut=served;
   }
-  $('note').textContent=served?scene[stage].serve:scene[stage].deny;
+  $('note').textContent=defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny;
   panel(scene[stage].name,$('note').textContent,[
     action(stage===finalStage?'Vardiyayı bitir':'Biraz bekle',()=>{
-      if(stage===finalStage) end(served);
+      if(stage===finalStage) end(served,defended);
       else {stage+=1;next();}
     },true)
   ]);
   $('actions').lastElementChild.remove();
 }
-function end(served){
+function end(served,defended){
   closePanel();
   playing=false;
   $('controls').hidden=true;
@@ -747,7 +891,8 @@ function end(served){
   $('coverTag').textContent='VARDİYA SONU';
   $('coverTitle').textContent=served?'Yeni vardiya':'Sabah oldu';
   $('coverText').textContent=served?'Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.':servedFirst?'Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.':'İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.';
-  if(!served&&!doorLocked) $('coverText').textContent+=' Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.';
+  if(defended) $('coverText').textContent='Sabah servisi başladığında kepenk hâlâ açık. Pencerenin dibinde kendi el yazınla tek bir fiş buluyorsun: Vardiya tamamlandı.';
+  if(!served&&!defended&&!doorLocked) $('coverText').textContent+=' Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.';
   $('cover').hidden=false;
   $('start').textContent='Yeniden oyna';
   $('start').focus();
@@ -759,6 +904,12 @@ function start(){
   playing=true;
   servedFirst=shutterDown=lightsOut=false;
   doorLocked=true;
+  armed=false;
+  rounds=0;
+  clearTimeout(recoilTimer);
+  recoilTimer=undefined;
+  $('weapon').classList.remove('recoil');
+  updateAmmo();
   $('cover').hidden=true;
   $('controls').hidden=false;
   $('journal').hidden=false;
@@ -769,11 +920,13 @@ $('start').onclick=start;
 $('journal').onclick=journal;
 $('use').onclick=()=>interact();
 $('prompt').onclick=()=>interact();
+$('fire').onclick=fire;
 document.addEventListener('keydown',event=>{
   if(!playing) return;
   const key=event.key.toLowerCase();
   if(key==='escape'&&!$('panel').hidden&&showVisitor){closePanel();return;}
   if(!$('panel').hidden) return;
+  if(key==='f'&&!event.repeat){event.preventDefault();fire();return;}
   if(key==='e'&&!event.repeat){event.preventDefault();interact();return;}
   if(!['w','a','s','d','arrowleft','arrowright'].includes(key)) return;
   event.preventDefault();
@@ -835,6 +988,16 @@ try{
   set=buffer(geometry());
   visitors=scene.map((_,number)=>buffer(visitor(number)));
   shutter=buffer(shutters());
+  const sparks=[];
+  for(let i=0;i<20;i++){
+    const angle=i*2.4;
+    const x=.32+Math.cos(angle)*.27,y=1.58+Math.sin(angle)*.32,z=4.68+(i%4)*.04;
+    sparks.push(x,y,z,.46,.26,.25,x+Math.cos(angle)*.16,y+Math.sin(angle)*.18,z+.06,.66,.48,.36);
+  }
+  impact=buffer(sparks);
+  rack=buffer(rackMesh());
+  weaponMesh=buffer(rackWeapon());
+  creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(creature(Number(key)))]));
   nearUmbrella=buffer(umbrella(.68,4.9));
   streetUmbrella=buffer(umbrella(-1.95,5.1));
   bike=buffer(motorcycle());
