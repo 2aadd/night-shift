@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}.game.mouse-look,.game.mouse-look *{cursor:none!important}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}.game.mouse-look,.game.mouse-look *{cursor:none!important}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#lookCapture{position:absolute;z-index:2;top:14px;right:14px;font-size:.78rem}#advance{background:#151d13eb;padding:9px 14px;pointer-events:none;position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
-<header><div class="tag">BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM</div><label class="language">Language / Dil <select id="language" aria-label="Language / Dil"><option value="en">English</option><option value="tr">Türkçe</option></select></label><button id="sound" aria-pressed="false">Ses kapalı</button></header>
+<header><div class="tag">BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM</div><label class="language">Language / Dil <select id="language" aria-label="Language / Dil"><option value="en">English</option><option value="tr">Türkçe</option></select></label><button id="sound" aria-pressed="true">Ses açık</button></header>
 <h1>Gece Vardiyası</h1>
 <section class="frame" aria-label="Oyun">
 <div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span><button id="journal" hidden>Vardiya defteri</button></div>
 <div class="game" id="game">
 <canvas id="world" aria-label="Büfenin üç boyutlu görünümü"></canvas><div class="cross" id="cross" aria-hidden="true">+</div>
 <div id="jumpshade" aria-hidden="true" hidden></div><div id="markers"></div><div class="cctv tag" id="cctv" hidden></div>
-<button id="prompt" hidden></button>
-<button id="advance" class="gold" hidden></button>
+<button id="prompt" hidden></button><button id="lookCapture" hidden>Bakış için tıkla</button>
+<div id="advance" class="tag" role="status" aria-live="polite" hidden></div>
 <div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor. Gece tuhaflaşırsa arka raftaki tüfeği alabilirsin.</p><button class="gold" id="start">Vardiyayı aç</button></div>
 <section class="window" id="panel" aria-labelledby="panelTitle" hidden><h2 id="panelTitle"></h2><p id="panelText"></p><div class="actions" id="actions"></div></section>
 </div>
@@ -279,6 +279,15 @@ const english={
   "Fareyi hareket ettir · Esc ile imleci bırak": "Move mouse to look · Esc releases cursor"
 };
 english['WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak']='WASD to walk · Move mouse to look · E to interact · Left click to fire · Esc releases mouse';
+Object.assign(english,{
+  'Bakış için tıkla':'Click to capture mouse',
+  'Fare kilidi açılamadı. Bakış düğmesine tıklayıp tekrar dene.':'Mouse capture failed. Click Mouse look to try again.',
+  'Sonraki müşteri · ':'Next customer · ',
+  'Vardiya sonu · ':'End of shift · ',
+  'Müşteri ayrılıyor. Sıradaki müşteri bekleniyor.':'The customer is leaving. Waiting for the next arrival.',
+  'Vardiya tamamlanıyor.':'Finishing the shift.',
+  ' sn':'s'
+});
 let language='en';
 try{
   const saved=localStorage.getItem('night-shift-language');
@@ -370,6 +379,7 @@ const camera = {x:5.7,z:9.4,y:3.4,angle:-2.22,pitch:-.3};
 const held = new Set();
 let stage=0, playing=false, cctv=false, servedFirst=false, sugar=0, prepared='';
 let rainGain,rainSource,audio,soundBus,audioNoise,gunRecording,reverseShot;
+let soundWanted=true,soundJob=null,soundFailed=false;
 let doorLocked=true;
 const roundCapacity=6;
 let armed=false,rounds=roundCapacity,exposed=false,repelled=false,impactUntil=0,raisedAt=0,firedAt=-Infinity;
@@ -926,6 +936,7 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
 let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,steam;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let showVisitor=false,shutterDown=false,lightsOut=false,customerHit=false;
+let encounterTransition=null;
 let activeSeconds=0,scareAt=-Infinity;
 let arrivedAt=0,departedAt=-Infinity;
 let jumpAt=-Infinity,pendingJump=null;
@@ -1079,6 +1090,7 @@ function drawDeparture(now,attributes,u){
 function frame(now){
   const dt=Math.min(.05,(now-previous)/1000);
   previous=now;
+  updateEncounterTransition(now);
   movement(dt);
   const scareTime=scareProgress(now,dt);
   const ratio=Math.min(window.devicePixelRatio||1,1.6);
@@ -1174,6 +1186,7 @@ function panel(title, text, choices=[]){
   setText($('panelText'),text);
   $('actions').replaceChildren(...choices,action('Kapat',closePanel));
   $('panel').hidden=false;
+  syncLookButton();
   $('actions').firstElementChild.focus();
 }
 function closePanel(resumeLook=true){
@@ -1452,7 +1465,27 @@ function fire(){
     setText($('note'),rounds?'Atış boşa gitti. Nişangâhı pencereye getir.':'Fişek kalmadı. Servis kapağını hâlâ kapatabilirsin.');
   }
 }
+function updateEncounterTransition(now){
+  if(!encounterTransition) return;
+  if(!playing||encounterTransition.stage!==stage){
+    encounterTransition=null;
+    $('advance').hidden=true;
+    return;
+  }
+  const remaining=Math.max(0,Math.ceil((encounterTransition.at-now)/1000));
+  if(remaining){
+    const text=(stage===finalStage?'Vardiya sonu · ':'Sonraki müşteri · ')+remaining+' sn';
+    if(readText($('advance'))!==text) setText($('advance'),text);
+    return;
+  }
+  const finished=encounterTransition;
+  encounterTransition=null;
+  $('advance').hidden=true;
+  if(stage===finalStage) end(finished.served,finished.defended);
+  else {stage+=1;next();}
+}
 function next(){
+  encounterTransition=null;
   $('advance').hidden=true;
   closePanel();
   arrivedAt=performance.now();
@@ -1490,23 +1523,15 @@ function decide(served,defended=false){
     lightsOut=served;
   }
   setText($('note'),wounded?'Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny);
-  const label=stage===finalStage?'Vardiyayı bitir':'Biraz bekle';
-  const advance=()=>{
-    $('advance').hidden=true;
-    if(stage===finalStage) end(served,defended);
-    else {stage+=1;next();}
-  };
-  if(defended){
-    const button=$('advance');
-    setText(button,label);
-    button.onclick=advance;
-    button.hidden=false;
-    return;
-  }
-  panel(scene[stage].name,readText($('note')),[action(label,advance,true)]);
-  $('actions').lastElementChild.remove();
+  closePanel();
+  encounterTransition={stage,served,defended,at:performance.now()+3000};
+  setText($('task'),stage===finalStage?'Vardiya tamamlanıyor.':'Müşteri ayrılıyor. Sıradaki müşteri bekleniyor.');
+  $('advance').hidden=false;
+  updateEncounterTransition(performance.now());
 }
 function end(served,defended){
+  encounterTransition=null;
+  $('advance').hidden=true;
   closePanel(false);
   releaseLook();
   playing=false;
@@ -1525,10 +1550,12 @@ function end(served,defended){
     setText($('coverText'),'Gün doğarken iki polis servis penceresine geliyor. Biri vardiya defterini açıp yaralanan müşterinin geldiği saati soruyor.');
   }
   $('cover').hidden=false;
+  syncLookButton();
   setText($('start'),'Yeniden oyna');
   $('start').focus();
 }
 function start(){
+  enableSound();
   Object.assign(player,{x:0,z:.75,y:1.62,angle:0,pitch:0});
   stage=0;
   jumpSeen.clear();
@@ -1577,75 +1604,64 @@ for(const button of document.querySelectorAll('[data-key]')){
   button.onpointerdown=event=>{button.setPointerCapture(event.pointerId);held.add(key);};
   button.onpointerup=button.onpointercancel=button.onlostpointercapture=()=>held.delete(key);
 }
-let drag=null,lastHover=null,mouseFallback=false,lockPending=false,lookEnabled=false;
+let drag=null,lockPending=false,lookEnabled=false;
 function rotateLook(dx,dy){
   player.angle+=dx*.0034;
   player.pitch=Math.max(-.65,Math.min(.55,player.pitch-dy*.0034));
 }
 function syncLookButton(){
-  const active=lookEnabled&&playing&&$('panel').hidden&&$('cover').hidden;
+  const active=document.pointerLockElement===canvas&&playing&&$('panel').hidden&&$('cover').hidden;
+  lookEnabled=active;
   $('game').classList.toggle('mouse-look',active);
   setText($('look'),active?'Fareyi hareket ettir · Esc ile imleci bırak':'Serbest bakış');
   $('look').setAttribute('aria-pressed',String(active));
+  $('lookCapture').hidden=!playing||!$('panel').hidden||!$('cover').hidden||active;
+}
+function lockFailed(){
+  lockPending=false;
+  syncLookButton();
+  setText($('note'),'Fare kilidi açılamadı. Bakış düğmesine tıklayıp tekrar dene.');
 }
 function requestLook(){
   if(!playing||!$('panel').hidden||!$('cover').hidden) return false;
-  lookEnabled=true;
+  if(document.pointerLockElement===canvas){syncLookButton();return false;}
+  if(lockPending) return true;
   syncLookButton();
-  if(document.pointerLockElement===canvas||lockPending) return false;
-  if(!canvas.requestPointerLock){mouseFallback=true;return false;}
+  if(!canvas.requestPointerLock){lockFailed();return false;}
   if(!navigator.userActivation?.isActive) return false;
   lockPending=true;
   try{
     const pending=canvas.requestPointerLock();
-    if(pending?.then){
-      pending.then(()=>{lockPending=false;}).catch(()=>{
-        mouseFallback=true;
-        lockPending=false;
-        syncLookButton();
-      });
-    }
+    if(pending?.then) pending.then(()=>{lockPending=false;syncLookButton();}).catch(lockFailed);
     return true;
-  }catch{
-    mouseFallback=true;
-    lockPending=false;
-    return false;
-  }
+  }catch{lockFailed();return false;}
 }
 function releaseLook(){
-  lookEnabled=false;
   if(document.pointerLockElement===canvas) document.exitPointerLock();
-  lastHover=null;
+  lookEnabled=false;
   drag=null;
-  syncLookButton();
+  $('game').classList.remove('mouse-look');
+  setText($('look'),'Serbest bakış');
+  $('look').setAttribute('aria-pressed','false');
+  $('lookCapture').hidden=!playing||!$('panel').hidden||!$('cover').hidden;
 }
 $('look').onclick=requestLook;
+$('lookCapture').onclick=requestLook;
 document.addEventListener('pointerlockchange',()=>{
-  lookEnabled=document.pointerLockElement===canvas;
   lockPending=false;
-  lastHover=null;
   held.clear();
   syncLookButton();
 });
-document.addEventListener('pointerlockerror',()=>{
-  lockPending=false;
-  mouseFallback=true;
-  syncLookButton();
-});
+document.addEventListener('pointerlockerror',lockFailed);
 document.addEventListener('mousemove',event=>{
-  if(document.pointerLockElement!==canvas||!lookEnabled||!playing||!$('panel').hidden) return;
+  if(document.pointerLockElement!==canvas||!playing||!$('panel').hidden) return;
   rotateLook(event.movementX,event.movementY);
 });
-canvas.onpointerenter=event=>{
-  if(event.pointerType==='mouse') lastHover={x:event.clientX,y:event.clientY};
-};
-canvas.onpointerleave=()=>{lastHover=null;};
 canvas.onpointerdown=event=>{
   if(!playing||!$('panel').hidden||event.button!==0) return;
   if(event.pointerType==='mouse'){
-    if(!lookEnabled){requestLook();return;}
-    if(document.pointerLockElement===canvas||mouseFallback){fire();return;}
-    if(!requestLook()) fire();
+    if(document.pointerLockElement===canvas) fire();
+    else requestLook();
     return;
   }
   if(drag) return;
@@ -1653,13 +1669,7 @@ canvas.onpointerdown=event=>{
   drag={id:event.pointerId,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,moved:false};
 };
 canvas.onpointermove=event=>{
-  if(!playing||!$('panel').hidden||!lookEnabled) return;
-  if(event.pointerType==='mouse'){
-    if(document.pointerLockElement===canvas) return;
-    if(lastHover) rotateLook(event.clientX-lastHover.x,event.clientY-lastHover.y);
-    lastHover={x:event.clientX,y:event.clientY};
-    return;
-  }
+  if(event.pointerType==='mouse'||!playing||!$('panel').hidden) return;
   if(!drag||event.pointerId!==drag.id) return;
   if(!drag.moved&&Math.hypot(event.clientX-drag.startX,event.clientY-drag.startY)<6) return;
   drag.moved=true;
@@ -1671,49 +1681,71 @@ canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=event=>{
   if(drag?.id===event.pointerId) drag=null;
 };
 canvas.oncontextmenu=event=>event.preventDefault();
-window.addEventListener('blur',()=>{lastHover=null;drag=null;});
+window.addEventListener('blur',()=>{drag=null;});
 syncLookButton();
 
 
-$('sound').onclick=async()=>{
-  const button=$('sound');
-  button.disabled=true;
-  try{
-    if(rainSource){
-      soundBus.gain.setTargetAtTime(0,audio.currentTime,.015);
-      rainSource.stop();
-      rainSource=null;
-    }else{
-      audio??=new AudioContext();
-      await audio.resume();
-      if(!soundBus) buildSoundBus();
-      if(!gunRecording) await loadGunRecording();
-      soundBus.gain.setTargetAtTime(.72,audio.currentTime,.03);
-      const rain=audio.createBuffer(1,audio.sampleRate*12,audio.sampleRate);
-      const samples=rain.getChannelData(0);
-      let slow=0;
-      for(let i=0;i<samples.length;i++){
-        const white=Math.random()*2-1;
-        slow=.97*slow+.03*white;
-        const wash=.76+.14*Math.sin(i/audio.sampleRate*.7)+.09*Math.sin(i/audio.sampleRate*1.9);
-        samples[i]=(white*.35+slow*2.2)*wash;
-      }
-      const filter=audio.createBiquadFilter();
-      filter.type='lowpass';
-      filter.frequency.value=1700;
-      rainGain=audio.createGain();
-      rainGain.gain.value=stage===finalStage?0:.095;
-      rainSource=audio.createBufferSource();
-      rainSource.buffer=rain;
-      rainSource.loop=true;
-      rainSource.connect(filter).connect(rainGain).connect(soundBus);
-      rainSource.start();
+function syncSoundButton(){
+  $('sound').setAttribute('aria-pressed',String(soundWanted));
+  setText($('sound'),soundFailed?'Ses kullanılamıyor':soundWanted?'Ses açık':'Ses kapalı');
+}
+async function enableSound(){
+  if(!soundWanted) return;
+  if(rainSource){
+    if(audio.state==='suspended') await audio.resume();
+    return;
+  }
+  if(soundJob) return soundJob;
+  soundJob=(async()=>{
+    audio??=new AudioContext();
+    await audio.resume();
+    if(!soundWanted) return;
+    if(!soundBus) buildSoundBus();
+    if(!gunRecording) await loadGunRecording();
+    if(!soundWanted) return;
+    soundBus.gain.setTargetAtTime(.72,audio.currentTime,.03);
+    const rain=audio.createBuffer(1,audio.sampleRate*12,audio.sampleRate);
+    const samples=rain.getChannelData(0);
+    let slow=0;
+    for(let i=0;i<samples.length;i++){
+      const white=Math.random()*2-1;
+      slow=.97*slow+.03*white;
+      const wash=.76+.14*Math.sin(i/audio.sampleRate*.7)+.09*Math.sin(i/audio.sampleRate*1.9);
+      samples[i]=(white*.35+slow*2.2)*wash;
     }
-    button.setAttribute('aria-pressed',String(Boolean(rainSource)));
-    setText(button,rainSource?'Ses açık':'Ses kapalı');
-  }catch{setText(button,'Ses kullanılamıyor');}
-  finally{button.disabled=false;}
+    const filter=audio.createBiquadFilter();
+    filter.type='lowpass';
+    filter.frequency.value=1700;
+    rainGain=audio.createGain();
+    rainGain.gain.value=stage===finalStage?0:.095;
+    rainSource=audio.createBufferSource();
+    rainSource.buffer=rain;
+    rainSource.loop=true;
+    rainSource.connect(filter).connect(rainGain).connect(soundBus);
+    rainSource.start();
+    soundFailed=false;
+  })().catch(()=>{
+    soundFailed=true;
+  }).finally(()=>{
+    soundJob=null;
+    syncSoundButton();
+  });
+  return soundJob;
+}
+$('sound').onclick=async()=>{
+  soundWanted=!soundWanted;
+  soundFailed=false;
+  if(!soundWanted&&rainSource){
+    soundBus.gain.setTargetAtTime(0,audio.currentTime,.015);
+    rainSource.stop();
+    rainSource=null;
+  }
+  syncSoundButton();
+  if(soundWanted) await enableSound();
 };
+syncSoundButton();
+
+
 try{
   if(!gl) throw Error('WebGL kullanılamıyor.');
   renderer=setup();
