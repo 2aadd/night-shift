@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
@@ -37,13 +37,13 @@ const $ = id => document.getElementById(id);
 const canvas = $('world');
 const gl = canvas.getContext('webgl', {antialias:true, alpha:false});
 const scene = [
-  {time:'00:17', name:'Fötr şapkalı adam', line:'“Her zamankinden.” Şapkasında tek damla yağmur yok.', order:'Şekersiz çay', camera:'Kamera aynı dakikayı gösteriyor. Pencerenin önü boş.', receipt:'Kendi el yazınla: “Teslim edildi · 00:17.”', serve:'Adam çayı alıyor. Camda bir anlığına avucunun izi kalıyor.', deny:'Servis kapağını kapatınca adam, geri çekilmeden kayboluyor.'},
-  {time:'01:42', name:'Yağmurluklu kadın', line:'“Bir çay alabilir miyim? Son otobüsü kaçırdım. İki şeker olsun.”', order:'İki şekerli çay', camera:'Kadın kamera görüntüsünde de var. Durağa kadar ıslak ayak izleri uzanıyor.', receipt:'Islak bozukluklar tezgahta küçük bir gölcük bırakmış. Fiş henüz basılmamış.', serve:'Bardağı iki eliyle kavrıyor. “Yağmur kesilince kepengi indir,” diyor.', deny:'Kadın paralarını toplayıp durağa dönüyor. Her adımında bir su birikintisi sıçrıyor.'},
-  {time:'02:11', name:'Motorlu kurye', line:'“Bir gazoz. Şişeyi açma. Telefonum beni yarım saat sonrasına götürüyor.”', order:'Kapalı gazoz', recipe:'soda', camera:'Kaskı ve motoru ekranda. Farı, kontak kapalıyken iki kez yanıp sönüyor.', receipt:'Kurye fişin arkasına bir adres yazmış: Büfe 07. Gönderim saati 02:41.', serve:'Şişeyi çantasına sıkıştırıyor. Motor çalışırken telefonundan büfenin yazıcı sesi geliyor.', deny:'Kaskının vizörünü indirip gidiyor. Telefonu birkaç saniye daha kaldırımda çalıyor.'},
-  {time:'02:38', name:'Gri paltolu yolcu', line:'“Bir mercimek çorbası. Sıcak olsun. Durağın tabelasında hâlâ dün yazıyor.”', order:'Mercimek çorbası', recipe:'soup', camera:'Yolcu canlı görüntüde var. Durağın camında ise onun yerine boş bir koltuk yansıyor.', receipt:'Bir otobüs bileti bırakmış. Güzergâhın son durağı “Büfe 07”.', serve:'Çorbanın buharı cama vuruyor. Buğuda durağın boş koltuğu beliriyor.', deny:'Durağa dönüyor. Bir otobüs yaklaşır gibi oluyor, sonra ışıkları sönüyor.'},
-  {time:'03:12', name:'Gece bekçisi', line:'“Bir sade kahve. Arka kapıyı bugün kaç kere kilitledin?”', order:'Sade kahve', recipe:'coffee', camera:'Bekçi ekranda görünüyor. El feneri arka kapıya çevrili ve kapı kolu kendi kendine oynuyor.', receipt:'Bir kontrol kâğıdı bırakmış: “03:13. İçeride iki görevli.” İkinci isim boş.', serve:'Kahveyi içmeden önce mandalı kontrol ediyor. “Biri mesaiyi devraldığını söylerse saati karşılaştır,” diyor.', deny:'El fenerini kısa bir an yüzüne tutuyor. Ardından arka sokağa gidiyor.'},
-  {time:'03:46', name:'Kırmızı şemsiyeli kadın', line:'“Bir kaşarlı tost. Sonra şemsiyemi geri almaya geleceğim.” Şemsiyesi açık ama altında yağmur yağıyor.', order:'Kaşarlı tost', recipe:'toast', absent:true, camera:'Kaldırım boş. Şemsiye, kadının durduğu yerden iki metre ötede kendi başına bekliyor.', receipt:'Şemsiyenin sapında bir emanet etiketi var. Üzerinde bu geceki vardiya başlangıcın yazıyor.', serve:'Tostun içinden kuru bir şemsiye etiketi çıkıyor. Kadın şemsiyesini bırakıp karanlıkta kayboluyor.', deny:'Kadın başını kaldırıyor. Camda yüzü yerine büfenin içi yansıyor.'},
-  {time:'04:07', name:'Mesai devri', line:'Camdaki siluet senin önlüğünü takıyor. “Kapıyı aç. Ben geldim, sen çıkabilirsin.”', order:'Arka kapının anahtarı', camera:'Sokak boş. Kamera saati 04:08. Görüntüde kepenk çoktan inmiş.', receipt:'“04:08 · Anahtar teslim edildi.” İmza yine senin.', serve:'Anahtarı uzattığın anda ışık sönüyor. Arkandaki kilit dönüyor.', deny:'Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Diğer taraftan kendi sesin geliyor.'}
+  {time:'00:17', name:'Fötr şapkalı adam', line:'“Her zamankinden.” Şapkasında tek damla yağmur yok.', order:'Şekersiz çay', camera:'Kamera aynı dakikayı gösteriyor. Pencerenin önü boş.', receipt:"BÜFE 07 · SİPARİŞ FİŞİ\nNo. 001 · 00:17\n1 × Çay — şekersiz\nDurum: Teslim edildi\nNot: Fiş, sen servis yapmadan basılmış.", serve:'Adam çayı alıyor. Camda bir anlığına avucunun izi kalıyor.', deny:'Servis kapağını kapatınca adam, geri çekilmeden kayboluyor.'},
+  {time:'01:42', name:'Yağmurluklu kadın', line:'“Bir çay alabilir miyim? Son otobüsü kaçırdım. İki şeker olsun.”', order:'İki şekerli çay', camera:'Kadın kamera görüntüsünde de var. Durağa kadar ıslak ayak izleri uzanıyor.', receipt:"BÜFE 07 · SİPARİŞ FİŞİ\nNo. 002 · 01:42\n1 × Çay — 2 şeker\nDurum: Hazırlanacak\nNot: Müşteri durakta bekleyecek.", serve:'Bardağı iki eliyle kavrıyor. “Yağmur kesilince kepengi indir,” diyor.', deny:'Kadın paralarını toplayıp durağa dönüyor. Her adımında bir su birikintisi sıçrıyor.'},
+  {time:'02:11', name:'Motorlu kurye', line:'“Bir gazoz. Şişeyi açma. Telefonum beni yarım saat sonrasına götürüyor.”', order:'Kapalı gazoz', recipe:'soda', camera:'Kaskı ve motoru ekranda. Farı, kontak kapalıyken iki kez yanıp sönüyor.', receipt:"BÜFE 07 · SİPARİŞ FİŞİ\nNo. 003 · 02:11\n1 × Gazoz — kapalı şişe\nDurum: Hazırlanacak\nNot: Şişenin kapağı açılmayacak.", serve:'Şişeyi çantasına sıkıştırıyor. Motor çalışırken telefonundan büfenin yazıcı sesi geliyor.', deny:'Kaskının vizörünü indirip gidiyor. Telefonu birkaç saniye daha kaldırımda çalıyor.'},
+  {time:'02:38', name:'Gri paltolu yolcu', line:'“Bir mercimek çorbası. Sıcak olsun. Durağın tabelasında hâlâ dün yazıyor.”', order:'Mercimek çorbası', recipe:'soup', camera:'Yolcu canlı görüntüde var. Durağın camında ise onun yerine boş bir koltuk yansıyor.', receipt:"BÜFE 07 · SİPARİŞ FİŞİ\nNo. 004 · 02:38\n1 × Mercimek çorbası — sıcak\nDurum: Hazırlanacak\nNot: Kâse ve kaşıkla servis.", serve:'Çorbanın buharı cama vuruyor. Buğuda durağın boş koltuğu beliriyor.', deny:'Durağa dönüyor. Bir otobüs yaklaşır gibi oluyor, sonra ışıkları sönüyor.'},
+  {time:'03:12', name:'Gece bekçisi', line:'“Bir sade kahve. Arka kapıyı bugün kaç kere kilitledin?”', order:'Sade kahve', recipe:'coffee', camera:'Bekçi ekranda görünüyor. El feneri arka kapıya çevrili ve kapı kolu kendi kendine oynuyor.', receipt:"BÜFE 07 · SİPARİŞ FİŞİ\nNo. 005 · 03:12\n1 × Kahve — sade\nDurum: Hazırlanacak\nNot: Şeker eklenmeyecek.", serve:'Kahveyi içmeden önce mandalı kontrol ediyor. “Biri mesaiyi devraldığını söylerse saati karşılaştır,” diyor.', deny:'El fenerini kısa bir an yüzüne tutuyor. Ardından arka sokağa gidiyor.'},
+  {time:'03:46', name:'Kırmızı şemsiyeli kadın', line:'“Bir kaşarlı tost. Sonra şemsiyemi geri almaya geleceğim.” Şemsiyesi açık ama altında yağmur yağıyor.', order:'Kaşarlı tost', recipe:'toast', absent:true, camera:'Kaldırım boş. Şemsiye, kadının durduğu yerden iki metre ötede kendi başına bekliyor.', receipt:"BÜFE 07 · SİPARİŞ FİŞİ\nNo. 006 · 03:46\n1 × Kaşarlı tost\nDurum: Hazırlanacak\nNot: Yazıcı aynı siparişten ikinci bir fiş daha çıkarmış.", serve:'Tostun içinden kuru bir şemsiye etiketi çıkıyor. Kadın şemsiyesini bırakıp karanlıkta kayboluyor.', deny:'Kadın başını kaldırıyor. Camda yüzü yerine büfenin içi yansıyor.'},
+  {time:'04:07', name:'Mesai devri', line:'Camdaki siluet senin önlüğünü takıyor. “Kapıyı aç. Ben geldim, sen çıkabilirsin.”', order:'Arka kapının anahtarı', camera:'Sokak boş. Kamera saati 04:08. Görüntüde kepenk çoktan inmiş.', receipt:"BÜFE 07 · VARDİYA DEVİR FORMU\nSaat: 04:08\nAnahtar teslimi: Bekliyor\nDevreden: __________\nDevralan: __________\nNot: Formdaki saat, duvar saatinden bir dakika ileride.", serve:'Anahtarı uzattığın anda ışık sönüyor. Arkandaki kilit dönüyor.', deny:'Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Diğer taraftan kendi sesin geliyor.'}
 ];
 const finalStage=scene.length-1;
 Object.assign(scene[0],{recipe:'tea',sugar:0,absent:true});
@@ -62,7 +62,7 @@ const player = {x:0,z:.75,y:1.62,angle:0,pitch:0};
 const camera = {x:5.7,z:9.4,y:3.4,angle:-2.22,pitch:-.3};
 const held = new Set();
 let stage=0, playing=false, cctv=false, servedFirst=false, sugar=0, prepared='';
-let rainGain, rainSource, audio;
+let rainGain,rainSource,audio,soundBus,audioNoise;
 let doorLocked=true;
 const roundCapacity=6;
 let armed=false,rounds=roundCapacity,exposed=false,repelled=false,impactUntil=0,raisedAt=0,firedAt=-Infinity;
@@ -613,22 +613,7 @@ function queueJump(text){
   pendingJump={key,text};
 }
 function jumpSound(){
-  if(!audio||!rainSource) return;
-  const now=audio.currentTime;
-  const oscillator=audio.createOscillator();
-  const envelope=audio.createGain();
-  oscillator.type='sawtooth';
-  oscillator.frequency.setValueAtTime(95,now);
-  oscillator.frequency.exponentialRampToValueAtTime(37,now+.42);
-  envelope.gain.setValueAtTime(.001,now);
-  envelope.gain.linearRampToValueAtTime(.12,now+.035);
-  envelope.gain.exponentialRampToValueAtTime(.001,now+.55);
-  const filter=audio.createBiquadFilter();
-  filter.type='lowpass';
-  filter.frequency.value=1400;
-  oscillator.connect(filter).connect(envelope).connect(audio.destination);
-  oscillator.start(now);
-  oscillator.stop(now+.56);
+  playFoley('jump');
 }
 function updateJump(now){
   if(playing&&pendingJump&&$('panel').hidden){
@@ -683,7 +668,7 @@ function scareProgress(now,dt){
   }
   const seconds=(now-scareAt)/1000;
   if(stage===4&&seconds<1.5&&Math.floor(seconds*4)!==Math.floor((seconds-dt)*4)&&Math.floor(seconds*4)%2===0){
-    chime(92,.15,.11);
+    playFoley('knock');
   }
   if(stage===3&&seconds>.65&&seconds<2) queueJump('Bir yüz camın içine kadar sokuluyor. Göz kırptığında kaybolmuş.');
   if(stage===finalStage&&activeSeconds>6) queueJump('Kendi yüzün bir anlığına camın öteki tarafında beliriyor.');
@@ -837,6 +822,7 @@ function action(label,run,primary=false){
 function panel(title, text, choices=[]){
   held.clear();
   $('panel').querySelector('.log')?.remove();
+  $('panelText').classList.toggle('receipt-text',title==='Sipariş fişi'||title==='Vardiya devir formu');
   $('panelTitle').textContent=title;
   $('panelText').textContent=text;
   $('actions').replaceChildren(...choices,action('Kapat',closePanel));
@@ -862,42 +848,79 @@ function updateTask(){
   const order=scene[stage];
   $('task').textContent=orderReady()?'Sipariş hazır. Servis penceresinden ver.':'Servis penceresine yaklaş ve E’ye bas. Sipariş: '+order.order+'.';
 }
-function chime(frequency, duration, volume){
-  if(!audio||!rainSource) return;
+// Short filtered noise layers give each physical action a different envelope.
+const foley={
+  tea:[[0,.64,540,.19,'lowpass'],[.22,.28,2100,.042,'bandpass']],
+  coffee:[[0,.7,640,.16,'lowpass'],[.56,.075,2300,.045,'bandpass']],
+  soup:[[0,.55,390,.2,'lowpass'],[.37,.11,1500,.05,'bandpass']],
+  toast:[[0,.095,620,.15,'lowpass'],[.15,.63,3900,.045,'highpass']],
+  soda:[[0,.06,2200,.12,'highpass'],[.025,.38,4100,.075,'highpass']],
+  sugar:[[0,.055,1800,.06,'bandpass'],[.07,.04,2600,.035,'bandpass']],
+  paper:[[0,.25,2900,.075,'bandpass'],[.12,.16,4200,.04,'highpass']],
+  radio:[[0,.11,1500,.07,'bandpass'],[.1,.23,2800,.04,'bandpass']],
+  latch:[[0,.045,530,.17,'lowpass'],[.045,.09,1700,.07,'bandpass']],
+  step:[[0,.13,210,.14,'lowpass'],[.13,.12,180,.095,'lowpass']],
+  knock:[[0,.12,160,.24,'lowpass'],[.025,.04,920,.055,'bandpass']],
+  shot:[[0,.035,2600,.31,'lowpass'],[.01,.16,180,.34,'lowpass'],[.07,.25,1300,.065,'bandpass']],
+  jump:[[0,.075,190,.28,'lowpass'],[.045,.42,770,.13,'bandpass'],[.24,.31,1350,.055,'bandpass']]
+};
+function playFoley(kind){
+  if(!audio||!rainSource||!soundBus||!audioNoise) return;
   const now=audio.currentTime;
-  const voice=audio.createOscillator();
-  const envelope=audio.createGain();
-  voice.frequency.value=frequency;
-  envelope.gain.setValueAtTime(volume,now);
-  envelope.gain.exponentialRampToValueAtTime(.001,now+duration);
-  voice.connect(envelope).connect(audio.destination);
-  voice.start(now);
-  voice.stop(now+duration);
+  for(const [delay,duration,frequency,level,type] of foley[kind]){
+    const source=audio.createBufferSource();
+    const filter=audio.createBiquadFilter();
+    const envelope=audio.createGain();
+    source.buffer=audioNoise;
+    filter.type=type;
+    filter.frequency.value=frequency;
+    filter.Q.value=type==='bandpass'?.65:.7;
+    const begin=now+delay;
+    const attack=Math.min(.012,duration*.18);
+    envelope.gain.setValueAtTime(0,begin);
+    envelope.gain.linearRampToValueAtTime(level,begin+attack);
+    envelope.gain.exponentialRampToValueAtTime(.0001,begin+duration);
+    source.connect(filter).connect(envelope).connect(soundBus);
+    source.start(begin,Math.random()*(audioNoise.duration-duration-.01),duration);
+    source.stop(begin+duration+.02);
+  }
+}
+function buildSoundBus(){
+  soundBus=audio.createGain();
+  soundBus.gain.value=.72;
+  const limiter=audio.createDynamicsCompressor();
+  limiter.threshold.value=-13;
+  limiter.knee.value=9;
+  limiter.ratio.value=5;
+  limiter.attack.value=.004;
+  limiter.release.value=.14;
+  soundBus.connect(limiter).connect(audio.destination);
+  audioNoise=audio.createBuffer(1,audio.sampleRate*5,audio.sampleRate);
+  const samples=audioNoise.getChannelData(0);
+  for(let i=0;i<samples.length;i++) samples[i]=Math.random()*2-1;
 }
 function prepPanel(fromService=false){
   const order=scene[stage];
-  const prepare=(item,amount=0)=>{
+  const prepare=item=>{
     prepared=item;
-    sugar=amount;
-    chime(item==='soda'?310:440,.15,.044);
+    sugar=0;
+    playFoley(item);
     updateTask();
     prepPanel(fromService);
   };
   const text='Sipariş · '+order.order+'. '+(prepared?'Hazır · '+recipeNames[prepared]+(prepared==='tea'?' ('+sugar+' şeker)':'')+'.':'Tezgâh boş.');
   const choices=[
-    action(orderReady()&&fromService?'Servis penceresine dön':'Siparişe göre hazırla',
-      orderReady()&&fromService?servicePanel:()=>prepare(order.recipe,order.sugar),true),
-    action('Çayı demle',()=>prepare('tea'),order.recipe==='tea'),
-    action('Tostu pişir',()=>prepare('toast'),order.recipe==='toast'),
-    action('Gazozu çıkar',()=>prepare('soda'),order.recipe==='soda'),
-    action('Kahveyi hazırla',()=>prepare('coffee'),order.recipe==='coffee'),
-    action('Çorbayı ısıt',()=>prepare('soup'),order.recipe==='soup')
+    action('Çayı demle',()=>prepare('tea')),
+    action('Tostu pişir',()=>prepare('toast')),
+    action('Gazozu çıkar',()=>prepare('soda')),
+    action('Kahveyi hazırla',()=>prepare('coffee')),
+    action('Çorbayı ısıt',()=>prepare('soup'))
   ];
   if(prepared==='tea'){
-    choices.push(action('Şeker ekle',()=>{sugar=Math.min(3,sugar+1);updateTask();prepPanel(fromService);}));
+    choices.push(action('Şeker ekle',()=>{sugar=Math.min(3,sugar+1);playFoley('sugar');updateTask();prepPanel(fromService);}));
     choices.push(action('Şekeri sıfırla',()=>{sugar=0;updateTask();prepPanel(fromService);}));
   }
-  if(fromService&&!orderReady()) choices.push(action('Servis penceresine dön',servicePanel));
+  if(fromService) choices.push(action('Servis penceresine dön',servicePanel,orderReady()));
   panel('Hazırlık tezgâhı',text+' '+prepStatus(),choices);
 }
 function journal(){
@@ -930,14 +953,15 @@ function interact(station=nearest){
   }else if(station.id==='receipt'){
     notebook[stage].receipt=info.receipt;
     $('note').textContent=info.receipt;
-    panel('Tezgahtaki fiş',info.receipt);
+    playFoley('paper');
+    panel(stage===finalStage?'Vardiya devir formu':'Sipariş fişi',info.receipt);
   }else if(station.id==='tea'){
     if(stage===finalStage) panel('Hazırlık tezgâhı','Ocak sönmüş. Sokaktan artık yağmur sesi gelmiyor.');
     else prepPanel();
   }else if(station.id==='radio'){
     notebook[stage].radio=radioLines[stage];
     $('note').textContent=radioLines[stage];
-    chime(225,.25,.033);
+    playFoley('radio');
     panel('Radyo · 88.7 FM',radioLines[stage]);
   }else if(station.id==='rack'){
     const status=rounds?rounds+' fişek kaldı.':'Fişek kalmadı.';
@@ -957,7 +981,7 @@ function doorPanel(){
     action(doorLocked?'Sürgüyü aç':'Kapıyı kilitle',()=>{
       doorLocked=!doorLocked;
       if(stage===finalStage&&!doorLocked){exposed=true;queueJump('Sürgü açılır açılmaz karanlıktan bir yüz üstüne geliyor.');}
-      chime(123,.17,.055);
+      playFoley('latch');
       notebook[stage].door=doorLocked?'Arka kapı kilitlendi.':'Arka kapının sürgüsü açıldı.';
       doorPanel();
     })
@@ -1026,19 +1050,7 @@ function targetInSight(){
   return Math.abs(side)<.44&&aimY>1.12&&aimY<2.14;
 }
 function shotSound(){
-  if(!audio||!rainSource) return;
-  const now=audio.currentTime;
-  const burst=audio.createBufferSource();
-  const filter=audio.createBiquadFilter();
-  const volume=audio.createGain();
-  burst.buffer=rainSource.buffer;
-  filter.type='lowpass';
-  filter.frequency.value=1700;
-  volume.gain.setValueAtTime(.32,now);
-  volume.gain.exponentialRampToValueAtTime(.002,now+.17);
-  burst.connect(filter).connect(volume).connect(audio.destination);
-  burst.start(now);
-  burst.stop(now+.18);
+  playFoley('shot');
 }
 function fire(){
   if(!playing||!armed||!rounds||!$('panel').hidden) return;
@@ -1071,12 +1083,12 @@ function next(){
   repelled=false;
   impactUntil=0;
   exposed=stage===finalStage&&!doorLocked;
-  chime(stage===finalStage?170:590,.36,.054);
+  if(stage!==finalStage) playFoley('step');
   $('clock').textContent=scene[stage].time;
   $('chapter').textContent='KARŞILAŞMA '+(stage+1)+' / '+scene.length;
   $('note').textContent=scene[stage].line;
   updateTask();
-  if(rainGain) rainGain.gain.value=stage===finalStage?0:.18;
+  if(rainGain) rainGain.gain.setTargetAtTime(stage===finalStage?0:.095,audio.currentTime,.45);
 }
 function decide(served,defended=false){
   if(!showVisitor || (served&&stage!==finalStage&&!orderReady())) return;
@@ -1206,23 +1218,32 @@ $('sound').onclick=async()=>{
   button.disabled=true;
   try{
     if(rainSource){
+      soundBus.gain.setTargetAtTime(0,audio.currentTime,.015);
       rainSource.stop();
       rainSource=null;
     }else{
       audio??=new AudioContext();
       await audio.resume();
-      const noise=audio.createBuffer(1,audio.sampleRate*3,audio.sampleRate);
-      const samples=noise.getChannelData(0);
-      for(let i=0;i<samples.length;i++) samples[i]=Math.random()*2-1;
+      if(!soundBus) buildSoundBus();
+      soundBus.gain.setTargetAtTime(.72,audio.currentTime,.03);
+      const rain=audio.createBuffer(1,audio.sampleRate*12,audio.sampleRate);
+      const samples=rain.getChannelData(0);
+      let slow=0;
+      for(let i=0;i<samples.length;i++){
+        const white=Math.random()*2-1;
+        slow=.97*slow+.03*white;
+        const wash=.76+.14*Math.sin(i/audio.sampleRate*.7)+.09*Math.sin(i/audio.sampleRate*1.9);
+        samples[i]=(white*.35+slow*2.2)*wash;
+      }
       const filter=audio.createBiquadFilter();
       filter.type='lowpass';
-      filter.frequency.value=920;
+      filter.frequency.value=1700;
       rainGain=audio.createGain();
-      rainGain.gain.value=stage===finalStage?0:.18;
+      rainGain.gain.value=stage===finalStage?0:.095;
       rainSource=audio.createBufferSource();
-      rainSource.buffer=noise;
+      rainSource.buffer=rain;
       rainSource.loop=true;
-      rainSource.connect(filter).connect(rainGain).connect(audio.destination);
+      rainSource.connect(filter).connect(rainGain).connect(soundBus);
       rainSource.start();
     }
     button.setAttribute('aria-pressed',String(Boolean(rainSource)));
