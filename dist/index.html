@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
@@ -15,7 +15,7 @@
 <div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span><button id="journal" hidden>Vardiya defteri</button></div>
 <div class="game" id="game">
 <canvas id="world" aria-label="Büfenin üç boyutlu görünümü"></canvas><div class="cross" id="cross" aria-hidden="true">+</div>
-<div id="markers"></div><div class="cctv tag" id="cctv" hidden></div>
+<div id="jumpshade" aria-hidden="true" hidden></div><div id="markers"></div><div class="cctv tag" id="cctv" hidden></div>
 <button id="prompt" hidden></button>
 <button id="advance" class="gold" hidden></button>
 <div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor. Gece tuhaflaşırsa arka raftaki tüfeği alabilirsin.</p><button class="gold" id="start">Vardiyayı aç</button></div>
@@ -96,10 +96,13 @@ function setup() {
   const program = gl.createProgram();
   gl.attachShader(program, compile(gl.VERTEX_SHADER, `
     attribute vec3 point; attribute vec3 tint;
-    uniform vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform float night; uniform vec3 offset;
+    uniform vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform float night; uniform vec3 offset; uniform vec2 gait;
     varying vec3 color; varying vec3 position; varying float distanceToEye;
     void main(){
-      vec3 d=point+offset-eye;
+      vec3 posed=point;
+      float limb=(1.0-smoothstep(.55,.9,point.y))*smoothstep(.05,.13,abs(point.x-.32));
+      posed.z+=sin(gait.x+step(.32,point.x)*3.14159)*gait.y*limb;
+      vec3 d=posed+offset-eye;
       float side=d.x*rotation.y-d.z*rotation.x;
       float front=d.z*rotation.y+d.x*rotation.x;
       float up=d.y*rotation.w-front*rotation.z;
@@ -134,7 +137,7 @@ function setup() {
   gl.enable(gl.DEPTH_TEST);
   const attributes = ['point','tint'].map(name => gl.getAttribLocation(program,name));
   for (const id of attributes) gl.enableVertexAttribArray(id);
-  const uniforms = Object.fromEntries(['eye','rotation','scale','night','fog','mono','offset'].map(name => [name,gl.getUniformLocation(program,name)]));
+  const uniforms = Object.fromEntries(['eye','rotation','scale','night','fog','mono','offset','gait'].map(name => [name,gl.getUniformLocation(program,name)]));
   return {attributes,uniforms};
 }
 
@@ -494,6 +497,35 @@ function creature(number){
   }
   return mesh;
 }
+function scareFace(){
+  const mesh=[];
+  oval(mesh,0,.04,0,.38,.51,.2,0x827864,10,18);
+  oval(mesh,0,-.28,-.06,.27,.27,.19,0x9b8e77,8,16);
+  oval(mesh,0,-.2,-.232,.15,.187,.045,0x171a1a,8,16);
+  for(const side of [-1,1]){
+    oval(mesh,side*.16,.135,-.171,.13,.083,.065,0x25252a,7,12);
+    oval(mesh,side*.16,.137,-.235,.044,.035,.025,0xe7b577,6,12);
+    oval(mesh,side*.165,.136,-.26,.017,.022,.008,0xffe3a9,5,9);
+    oval(mesh,side*.29,-.025,-.109,.065,.15,.068,0x595247);
+    oval(mesh,side*.16,.25,-.15,.15,.034,.052,0x534b43);
+  }
+  oval(mesh,0,.015,-.235,.052,.1,.062,0x716957);
+  for(let i=0;i<7;i++){
+    box(mesh,-.12+i*.04,-.069,-.263,.027,.05+(i%2)*.025,.02,0xddd0aa);
+    box(mesh,-.114+i*.038,-.329,-.253,.024,.053,.02,0xc6b999);
+  }
+  return mesh;
+}
+function steamMesh(){
+  const mesh=[];
+  for(let strand=0;strand<3;strand++){
+    for(let i=0;i<5;i++){
+      const x=1.95+(strand-1)*.035+Math.sin(i)*.012,y=1.4+i*.035,z=2.53;
+      mesh.push(x,y,z,.43,.46,.42,x+.008,y+.025,z+.005,.5,.5,.43);
+    }
+  }
+  return mesh;
+}
 function weaponView(){
   const mesh=[];
   // Build along the barrel, then cant the whole model into the player's shoulder.
@@ -568,10 +600,72 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
   gl.vertexAttribPointer(attributes[1],3,gl.FLOAT,false,24,12);
   gl.drawArrays(mode,0,mesh.count);
 }
-let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle;
+let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,steam;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let showVisitor=false,shutterDown=false,lightsOut=false,customerHit=false;
 let activeSeconds=0,scareAt=-Infinity;
+let arrivedAt=0,departedAt=-Infinity;
+let jumpAt=-Infinity,pendingJump=null;
+const jumpSeen=new Set();
+function queueJump(text){
+  const key='visitor-'+stage;
+  if(jumpSeen.has(key)||pendingJump) return;
+  pendingJump={key,text};
+}
+function jumpSound(){
+  if(!audio||!rainSource) return;
+  const now=audio.currentTime;
+  const oscillator=audio.createOscillator();
+  const envelope=audio.createGain();
+  oscillator.type='sawtooth';
+  oscillator.frequency.setValueAtTime(95,now);
+  oscillator.frequency.exponentialRampToValueAtTime(37,now+.42);
+  envelope.gain.setValueAtTime(.001,now);
+  envelope.gain.linearRampToValueAtTime(.12,now+.035);
+  envelope.gain.exponentialRampToValueAtTime(.001,now+.55);
+  const filter=audio.createBiquadFilter();
+  filter.type='lowpass';
+  filter.frequency.value=1400;
+  oscillator.connect(filter).connect(envelope).connect(audio.destination);
+  oscillator.start(now);
+  oscillator.stop(now+.56);
+}
+function updateJump(now){
+  if(playing&&pendingJump&&$('panel').hidden){
+    jumpAt=now;
+    jumpSeen.add(pendingJump.key);
+    notebook[stage].jump=pendingJump.text;
+    $('note').textContent=pendingJump.text;
+    pendingJump=null;
+    jumpSound();
+  }
+  const visible=playing&&now>=jumpAt&&now-jumpAt<760;
+  $('jumpshade').hidden=!visible;
+  $('game').classList.toggle('jumping',visible);
+  return visible;
+}
+function arrivalOffset(now){
+  if(reduceMotion.matches) return 0;
+  const progress=Math.min(1,Math.max(0,(now-arrivedAt)/1100));
+  return Math.pow(1-progress,2)*2.25;
+}
+function drawJump(now,aspect,attributes,u){
+  if(!updateJump(now)) return;
+  const progress=(now-jumpAt)/760;
+  const approach=reduceMotion.matches?0:Math.max(0,1-progress/.12)*.9;
+  const retreat=reduceMotion.matches?0:Math.max(0,(progress-.66)/.34)*1.15;
+  gl.clear(gl.DEPTH_BUFFER_BIT);
+  gl.uniform3f(u.eye,0,0,0);
+  gl.uniform4f(u.rotation,0,1,0,1);
+  gl.uniform2f(u.scale,viewScale/Math.max(aspect,.8),viewScale);
+  gl.uniform1f(u.night,1.24*(1-Math.max(0,progress-.7)));
+  gl.uniform1f(u.mono,0);
+  gl.uniform2f(u.gait,0,0);
+  const shake=reduceMotion.matches?0:Math.sin(progress*35)*.018;
+  gl.uniform3f(u.offset,shake,Math.sin(progress*11)*.007,.9+approach+retreat);
+  draw(jumpFace,attributes);
+}
+
 const scares={
   1:{after:3,text:'Sokağın karşısında bir gölge hızla geçiyor.'},
   3:{after:4,text:'Tavan lambası sönmeye yüz tutuyor. Durağın camında kendi yansımanı görüyorsun.'},
@@ -591,6 +685,9 @@ function scareProgress(now,dt){
   if(stage===4&&seconds<1.5&&Math.floor(seconds*4)!==Math.floor((seconds-dt)*4)&&Math.floor(seconds*4)%2===0){
     chime(92,.15,.11);
   }
+  if(stage===3&&seconds>.65&&seconds<2) queueJump('Bir yüz camın içine kadar sokuluyor. Göz kırptığında kaybolmuş.');
+  if(stage===finalStage&&activeSeconds>6) queueJump('Kendi yüzün bir anlığına camın öteki tarafında beliriyor.');
+  if(playing&&showVisitor&&stage===finalStage&&$('panel').hidden) activeSeconds+=dt;
   return seconds;
 }
 let previous=0;
@@ -666,6 +763,7 @@ function frame(now){
   gl.uniform1f(u.mono,cctv?.88:0);
   gl.uniform3f(u.fog,...fog);
   gl.uniform3f(u.offset,0,0,0);
+  gl.uniform2f(u.gait,0,0);
   draw(set,attributes);
   draw(rack,attributes);
   if(!armed){
@@ -677,8 +775,25 @@ function frame(now){
   if(showVisitor && (!cctv||(!scene[stage].absent&&stage!==finalStage))){
     const lean=creatureOffset();
     const bob=!reduceMotion.matches&&stage!==finalStage;
-    gl.uniform3f(u.offset,bob?Math.sin(now*.0014+stage)*.022:0,bob?Math.sin(now*.002+stage)*.012:0,lean);
+    const approach=arrivalOffset(now);
+    gl.uniform2f(u.gait,now*.012,bob&&approach>.02?.13:0);
+    gl.uniform3f(u.offset,bob?Math.sin(now*.0014+stage)*.022:0,bob?Math.sin(now*.002+stage)*.012:0,lean+approach);
     draw(exposed&&creatures[stage]?creatures[stage]:visitors[stage],attributes);
+    gl.uniform2f(u.gait,0,0);
+    gl.uniform3f(u.offset,0,0,0);
+  }
+  const departure=(now-departedAt)/900;
+  if(!showVisitor&&departure>=0&&departure<1&&!reduceMotion.matches){
+    const falling=repelled?Math.min(1,departure*1.6):0;
+    gl.uniform2f(u.gait,now*.014,repelled?0:.12);
+    gl.uniform3f(u.offset,departure*1.5,-falling*1.28,departure*2.5);
+    draw(exposed&&creatures[stage]?creatures[stage]:visitors[stage],attributes);
+    gl.uniform2f(u.gait,0,0);
+    gl.uniform3f(u.offset,0,0,0);
+  }
+  if(prepared&&['tea','coffee','soup'].includes(prepared)&&showVisitor&&!cctv&&!reduceMotion.matches){
+    gl.uniform3f(u.offset,0,((now*.0002)% .18),0);
+    draw(steam,attributes,gl.LINES);
     gl.uniform3f(u.offset,0,0,0);
   }
   if(stage===1&&scareTime<1.5&&!reduceMotion.matches){
@@ -708,6 +823,7 @@ function frame(now){
     draw(rain,attributes,gl.LINES);
   }
   drawWeapon(now,aspect,attributes,u);
+  drawJump(now,aspect,attributes,u);
   requestAnimationFrame(frame);
 }
 
@@ -728,6 +844,7 @@ function panel(title, text, choices=[]){
   $('actions').firstElementChild.focus();
 }
 function closePanel(){
+  if(cctv&&[0,5].includes(stage)&&showVisitor) queueJump('Kamerayı kapatınca camın önünde bir yüz belirip kayboluyor.');
   $('panel').hidden=true;
   cctv=false;
   $('cctv').hidden=true;
@@ -793,7 +910,7 @@ function journal(){
   for(let i=0;i<=stage;i++){
     const row=document.createElement('li');
     const entry=notebook[i];
-    const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.scare,entry.decision].filter(Boolean);
+    const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.scare,entry.jump,entry.decision].filter(Boolean);
     row.textContent=scene[i].time+' · '+scene[i].name+' — '+(details.join(' ')||'Henüz kayıt yok.');
     list.append(row);
   }
@@ -839,7 +956,7 @@ function doorPanel(){
   panel('Arka kapı',text,[
     action(doorLocked?'Sürgüyü aç':'Kapıyı kilitle',()=>{
       doorLocked=!doorLocked;
-      if(stage===finalStage&&!doorLocked) exposed=true;
+      if(stage===finalStage&&!doorLocked){exposed=true;queueJump('Sürgü açılır açılmaz karanlıktan bir yüz üstüne geliyor.');}
       chime(123,.17,.055);
       notebook[stage].door=doorLocked?'Arka kapı kilitlendi.':'Arka kapının sürgüsü açıldı.';
       doorPanel();
@@ -901,7 +1018,7 @@ function creatureOffset(){
   return stage===finalStage&&!doorLocked?-.34:0;
 }
 function targetInSight(){
-  const dx=.32-player.x,dz=4.83+creatureOffset()-player.z;
+  const dx=.32-player.x,dz=4.83+creatureOffset()+arrivalOffset(performance.now())-player.z;
   const front=dx*Math.sin(player.angle)+dz*Math.cos(player.angle);
   if(front<=.5||front>7.5) return false;
   const side=dx*Math.cos(player.angle)-dz*Math.sin(player.angle);
@@ -942,6 +1059,10 @@ function fire(){
 function next(){
   $('advance').hidden=true;
   closePanel();
+  arrivedAt=performance.now();
+  departedAt=-Infinity;
+  pendingJump=null;
+  jumpAt=-Infinity;
   prepared='';
   sugar=0;
   showVisitor=true;
@@ -960,6 +1081,9 @@ function next(){
 function decide(served,defended=false){
   if(!showVisitor || (served&&stage!==finalStage&&!orderReady())) return;
   showVisitor=false;
+  departedAt=performance.now();
+  pendingJump=null;
+  jumpAt=-Infinity;
   repelled=defended;
   const wounded=defended&&!creatureLines[stage];
   if(wounded) customerHit=true;
@@ -1010,6 +1134,10 @@ function end(served,defended){
 function start(){
   Object.assign(player,{x:0,z:.75,y:1.62,angle:0,pitch:0});
   stage=0;
+  jumpSeen.clear();
+  pendingJump=null;
+  jumpAt=-Infinity;
+  $('jumpshade').hidden=true;
   for(let i=0;i<scene.length;i++) notebook[i]={};
   playing=true;
   servedFirst=shutterDown=lightsOut=customerHit=false;
@@ -1121,6 +1249,8 @@ try{
   const view=weaponView();
   heldWeapon=buffer(view.mesh);
   muzzle=buffer(view.flash);
+  jumpFace=buffer(scareFace());
+  steam=buffer(steamMesh());
   creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(creature(Number(key)))]));
   nearUmbrella=buffer(umbrella(.68,4.9));
   streetUmbrella=buffer(umbrella(-1.95,5.1));
@@ -1148,5 +1278,6 @@ try{
 </script>
 </body>
 </html>
+
 
 
