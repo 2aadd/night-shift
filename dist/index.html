@@ -12,13 +12,13 @@
 <header><div class="tag">BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM</div><label class="language">Language / Dil <select id="language" aria-label="Language / Dil"><option value="en">English</option><option value="tr">Türkçe</option></select></label><button id="sound" aria-pressed="true">Ses açık</button></header>
 <h1>Gece Vardiyası</h1>
 <section class="frame" aria-label="Oyun">
-<div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span><button id="journal" hidden>Vardiya defteri</button></div>
+<div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span><span id="ticket" class="tag" hidden></span><button id="journal" hidden>Vardiya defteri</button></div>
 <div class="game" id="game">
 <canvas id="world" aria-label="Büfenin üç boyutlu görünümü"></canvas><div class="cross" id="cross" aria-hidden="true">+</div>
 <div id="jumpshade" aria-hidden="true" hidden></div><div id="markers"></div><div class="cctv tag" id="cctv" hidden></div>
 <button id="prompt" hidden></button><button id="lookCapture" hidden>Bakış için tıkla</button>
 <div id="advance" class="tag" role="status" aria-live="polite" hidden></div>
-<div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor. Gece tuhaflaşırsa arka raftaki tüfeği alabilirsin.</p><button class="gold" id="start">Vardiyayı aç</button></div>
+<div class="cover" id="cover"><div class="tag" id="coverTag">00:00 / BÜFE 07</div><h2 id="coverTitle">İlk gecen.</h2><p id="coverText">Üç gece, aynı büfe. Kamerayı, fişleri ve cevapları karşılaştır. Dışarıdaki ilk müşteri seni tanıyor.</p><button class="gold" id="start">Vardiyayı aç</button></div>
 <section class="window" id="panel" aria-labelledby="panelTitle" hidden><h2 id="panelTitle"></h2><p id="panelText"></p><div class="actions" id="actions"></div></section>
 </div>
 <div class="info">
@@ -29,7 +29,7 @@
 <button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button><button id="look">Serbest bakış</button><button id="fire" class="fire" hidden>F · Ateş et</button><span id="ammo" class="ammo" aria-live="polite" hidden></span>
 <span>WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak</span>
 </div></section>
-<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>7 KARŞILAŞMA · 3 SON</span></footer>
+<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>3 GECE · 17 KARŞILAŞMA · 6 SON</span></footer>
 <details class="credits"><summary>Ses kaynakları</summary><p>Av tüfeği kaydı · Vincent Sevedge, “Gunshot Sounds”. Ses seviyesi oyun için ayarlandı. <a href="https://opengameart.org/content/gunshot-sounds" target="_blank" rel="noopener">Kaynak</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p></details>
 </main>
 <script>
@@ -278,6 +278,183 @@ const english={
   "Bakışı etkinleştir": "Enable mouse look",
   "Fareyi hareket ettir · Esc ile imleci bırak": "Move mouse to look · Esc releases cursor"
 };
+Object.assign(english,{
+  "Kuryenin dönüşü": "The courier returns",
+  "“Dün geceki teslimat kayıttan silinmiş. Bu kez sade kahve alayım.” Kurye aynı çantayı taşıyor.": "“Last night’s delivery was erased from the log. Black coffee this time.” He is carrying the same bag.",
+  "Sade kahve": "Black coffee",
+  "Kurye ekranda görünüyor. Motorun arka kutusunun üstünde BÜFE 07 yazıyor.": "The courier appears on screen. KIOSK 07 is written on his motorcycle delivery box.",
+  "Kahveyi alırken çantasından senin büfene ait boş bir fiş düşüyor. “Bunu ben basmadım,” diyor.": "As he takes the coffee, a blank receipt from your kiosk falls out of his bag. “I did not print that,” he says.",
+  "Kurye fişi cebine koyup motoruna yürüyor. Bu kez motorun farı normal yanıyor.": "He pockets the receipt and walks to his motorcycle. This time the headlight works normally.",
+  "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 008\nSaat: 00:26\n1 × Sade kahve\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 2\nORDER TICKET · No. 008\nTime: 00:26\n1 × Black coffee\nStatus: To prepare",
+  "İlk sefer yolcusu": "The first-service passenger",
+  "“Bir sıcak çorba. Sabah otobüsü gelene kadar burada bekleyeceğim.” Elinde iki bilet var.": "“A hot soup. I will wait here until the morning bus arrives.” He is holding two tickets.",
+  "Mercimek çorbası": "Lentil soup",
+  "Yolcu kamera görüntüsünde de var. Cebindeki iki biletin gölgesi servis camına düşüyor.": "The passenger also appears on the camera. Both tickets cast a shadow on the serving window.",
+  "Çorbayı alıp biletlerden birini sana bırakıyor. “Üçüncü sabah, ilk otobüse yetiş. Bu koltuk senin.” Bileti defterine koyuyorsun.": "He takes the soup and leaves you one ticket. “On the third morning, catch the first bus. This seat is yours.” You put it in your log.",
+  "Yolcu iki bileti de cebine koyuyor. “Şoför boş koltukla beklemez,” deyip durağa gidiyor.": "He pockets both tickets. “The driver will not wait with an empty seat,” he says, heading for the stop.",
+  "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 009\nSaat: 01:10\n1 × Mercimek çorbası\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 2\nORDER TICKET · No. 009\nTime: 01:10\n1 × Lentil soup\nStatus: To prepare",
+  "İkinci bekçi": "The second watchman",
+  "“Bir kaşarlı tost. Arka kapıyı açık bırak, birazdan kontrol edeceğim.” Üniforması önceki bekçininkiyle aynı.": "“A cheese toastie. Leave the back door open. I will inspect it shortly.” His uniform matches the first watchman’s.",
+  "Kaşarlı tost": "Cheese toastie",
+  "Pencerenin önündeki bekçi görüntüde yok. El fenerinin ışığı ise arka kapının kolunu aydınlatıyor.": "The watchman at the window is missing from the feed. His torch still lights up the back door handle.",
+  "Tostu iki parmağıyla alıyor. Gitmeden önce, “Kapıyı kilitlersen içeride kalırsın,” diyor.": "He takes the toastie with two fingers. Before leaving, he says, “Lock the door and you stay inside.”",
+  "Servis kapağı kapanırken el feneri yerde kalıyor. Işığı kapalı arka kapının altından içeri sızıyor.": "As the hatch closes, the torch is left on the pavement. Its light slips beneath the locked back door.",
+  "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 010\nSaat: 02:04\n1 × Kaşarlı tost\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 2\nORDER TICKET · No. 010\nTime: 02:04\n1 × Cheese toastie\nStatus: To prepare",
+  "Şemsiyesiz kadın": "The woman without an umbrella",
+  "“Bir şekersiz çay. Burada kırmızı bir şemsiye bırakılmış mı?” Saçları ve paltosu yağmurdan sırılsıklam.": "“Tea, no sugar. Has anyone left a red umbrella here?” Her hair and coat are soaked.",
+  "Şekersiz çay": "Tea, no sugar",
+  "Kadın ekranda da görünüyor. Paltosundan damlayan su, kaldırımda küçük bir birikinti oluşturuyor.": "The woman appears on screen too. Water dripping from her coat forms a puddle on the pavement.",
+  "Bardağı tutarken elleri titriyor. “Dün benim yüzüme benzeyen biri gelmiş olabilir. Beni gördüğünü söyleme,” diyor.": "Her hands shake around the glass. “Someone with my face may have come yesterday. Do not say you saw me,” she says.",
+  "Kadın etrafına bakıp hızlı adımlarla uzaklaşıyor. Yağmurun içinden gerçek ayak sesleri geliyor.": "She looks around and hurries away. Real footsteps sound through the rain.",
+  "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 011\nSaat: 03:17\n1 × Şekersiz çay\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 2\nORDER TICKET · No. 011\nTime: 03:17\n1 × Tea, no sugar\nStatus: To prepare",
+  "İkinci devir": "The second handover",
+  "Önlüklü siluet geri geliyor. “Bu gece de kapıyı kapattın. Anahtarı ver, çıkışını yapalım.”": "The figure in the apron returns. “You closed the door again tonight. Give me the key. Let us clock you out.”",
+  "Arka kapının anahtarı": "The back door key",
+  "Kamera saati 04:13. Senin durduğun yerde başka bir önlüklü kişi bekliyor, servis penceresinin önü boş.": "The camera clock reads 04:13. Someone else in an apron stands where you are standing. The serving window is empty.",
+  "Anahtarı aldığında siluet, adının yazılı olduğu vardiya çizelgesini içeriye asıyor.": "After taking the key, the figure hangs a shift roster with your name inside the kiosk.",
+  "Kepenk inerken yazıcı bir devir formu çıkarıyor. Bu formu ertesi gece için defterinde saklıyorsun.": "As the shutter falls, the printer issues a handover form. You keep it in your log for the following night.",
+  "BÜFE 07 · GECE 2\nVARDİYA DEVİR FORMU\nSaat: 04:13\nAnahtar teslimi: Bekliyor\nNot: Basılı saat, duvar saatinden bir dakika ileride.": "KIOSK 07 · NIGHT 2\nSHIFT HANDOVER FORM\nTime: 04:13\nKey handover: Pending\nNote: Printed one minute ahead of the wall clock.",
+  "Yazıcı tamircisi": "The receipt-printer technician",
+  "“Bir gazoz. Telefonda yazıcının aynı fişi bastığını söylemiştin.” Elinde küçük bir alet çantası var.": "“One soda. On the phone you said the printer kept repeating the same receipt.” He carries a small tool bag.",
+  "Kapalı gazoz": "Sealed soda",
+  "Tamirci kamerada görünüyor. Çantasının üstündeki servis kartında bu büfenin adresi yazılı.": "The technician appears on the camera. The service card on his bag lists this kiosk’s address.",
+  "Şişeyi alıp yazıcıyı gösteriyor. “Sorun kâğıtta değil. Devir tamamlanınca aynı geceyi baştan yazıyor.”": "He takes the bottle and points to the printer. “It is not the paper. When the handover completes, it writes the same night again.”",
+  "Tamirci çantasını kapatıyor. “Kabloyu çekmeden önce neyi durdurduğunu bil,” deyip gidiyor.": "He closes his tool bag. “Know what you are stopping before you pull the cable,” he says, then leaves.",
+  "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 013\nSaat: 00:08\n1 × Kapalı gazoz\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 3\nORDER TICKET · No. 013\nTime: 00:08\n1 × Sealed soda\nStatus: To prepare",
+  "Son sefer şoförü": "The last-service driver",
+  "“Bir sade kahve. İlk seferi 04:20’de kaldırıyorum. Bileti olanları bekleyeceğim.”": "“Black coffee. The first bus leaves at 04:20. I will wait for ticket holders.”",
+  "Şoför görüntüde var. Durağın arkasındaki otobüsün iç lambaları yanıyor, ön camında 04:20 yazıyor.": "The driver appears on screen. The bus behind the stop has its cabin lights on. Its windscreen display reads 04:20.",
+  "Kahveyi alıp saatine bakıyor. “Önlüğünü çıkar, biletini al. Son devir gelince kararını ver.”": "He takes the coffee and checks his watch. “Take off the apron. Bring your ticket. Decide when the last handover arrives.”",
+  "Şoför durağa yürürken otobüsün kapısı açılıyor. Motor çalışır durumda bekliyor.": "As he walks to the stop, the bus doors open. The engine stays running.",
+  "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 014\nSaat: 01:21\n1 × Sade kahve\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 3\nORDER TICKET · No. 014\nTime: 01:21\n1 × Black coffee\nStatus: To prepare",
+  "Yağmurda duran adam": "The man standing in the rain",
+  "“Bu kez iki şeker.” Fötr şapkalı adam ilk gecedeki yerinde duruyor. Sesi yazıcının hemen yanından geliyor.": "“Two sugars this time.” The man in the fedora stands in the same spot as the first night. His voice comes from beside the printer.",
+  "İki şekerli çay": "Tea, two sugars",
+  "Kamera canlı yayın yapıyor ama adam görünmüyor. İlk gecenin boş bardağı onun durduğu yerde duruyor.": "The camera is live, but the man is missing. The empty glass from the first night stands in his place.",
+  "Bardağı uzatınca adamın yüzü camdaki yansımanla aynı anda hareket ediyor. “Üç gecedir aynı sipariş,” diyor.": "As you pass the glass, his face moves in time with your reflection. “The same order for three nights,” he says.",
+  "Camdaki yansıman bir saniye daha dışarı bakmayı sürdürüyor. Adam kaybolduğunda yansıma yerine oturuyor.": "Your reflection keeps looking outside for one more second. When he vanishes, it falls back into place.",
+  "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 015\nSaat: 02:36\n1 × İki şekerli çay\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 3\nORDER TICKET · No. 015\nTime: 02:36\n1 × Tea, two sugars\nStatus: To prepare",
+  "Son yolcu": "The last passenger",
+  "Yağmurluklu kadın geri geliyor. “Bir tost. Otobüs bu kez gerçekten geldi. Sen de gelecek misin?”": "The woman in the raincoat returns. “A toastie. The bus really came this time. Are you coming too?”",
+  "Kadın kamerada da var. Arkasında açık kapılı bir otobüs ve bekleyen birkaç yolcu görünüyor.": "The woman appears on screen. Behind her are a bus with open doors and a few waiting passengers.",
+  "Tostu alıp kapıya dönüyor. “Bileti kaybetmediysen hâlâ yer var.” Durağın ışığını açık bırakıyor.": "She takes the toastie and turns to the door. “There is still a seat if you kept the ticket.” She leaves the shelter light on.",
+  "Kadın başını sallayıp durağa gidiyor. Otobüsün kapısı kapanmadan önce son kez sana bakıyor.": "She nods and walks back to the stop, looking at you once more before the bus doors close.",
+  "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 016\nSaat: 03:52\n1 × Kaşarlı tost\nDurum: Hazırlanacak": "KIOSK 07 · NIGHT 3\nORDER TICKET · No. 016\nTime: 03:52\n1 × Cheese toastie\nStatus: To prepare",
+  "Son devir": "The final handover",
+  "Önlüklü siluet üçüncü kez geliyor. “Çıkışın hazır. Anahtar, bilet ya da o kablo. Bu kez birini seç.”": "The figure in the apron returns for the third time. “Your exit is ready. The key, the ticket or that cable. Choose one this time.”",
+  "Son karar": "The final decision",
+  "Kamera saati 04:19. Görüntüde üç ayrı gölge var, servis penceresinin önünde kimse yok.": "The camera clock reads 04:19. Three separate shadows appear, but nobody stands at the serving window.",
+  "Anahtarı uzatırken arkandaki vardiya saatinin tekrar 00:00’a döndüğünü duyuyorsun.": "As you hand over the key, you hear the shift clock behind you return to 00:00.",
+  "Kepenk kapanıyor. Dışarıdaki ses kesiliyor. İlk otobüs bu sefer seni beklemeden geçiyor.": "The shutter closes. The voice outside stops. This time, the first bus passes without waiting for you.",
+  "BÜFE 07 · GECE 3\nVARDİYA DEVİR FORMU\nSaat: 04:19\nAnahtar teslimi: Bekliyor\nNot: Basılı saat, duvar saatinden bir dakika ileride.": "KIOSK 07 · NIGHT 3\nSHIFT HANDOVER FORM\nTime: 04:19\nKey handover: Pending\nNote: Printed one minute ahead of the wall clock.",
+  "Dünkü teslimata ne oldu?": "What happened to yesterday’s delivery?",
+  "“Teslim edildi görünüyor ama alıcının adı benimki. Eve gidince çantamda aynı fişi buldum.”": "“It says delivered, but the recipient has my name. I found the same receipt in my bag at home.”",
+  "Siparişini tekrar söyler misin?": "Could you repeat your order?",
+  "“Sade kahve. Bu kez yola çıkmadan içeceğim.”": "“Black coffee. This time I will drink it before leaving.”",
+  "Bu sokaktan çıkabildin mi?": "Did you manage to leave this street?",
+  "“İki kez döndüm, yine büfenin önüne geldim. Ana caddeyi ancak sabah bulabildim.”": "“I turned twice and came back here. I only found the main road at dawn.”",
+  "Neden iki biletin var?": "Why do you have two tickets?",
+  "“Biri senin için. Şoför, büfede kalan kişinin kendi başına yolu bulamadığını söyledi.”": "“One is for you. The driver said the person in the kiosk cannot find the way alone.”",
+  "Otobüs ne zaman gelecek?": "When will the bus arrive?",
+  "“Üçüncü sabah 04:20. O zamana kadar bileti sakla.”": "“The third morning, at 04:20. Keep the ticket until then.”",
+  "Bileti bana verir misin?": "Will you give me the ticket?",
+  "“Önce biraz sıcak çorba içeyim. Sonra bileti sana bırakırım.”": "“Let me have some hot soup first. Then I will leave it with you.”",
+  "Dün gece ne içmiştin?": "What did you drink last night?",
+  "“Şekersiz çay.” Önceki bekçi sade kahve istemişti.": "“Tea with no sugar.” The previous watchman asked for black coffee.",
+  "Kameraya bakar mısın?": "Could you look at the camera?",
+  "El fenerini kameraya tutuyor. Ekranda ışık var ama ışığı tutan el yok.": "He points his torch at the camera. You see the light, but no hand holding it.",
+  "Kontrol listesi nerede?": "Where is the inspection checklist?",
+  "“İçeride, senin arkanda.” Başını çevirmeden arka kapının yerini gösteriyor.": "“Inside, behind you.” Without turning, he points to the back door.",
+  "Dün gece burada mıydın?": "Were you here last night?",
+  "“Hayır. Ama komşum beni burada gördüğünü söyledi.”": "“No. But my neighbour said they saw me here.”",
+  "Şemsiyen nerede?": "Where is your umbrella?",
+  "“Geçen hafta kaybettim. Biri onu her gece bu sokağa getiriyormuş.”": "“I lost it last week. Someone has been bringing it to this street every night.”",
+  "“Bir çay, şekersiz. Elimdekileri düşürmeden biraz ısınmak istiyorum.”": "“One tea, no sugar. I need to warm up before I drop everything.”",
+  "Devir neden bir dakika ileride?": "Why is the handover a minute ahead?",
+  "“Çıkışın yazılmadan çıkamazsın.” Yazıcı, daha bu cümle bitmeden yeni form basıyor.": "“You cannot leave until your departure is written down.” The printer starts a new form before he finishes.",
+  "Kamerada içeride kim var?": "Who is inside on the camera?",
+  "“Yerine geçen kişi. Ama anahtar hâlâ sende.”": "“Your replacement. But you still have the key.”",
+  "Formu saklayabilir miyim?": "May I keep the form?",
+  "“Üçüncü geceye kadar.” Formun üstündeki saat 04:13.": "“Until the third night.” The time printed on it is 04:13.",
+  "Yazıcı neden aynı fişi basıyor?": "Why does the printer repeat receipts?",
+  "“Müşteriyi değil, vardiyayı kaydediyor. Son devirde kâğıdı yenileyip başa dönüyor.”": "“It records the shift, not the customer. At the final handover it feeds new paper and starts again.”",
+  "Benden önce burada kim çalışıyordu?": "Who worked here before me?",
+  "“Servis kaydında üç gecedir tek isim var. Seninki.”": "“The service log has had one name for three nights. Yours.”",
+  "Bu döngüyü nasıl durdururum?": "How do I stop this loop?",
+  "“İlk gecenin boş kamera kaydını ve ikinci gecenin devir formunu karşılaştır. Son devirde yazıcının fişini çek. Bu ikisini görmeden yanlış kabloya dokunursun.”": "“Compare the first night’s empty camera feed with the second handover form. At the last handover, unplug the printer. Without seeing both, you will pull the wrong cable.”",
+  "Biletim yoksa ne olacak?": "What if I do not have a ticket?",
+  "“Bu seferde kayıtsız yolcu alamam. Duraktaki adam ikinci gece fazladan bir bilet getirmişti.”": "“I cannot take an unlisted passenger. The man at the stop brought a spare ticket on the second night.”",
+  "Otobüs nereye gidiyor?": "Where does the bus go?",
+  "“Bu sokağın dışına. Son durağın adını çıkınca okuyabilirsin.”": "“Out of this street. You can read the last stop once we leave.”",
+  "Beni ne kadar beklersin?": "How long will you wait?",
+  "“04:20’ye kadar. Son devir gelir gelmez kararını ver.”": "“Until 04:20. Decide as soon as the last handover arrives.”",
+  "Kaç gecedir buraya geliyorsun?": "How many nights have you been coming here?",
+  "“Sen saymayı bıraktığından beri.” Şapkasının kenarı hâlâ kupkuru.": "“Since you stopped counting.” The brim of his hat is still perfectly dry.",
+  "Neden kamerada görünmüyorsun?": "Why are you missing from the camera?",
+  "“Kamera geceyi kaydeder. Ben zaten kayıttayım.”": "“The camera records the night. I am already in the recording.”",
+  "Neden siparişin değişti?": "Why did your order change?",
+  "“İki şeker, iki eksik gece.” Tezgâhtaki boş bardakta hiç şeker yok.": "“Two sugars. Two missing nights.” There is no sugar in the empty glass.",
+  "Bu kez hangi otobüsü bekliyorsun?": "Which bus are you waiting for this time?",
+  "“04:20 seferini. Şoför içeride, motor çalışıyor. Kameradan da görebilirsin.”": "“The 04:20 service. The driver is inside and the engine is running. You can see it on the camera.”",
+  "Beni daha önce gördün mü?": "Have you seen me before?",
+  "“İlk gece çay istemiştim. İki şeker. Ellerin benimkinden daha çok titriyordu.”": "“I asked for tea on the first night. Two sugars. Your hands were shaking more than mine.”",
+  "Buradan çıkınca ne yapacaksın?": "What will you do when you leave?",
+  "“Eve gideceğim. Annem üçüncü gündür arıyor.” Telefonunu gösteriyor, ekranda cevapsız aramalar var.": "“Go home. My mother has been calling for three days.” She shows you the missed calls on her phone.",
+  "Bu sefer devirden sonra ne olacak?": "What happens after this handover?",
+  "“Aynı sokağı başka birinden göreceksin.” Siluet camdaki yansımanla birlikte gülümsüyor.": "“You will see the same street through someone else.” The figure smiles in time with your reflection.",
+  "Otobüse gidersem beni durdurur musun?": "Will you stop me if I go to the bus?",
+  "“Bilet seninse koltuk da senin. Ama önlüğü burada bırak.”": "“If the ticket is yours, so is the seat. Leave the apron here.”",
+  "Yazıcıyı durdurursam ne olur?": "What happens if I stop the printer?",
+  "“O zaman birinin son fişi okuması gerekir.” Yazıcı kendiliğinden kâğıt çekmeye başlıyor.": "“Then someone has to read the last receipt.” The printer begins feeding paper by itself.",
+  "İlk vardiya": "The first shift",
+  "İlk vardiyan. Kamerayı ve fişleri karşılaştır. Gece biterken anahtarın kimde kaldığını unutma.": "Your first shift. Compare the camera and receipts. Remember who keeps the key when the night ends.",
+  "Aynı sokak": "The same street",
+  "Ertesi gece aynı büfeye dönüyorsun. Defterin bıraktığın yerde, ama sokaktaki insanlar seni hatırlıyor. Bu gece bir yolcu fazladan bilet taşıyor.": "The next night you return to the kiosk. Your log is where you left it, but people in the street remember you. Tonight, a passenger carries a spare ticket.",
+  "Son sefer": "The last service",
+  "Üçüncü gece. Otobüs bu sabah gerçekten gelecek. Yazıcının neden aynı vardiyayı bastığını öğrenebilir veya çıkmak için başka bir yol seçebilirsin.": "The third night. The bus really will come this morning. Find out why the printer repeats the shift, or choose another way out.",
+  "Üçüncü sabah": "The third morning",
+  "Üçüncü sabah kepengi kaldırıyorsun. Sokak sonunda gündüz gibi görünüyor. Defterdeki son fişte adın var, fakat vardiya saati artık ilerliyor. Bu geceyi atlattın.": "On the third morning you raise the shutter. The street finally looks like daylight. Your name is on the last receipt, but the shift clock is moving forward. You made it through the night.",
+  "Yeni vardiya": "The new shift",
+  "Anahtarı verdiğin anda kendini kaldırımda buluyorsun. Büfenin içindeki kişi önlüğünü giyiyor. Camın önüne yaklaşınca kendi sesinle tek bir cümle söylüyorsun: “Her zamankinden.”": "The moment you hand over the key, you are standing on the pavement. Someone inside puts on your apron. As you approach the window, your own voice says one sentence: “The usual.”",
+  "Sabah ifadesi": "A statement at dawn",
+  "Gün doğarken iki polis büfeye geliyor. Defterdeki yaralı müşterinin kaydını açıp sorular sormaya başlıyorlar. Bu sokaktan çıkıyorsun, ama gecenin hesabı seninle geliyor.": "At dawn, two police officers come to the kiosk. They open the log at the injured customer’s entry and begin asking questions. You leave the street, but the night follows you.",
+  "Önlüğü tezgâha bırakıp bileti şoföre veriyorsun. Otobüs köşeyi dönerken Büfe 07’nin ışıkları arkada kalıyor. Son durak tabelasında sonunda bildiğin bir sokak adı var. Telefonun ilk kez doğru saati gösteriyor.": "You leave the apron on the counter and hand your ticket to the driver. As the bus turns the corner, the lights of Kiosk 07 fall behind. The final-stop display names a street you recognise. Your phone shows the right time at last.",
+  "Son fiş": "The last receipt",
+  "Kamera kaydını ve devir formunu yazıcının yanına koyuyorsun. Doğru kabloyu çekince sokaktaki bütün saatler aynı anda ilerliyor. Yazıcıdan son bir kâğıt düşüyor. “Vardiya sona erdi.” Bu kez altında yeni bir başlangıç saati yok.": "You place the camera record and handover form beside the printer. When you pull the correct cable, every clock in the street moves forward together. One final slip falls out. “Shift ended.” This time there is no new start time beneath it.",
+  "Arka sokak": "The back street",
+  "Arka kapıdan çıkıp koşmaya başlıyorsun. Her köşenin sonunda aynı kapalı büfe duruyor. Pencerelerinden birinin arkasında, biraz önce bıraktığın önlük asılı. Telefonun 04:18’de kalmış.": "You run out through the back door. Around every corner stands the same closed kiosk. Behind one window hangs the apron you just left. Your phone is stuck at 04:18.",
+  "“…İkinci gece teslimatları kayıttan silinmiştir. Kuryeler önceki fişlerini saklasın.”": "“…Second-night deliveries have been erased. Couriers should keep their old receipts.”",
+  "“Üçüncü sabah 04:20 seferi için biletinizi hazırlayın.”": "“Have your ticket ready for the 04:20 service on the third morning.”",
+  "“Kontrol listesinde tek bir bekçi var. İkinci kişiye kapıyı açmayın.”": "“There is only one watchman on the inspection list. Do not open the door for a second.”",
+  "“Kırmızı şemsiyenin sahibi henüz bulunamadı.”": "“The owner of the red umbrella has not yet been found.”",
+  "Yazıcıdan gelen ses radyoda tekrarlanıyor. “Devir 04:13.”": "The printer noise repeats on the radio. “Handover at 04:13.”",
+  "“Servis kaydı, kamera görüntüsü ve devir formu aynı geceye ait değildir.”": "“The service log, camera feed and handover form do not belong to the same night.”",
+  "“Son sefer 04:20. Biletsiz yolcu alınmayacaktır.”": "“Last service at 04:20. Ticket holders only.”",
+  "İlk gecenin siparişi radyodan okunuyor. Ses bu sefer seninki.": "The first night’s order is read out on the radio. This time the voice is yours.",
+  "“Büfe 07’deki son yolcuya duyurulur. Kapılar birazdan kapanacak.”": "“Last call for the passenger at Kiosk 07. Doors are about to close.”",
+  "“Bu son devir bildirimi. Sonraki kayıt bulunamadı.”": "“This is the final handover announcement. No subsequent recording found.”",
+  "Bekçinin üniforması boşalıp yere çöküyor. El fenerinin ışığı kendiliğinden sönüyor.": "The watchman’s uniform empties and crumples. The torch goes dark by itself.",
+  "Önlüklü suret servis camından geri çekiliyor. Yazıcı yine de devir formunu basıyor.": "The figure in the apron draws back from the glass. The printer still issues its handover form.",
+  "Adamın şapkası kaldırımda kalıyor. Altından yükselen gölge yağmurun içinde parçalanıyor.": "His hat stays on the pavement. The shadow beneath it breaks apart in the rain.",
+  "Son suret karanlığa dağılıyor. Bu kez yazıcının başa dönecek kadar kâğıdı kalmamış.": "The last figure disperses into the dark. This time the printer has too little paper to start again.",
+  "Durağın arkasında biri sana el sallıyor, fakat ortada başını görebileceğin kimse yok.": "Someone waves from behind the bus stop, but there is nobody whose head you can see.",
+  "Arka kapıya üç kez vuruluyor. Kadın o an hiç kıpırdamıyor.": "Three knocks at the back door. The woman does not move at all.",
+  "Lambalar kararırken yazıcı boş kâğıda adını basıyor.": "As the lights dim, the printer writes your name on blank paper.",
+  "Kaldırımda aynı şapkayı takan iki gölge birbirinin içinden geçiyor.": "Two shadows wearing the same hat pass through each other on the pavement.",
+  "Kapıya son kez vuruluyor. Otobüsün motoru bu sesin ardından susuyor.": "One last knock at the door. The bus engine falls silent afterwards.",
+  "3 GECE · 17 KARŞILAŞMA · 6 SON": "3 NIGHTS · 17 ENCOUNTERS · 6 ENDINGS",
+  "GECE ": "NIGHT ",
+  " TAMAMLANDI": " COMPLETE",
+  "SON ": "ENDING ",
+  "Sonraki gece": "Next night",
+  "Otobüs bileti": "Bus ticket",
+  "Gece tamamlandı. Defterindeki bilgiler sonraki geceye taşınacak.": "Night complete. Your log carries over to the next night.",
+  "Son otobüse bin": "Board the last bus",
+  "Yazıcının fişini çek": "Unplug the printer",
+  "Arka sokaktan kaç": "Escape through the back street",
+  "Bilet alındı.": "Bus ticket received.",
+  "Üç gece, aynı büfe. Kamerayı, fişleri ve cevapları karşılaştır. Dışarıdaki ilk müşteri seni tanıyor.": "Three nights, the same kiosk. Compare the camera, receipts and answers. The first customer outside knows you."
+});
 english['WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak']='WASD to walk · Move mouse to look · E to interact · Left click to fire · Esc releases mouse';
 Object.assign(english,{
   'Bakış için tıkla':'Click to capture mouse',
@@ -288,6 +465,7 @@ Object.assign(english,{
   'Vardiya tamamlanıyor.':'Finishing the shift.',
   ' sn':'s'
 });
+english['Son kararını servis penceresinde ver. Biletin ve topladığın kanıtlar farklı çıkışlar açabilir.']='Make your final decision at the serving window. Your ticket and collected evidence may open different exits.';
 let language='en';
 try{
   const saved=localStorage.getItem('night-shift-language');
@@ -361,6 +539,348 @@ const scene = [
   {time:'04:07', name:'Mesai devri', line:'Camdaki siluet senin önlüğünü takıyor. “Kapıyı aç. Ben geldim, sen çıkabilirsin.”', order:'Arka kapının anahtarı', camera:'Sokak boş. Kamera saati 04:08. Görüntüde kepenk çoktan inmiş.', receipt:"BÜFE 07 · VARDİYA DEVİR FORMU\nSaat: 04:08\nAnahtar teslimi: Bekliyor\nDevreden: __________\nDevralan: __________\nNot: Formdaki saat, duvar saatinden bir dakika ileride.", serve:'Anahtarı uzattığın anda ışık sönüyor. Arkandaki kilit dönüyor.', deny:'Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Diğer taraftan kendi sesin geliyor.'}
 ];
 const interviews=[[["Daha önce burada alışveriş yaptın mı?","“Her gece. Sen dün de buradaydın.” Bu senin ilk vardiyan."],["Siparişini tekrar söyler misin?","“Şekersiz çay. Fişi çoktan yazdın.” Henüz yazıcıya dokunmadın."],["Kameraya bir bakar mısın?","Adam kameraya dönmeden “Beni zaten görüyorsun,” diyor."]],[["Nereden geliyorsun?","“Karşıdaki hastaneden. Annemin yanındaydım, son otobüsü kaçırdım.”"],["Siparişini tekrar söyler misin?","“Bir çay, iki şeker. Biraz ısınsam yeter.”"],["Kameraya bir bakar mısın?","Kadın kameraya bakıp el sallıyor. “Böyle mi?”"]],[["Teslimat adresin neresi?","“Depo sokağı, 12 numara. Telefonun saati yanlış ama adresi biliyorum.”"],["Şişeyi açmamı ister misin?","“Kapalı kalsın. Yola çıkınca içerim.”"],["Kameraya bir bakar mısın?","Kaskını kaldırıp kameraya dönüyor. “Siparişi şirket hesabına mı yazacaksın?”"]],[["Hangi otobüsü bekliyorsun?","“İlk 34’ü. Şoförle konuştum, gün doğarken geçecek.”"],["Siparişin nasıl olsun?","“Mercimek çorbası sıcak olsun. Ekmek istemiyorum.”"],["Bileti ne zaman aldın?","“Dün akşam terminalden. Dönüş için de geçerli olduğunu söylediler.”"]],[["Hangi bölgeden sorumlusun?","“Bu sokak ve arka depo. Kontrol listesi kulübede asılı.”"],["Siparişini tekrar söyler misin?","“Sade kahve. Şeker ekleme.”"],["Arka kapıda birini gördün mü?","“Bir gölge gördüm. El fenerini tutunca duvarda kimse yoktu.”"]],[["Şemsiyenin altında neden ıslaksın?","“Yağmur yukarıdan gelmiyor.” Şemsiyenin içinden kaldırıma su damlıyor."],["Şemsiyeni ne zaman geri alacaksın?","“Senin vardiyan bittikten sonra. Zaten daha önce de burada bıraktım.”"],["Kameraya bir bakar mısın?","Kadın sana bakmayı sürdürüyor. “Kameranın baktığı yerde değilim.”"]],[["Adın ne? Seni kim gönderdi?","Siluet senin adını söylüyor. “Burada çalışan başka biri yok.”"],["Devir saatin kaç?","“04:08.” Duvar saati hâlâ 04:07 gösteriyor."],["Kameraya bir bakar mısın?","“Önce kapıyı aç. Görüntü sonra düzelir.”"]]];
+scene.forEach((entry,index)=>{entry.look=index;entry.night=0;});
+Object.assign(scene[2],{bike:true});
+Object.assign(scene[5],{umbrella:true});
+Object.assign(scene[6],{gate:true,absent:true,cameraTime:'04:08'});
+scene.push(...[
+  {
+    "night": 1,
+    "look": 2,
+    "recipe": "coffee",
+    "bike": true,
+    "time": "00:26",
+    "name": "Kuryenin dönüşü",
+    "line": "“Dün geceki teslimat kayıttan silinmiş. Bu kez sade kahve alayım.” Kurye aynı çantayı taşıyor.",
+    "order": "Sade kahve",
+    "camera": "Kurye ekranda görünüyor. Motorun arka kutusunun üstünde BÜFE 07 yazıyor.",
+    "serve": "Kahveyi alırken çantasından senin büfene ait boş bir fiş düşüyor. “Bunu ben basmadım,” diyor.",
+    "deny": "Kurye fişi cebine koyup motoruna yürüyor. Bu kez motorun farı normal yanıyor.",
+    "receipt": "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 008\nSaat: 00:26\n1 × Sade kahve\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 1,
+    "look": 3,
+    "recipe": "soup",
+    "reward": "ticket",
+    "time": "01:10",
+    "name": "İlk sefer yolcusu",
+    "line": "“Bir sıcak çorba. Sabah otobüsü gelene kadar burada bekleyeceğim.” Elinde iki bilet var.",
+    "order": "Mercimek çorbası",
+    "camera": "Yolcu kamera görüntüsünde de var. Cebindeki iki biletin gölgesi servis camına düşüyor.",
+    "serve": "Çorbayı alıp biletlerden birini sana bırakıyor. “Üçüncü sabah, ilk otobüse yetiş. Bu koltuk senin.” Bileti defterine koyuyorsun.",
+    "deny": "Yolcu iki bileti de cebine koyuyor. “Şoför boş koltukla beklemez,” deyip durağa gidiyor.",
+    "receipt": "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 009\nSaat: 01:10\n1 × Mercimek çorbası\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 1,
+    "look": 4,
+    "recipe": "toast",
+    "absent": true,
+    "time": "02:04",
+    "name": "İkinci bekçi",
+    "line": "“Bir kaşarlı tost. Arka kapıyı açık bırak, birazdan kontrol edeceğim.” Üniforması önceki bekçininkiyle aynı.",
+    "order": "Kaşarlı tost",
+    "camera": "Pencerenin önündeki bekçi görüntüde yok. El fenerinin ışığı ise arka kapının kolunu aydınlatıyor.",
+    "serve": "Tostu iki parmağıyla alıyor. Gitmeden önce, “Kapıyı kilitlersen içeride kalırsın,” diyor.",
+    "deny": "Servis kapağı kapanırken el feneri yerde kalıyor. Işığı kapalı arka kapının altından içeri sızıyor.",
+    "receipt": "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 010\nSaat: 02:04\n1 × Kaşarlı tost\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 1,
+    "look": 5,
+    "recipe": "tea",
+    "sugar": 0,
+    "time": "03:17",
+    "name": "Şemsiyesiz kadın",
+    "line": "“Bir şekersiz çay. Burada kırmızı bir şemsiye bırakılmış mı?” Saçları ve paltosu yağmurdan sırılsıklam.",
+    "order": "Şekersiz çay",
+    "camera": "Kadın ekranda da görünüyor. Paltosundan damlayan su, kaldırımda küçük bir birikinti oluşturuyor.",
+    "serve": "Bardağı tutarken elleri titriyor. “Dün benim yüzüme benzeyen biri gelmiş olabilir. Beni gördüğünü söyleme,” diyor.",
+    "deny": "Kadın etrafına bakıp hızlı adımlarla uzaklaşıyor. Yağmurun içinden gerçek ayak sesleri geliyor.",
+    "receipt": "BÜFE 07 · GECE 2\nSİPARİŞ FİŞİ · No. 011\nSaat: 03:17\n1 × Şekersiz çay\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 1,
+    "look": 6,
+    "gate": true,
+    "absent": true,
+    "cameraTime": "04:13",
+    "time": "04:12",
+    "name": "İkinci devir",
+    "line": "Önlüklü siluet geri geliyor. “Bu gece de kapıyı kapattın. Anahtarı ver, çıkışını yapalım.”",
+    "order": "Arka kapının anahtarı",
+    "camera": "Kamera saati 04:13. Senin durduğun yerde başka bir önlüklü kişi bekliyor, servis penceresinin önü boş.",
+    "serve": "Anahtarı aldığında siluet, adının yazılı olduğu vardiya çizelgesini içeriye asıyor.",
+    "deny": "Kepenk inerken yazıcı bir devir formu çıkarıyor. Bu formu ertesi gece için defterinde saklıyorsun.",
+    "receipt": "BÜFE 07 · GECE 2\nVARDİYA DEVİR FORMU\nSaat: 04:13\nAnahtar teslimi: Bekliyor\nNot: Basılı saat, duvar saatinden bir dakika ileride."
+  },
+  {
+    "night": 2,
+    "look": 4,
+    "recipe": "soda",
+    "time": "00:08",
+    "name": "Yazıcı tamircisi",
+    "line": "“Bir gazoz. Telefonda yazıcının aynı fişi bastığını söylemiştin.” Elinde küçük bir alet çantası var.",
+    "order": "Kapalı gazoz",
+    "camera": "Tamirci kamerada görünüyor. Çantasının üstündeki servis kartında bu büfenin adresi yazılı.",
+    "serve": "Şişeyi alıp yazıcıyı gösteriyor. “Sorun kâğıtta değil. Devir tamamlanınca aynı geceyi baştan yazıyor.”",
+    "deny": "Tamirci çantasını kapatıyor. “Kabloyu çekmeden önce neyi durdurduğunu bil,” deyip gidiyor.",
+    "receipt": "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 013\nSaat: 00:08\n1 × Kapalı gazoz\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 2,
+    "look": 3,
+    "recipe": "coffee",
+    "time": "01:21",
+    "name": "Son sefer şoförü",
+    "line": "“Bir sade kahve. İlk seferi 04:20’de kaldırıyorum. Bileti olanları bekleyeceğim.”",
+    "order": "Sade kahve",
+    "camera": "Şoför görüntüde var. Durağın arkasındaki otobüsün iç lambaları yanıyor, ön camında 04:20 yazıyor.",
+    "serve": "Kahveyi alıp saatine bakıyor. “Önlüğünü çıkar, biletini al. Son devir gelince kararını ver.”",
+    "deny": "Şoför durağa yürürken otobüsün kapısı açılıyor. Motor çalışır durumda bekliyor.",
+    "receipt": "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 014\nSaat: 01:21\n1 × Sade kahve\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 2,
+    "look": 0,
+    "recipe": "tea",
+    "sugar": 2,
+    "absent": true,
+    "time": "02:36",
+    "name": "Yağmurda duran adam",
+    "line": "“Bu kez iki şeker.” Fötr şapkalı adam ilk gecedeki yerinde duruyor. Sesi yazıcının hemen yanından geliyor.",
+    "order": "İki şekerli çay",
+    "camera": "Kamera canlı yayın yapıyor ama adam görünmüyor. İlk gecenin boş bardağı onun durduğu yerde duruyor.",
+    "serve": "Bardağı uzatınca adamın yüzü camdaki yansımanla aynı anda hareket ediyor. “Üç gecedir aynı sipariş,” diyor.",
+    "deny": "Camdaki yansıman bir saniye daha dışarı bakmayı sürdürüyor. Adam kaybolduğunda yansıma yerine oturuyor.",
+    "receipt": "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 015\nSaat: 02:36\n1 × İki şekerli çay\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 2,
+    "look": 1,
+    "recipe": "toast",
+    "time": "03:52",
+    "name": "Son yolcu",
+    "line": "Yağmurluklu kadın geri geliyor. “Bir tost. Otobüs bu kez gerçekten geldi. Sen de gelecek misin?”",
+    "order": "Kaşarlı tost",
+    "camera": "Kadın kamerada da var. Arkasında açık kapılı bir otobüs ve bekleyen birkaç yolcu görünüyor.",
+    "serve": "Tostu alıp kapıya dönüyor. “Bileti kaybetmediysen hâlâ yer var.” Durağın ışığını açık bırakıyor.",
+    "deny": "Kadın başını sallayıp durağa gidiyor. Otobüsün kapısı kapanmadan önce son kez sana bakıyor.",
+    "receipt": "BÜFE 07 · GECE 3\nSİPARİŞ FİŞİ · No. 016\nSaat: 03:52\n1 × Kaşarlı tost\nDurum: Hazırlanacak"
+  },
+  {
+    "night": 2,
+    "look": 6,
+    "gate": true,
+    "absent": true,
+    "cameraTime": "04:19",
+    "time": "04:18",
+    "name": "Son devir",
+    "line": "Önlüklü siluet üçüncü kez geliyor. “Çıkışın hazır. Anahtar, bilet ya da o kablo. Bu kez birini seç.”",
+    "order": "Son karar",
+    "camera": "Kamera saati 04:19. Görüntüde üç ayrı gölge var, servis penceresinin önünde kimse yok.",
+    "serve": "Anahtarı uzatırken arkandaki vardiya saatinin tekrar 00:00’a döndüğünü duyuyorsun.",
+    "deny": "Kepenk kapanıyor. Dışarıdaki ses kesiliyor. İlk otobüs bu sefer seni beklemeden geçiyor.",
+    "receipt": "BÜFE 07 · GECE 3\nVARDİYA DEVİR FORMU\nSaat: 04:19\nAnahtar teslimi: Bekliyor\nNot: Basılı saat, duvar saatinden bir dakika ileride."
+  }
+]);
+interviews.push(...[
+  [
+    [
+      "Dünkü teslimata ne oldu?",
+      "“Teslim edildi görünüyor ama alıcının adı benimki. Eve gidince çantamda aynı fişi buldum.”"
+    ],
+    [
+      "Siparişini tekrar söyler misin?",
+      "“Sade kahve. Bu kez yola çıkmadan içeceğim.”"
+    ],
+    [
+      "Bu sokaktan çıkabildin mi?",
+      "“İki kez döndüm, yine büfenin önüne geldim. Ana caddeyi ancak sabah bulabildim.”"
+    ]
+  ],
+  [
+    [
+      "Neden iki biletin var?",
+      "“Biri senin için. Şoför, büfede kalan kişinin kendi başına yolu bulamadığını söyledi.”"
+    ],
+    [
+      "Otobüs ne zaman gelecek?",
+      "“Üçüncü sabah 04:20. O zamana kadar bileti sakla.”"
+    ],
+    [
+      "Bileti bana verir misin?",
+      "“Önce biraz sıcak çorba içeyim. Sonra bileti sana bırakırım.”"
+    ]
+  ],
+  [
+    [
+      "Dün gece ne içmiştin?",
+      "“Şekersiz çay.” Önceki bekçi sade kahve istemişti."
+    ],
+    [
+      "Kameraya bakar mısın?",
+      "El fenerini kameraya tutuyor. Ekranda ışık var ama ışığı tutan el yok."
+    ],
+    [
+      "Kontrol listesi nerede?",
+      "“İçeride, senin arkanda.” Başını çevirmeden arka kapının yerini gösteriyor."
+    ]
+  ],
+  [
+    [
+      "Dün gece burada mıydın?",
+      "“Hayır. Ama komşum beni burada gördüğünü söyledi.”"
+    ],
+    [
+      "Şemsiyen nerede?",
+      "“Geçen hafta kaybettim. Biri onu her gece bu sokağa getiriyormuş.”"
+    ],
+    [
+      "Siparişini tekrar söyler misin?",
+      "“Bir çay, şekersiz. Elimdekileri düşürmeden biraz ısınmak istiyorum.”"
+    ]
+  ],
+  [
+    [
+      "Devir neden bir dakika ileride?",
+      "“Çıkışın yazılmadan çıkamazsın.” Yazıcı, daha bu cümle bitmeden yeni form basıyor."
+    ],
+    [
+      "Kamerada içeride kim var?",
+      "“Yerine geçen kişi. Ama anahtar hâlâ sende.”"
+    ],
+    [
+      "Formu saklayabilir miyim?",
+      "“Üçüncü geceye kadar.” Formun üstündeki saat 04:13."
+    ]
+  ],
+  [
+    [
+      "Yazıcı neden aynı fişi basıyor?",
+      "“Müşteriyi değil, vardiyayı kaydediyor. Son devirde kâğıdı yenileyip başa dönüyor.”"
+    ],
+    [
+      "Benden önce burada kim çalışıyordu?",
+      "“Servis kaydında üç gecedir tek isim var. Seninki.”"
+    ],
+    [
+      "Bu döngüyü nasıl durdururum?",
+      "“İlk gecenin boş kamera kaydını ve ikinci gecenin devir formunu karşılaştır. Son devirde yazıcının fişini çek. Bu ikisini görmeden yanlış kabloya dokunursun.”"
+    ]
+  ],
+  [
+    [
+      "Biletim yoksa ne olacak?",
+      "“Bu seferde kayıtsız yolcu alamam. Duraktaki adam ikinci gece fazladan bir bilet getirmişti.”"
+    ],
+    [
+      "Otobüs nereye gidiyor?",
+      "“Bu sokağın dışına. Son durağın adını çıkınca okuyabilirsin.”"
+    ],
+    [
+      "Beni ne kadar beklersin?",
+      "“04:20’ye kadar. Son devir gelir gelmez kararını ver.”"
+    ]
+  ],
+  [
+    [
+      "Kaç gecedir buraya geliyorsun?",
+      "“Sen saymayı bıraktığından beri.” Şapkasının kenarı hâlâ kupkuru."
+    ],
+    [
+      "Neden kamerada görünmüyorsun?",
+      "“Kamera geceyi kaydeder. Ben zaten kayıttayım.”"
+    ],
+    [
+      "Neden siparişin değişti?",
+      "“İki şeker, iki eksik gece.” Tezgâhtaki boş bardakta hiç şeker yok."
+    ]
+  ],
+  [
+    [
+      "Bu kez hangi otobüsü bekliyorsun?",
+      "“04:20 seferini. Şoför içeride, motor çalışıyor. Kameradan da görebilirsin.”"
+    ],
+    [
+      "Beni daha önce gördün mü?",
+      "“İlk gece çay istemiştim. İki şeker. Ellerin benimkinden daha çok titriyordu.”"
+    ],
+    [
+      "Buradan çıkınca ne yapacaksın?",
+      "“Eve gideceğim. Annem üçüncü gündür arıyor.” Telefonunu gösteriyor, ekranda cevapsız aramalar var."
+    ]
+  ],
+  [
+    [
+      "Bu sefer devirden sonra ne olacak?",
+      "“Aynı sokağı başka birinden göreceksin.” Siluet camdaki yansımanla birlikte gülümsüyor."
+    ],
+    [
+      "Otobüse gidersem beni durdurur musun?",
+      "“Bilet seninse koltuk da senin. Ama önlüğü burada bırak.”"
+    ],
+    [
+      "Yazıcıyı durdurursam ne olur?",
+      "“O zaman birinin son fişi okuması gerekir.” Yazıcı kendiliğinden kâğıt çekmeye başlıyor."
+    ]
+  ]
+]);
+const nights=[
+  {
+    "start": 0,
+    "end": 6,
+    "title": "İlk vardiya",
+    "intro": "İlk vardiyan. Kamerayı ve fişleri karşılaştır. Gece biterken anahtarın kimde kaldığını unutma."
+  },
+  {
+    "start": 7,
+    "end": 11,
+    "title": "Aynı sokak",
+    "intro": "Ertesi gece aynı büfeye dönüyorsun. Defterin bıraktığın yerde, ama sokaktaki insanlar seni hatırlıyor. Bu gece bir yolcu fazladan bilet taşıyor."
+  },
+  {
+    "start": 12,
+    "end": 16,
+    "title": "Son sefer",
+    "intro": "Üçüncü gece. Otobüs bu sabah gerçekten gelecek. Yazıcının neden aynı vardiyayı bastığını öğrenebilir veya çıkmak için başka bir yol seçebilirsin."
+  }
+];
+const endings={
+  "dawn": {
+    "number": 1,
+    "title": "Üçüncü sabah",
+    "text": "Üçüncü sabah kepengi kaldırıyorsun. Sokak sonunda gündüz gibi görünüyor. Defterdeki son fişte adın var, fakat vardiya saati artık ilerliyor. Bu geceyi atlattın."
+  },
+  "taken": {
+    "number": 2,
+    "title": "Yeni vardiya",
+    "text": "Anahtarı verdiğin anda kendini kaldırımda buluyorsun. Büfenin içindeki kişi önlüğünü giyiyor. Camın önüne yaklaşınca kendi sesinle tek bir cümle söylüyorsun: “Her zamankinden.”"
+  },
+  "statement": {
+    "number": 3,
+    "title": "Sabah ifadesi",
+    "text": "Gün doğarken iki polis büfeye geliyor. Defterdeki yaralı müşterinin kaydını açıp sorular sormaya başlıyorlar. Bu sokaktan çıkıyorsun, ama gecenin hesabı seninle geliyor."
+  },
+  "bus": {
+    "number": 4,
+    "title": "Son sefer",
+    "text": "Önlüğü tezgâha bırakıp bileti şoföre veriyorsun. Otobüs köşeyi dönerken Büfe 07’nin ışıkları arkada kalıyor. Son durak tabelasında sonunda bildiğin bir sokak adı var. Telefonun ilk kez doğru saati gösteriyor."
+  },
+  "loop": {
+    "number": 5,
+    "title": "Son fiş",
+    "text": "Kamera kaydını ve devir formunu yazıcının yanına koyuyorsun. Doğru kabloyu çekince sokaktaki bütün saatler aynı anda ilerliyor. Yazıcıdan son bir kâğıt düşüyor. “Vardiya sona erdi.” Bu kez altında yeni bir başlangıç saati yok."
+  },
+  "alley": {
+    "number": 6,
+    "title": "Arka sokak",
+    "text": "Arka kapıdan çıkıp koşmaya başlıyorsun. Her köşenin sonunda aynı kapalı büfe duruyor. Pencerelerinden birinin arkasında, biraz önce bıraktığın önlük asılı. Telefonun 04:18’de kalmış."
+  }
+};
+let nightIndex=0,nextNightPending=false,hasBusTicket=false,endingCode=null;
+function atHandover(){return Boolean(scene[stage].gate);}
 const finalStage=scene.length-1;
 Object.assign(scene[0],{recipe:'tea',sugar:0,absent:true});
 Object.assign(scene[1],{recipe:'tea',sugar:2});
@@ -377,7 +897,7 @@ const stations = [
 const player = {x:0,z:.75,y:1.62,angle:0,pitch:0};
 const camera = {x:5.7,z:9.4,y:3.4,angle:-2.22,pitch:-.3};
 const held = new Set();
-let stage=0, playing=false, cctv=false, servedFirst=false, sugar=0, prepared='';
+let stage=0, playing=false, cctv=false, sugar=0, prepared='';
 let rainGain,rainSource,audio,soundBus,audioNoise,gunRecording,reverseShot;
 let soundWanted=true,soundJob=null,soundFailed=false;
 let doorLocked=true;
@@ -388,6 +908,12 @@ const creatureLines={
   5:'Şemsiyenin altından çıkan gölge kaldırıma yayılıyor. Kırmızı şemsiye olduğu yerde kalıyor.',
   6:'Camdaki suret parçalanıp pencerenin önünden çekiliyor. Sokağın öbür ucunda ilk otobüsün ışıkları beliriyor.'
 };
+Object.assign(creatureLines,{
+  "9": "Bekçinin üniforması boşalıp yere çöküyor. El fenerinin ışığı kendiliğinden sönüyor.",
+  "11": "Önlüklü suret servis camından geri çekiliyor. Yazıcı yine de devir formunu basıyor.",
+  "14": "Adamın şapkası kaldırımda kalıyor. Altından yükselen gölge yağmurun içinde parçalanıyor.",
+  "16": "Son suret karanlığa dağılıyor. Bu kez yazıcının başa dönecek kadar kâğıdı kalmamış."
+});
 const recipeNames={tea:'Çay',toast:'Kaşarlı tost',soda:'Gazoz',coffee:'Kahve',soup:'Mercimek çorbası'};
 const serviceNames={tea:'Çayı servis et',toast:'Tostu servis et',soda:'Gazozu servis et',coffee:'Kahveyi servis et',soup:'Çorbayı servis et'};
 const radioLines=[
@@ -399,6 +925,18 @@ const radioLines=[
   'Tek bir cümle tekrar ediyor: “Kırmızı şemsiye kayıp eşya bürosuna bırakılmıştır.”',
   'İbre kendi kendine sonuna kadar kayıyor. Kendi sesin duyuluyor: “Kapıyı aç.”'
 ];
+radioLines.push(...[
+  "“…İkinci gece teslimatları kayıttan silinmiştir. Kuryeler önceki fişlerini saklasın.”",
+  "“Üçüncü sabah 04:20 seferi için biletinizi hazırlayın.”",
+  "“Kontrol listesinde tek bir bekçi var. İkinci kişiye kapıyı açmayın.”",
+  "“Kırmızı şemsiyenin sahibi henüz bulunamadı.”",
+  "Yazıcıdan gelen ses radyoda tekrarlanıyor. “Devir 04:13.”",
+  "“Servis kaydı, kamera görüntüsü ve devir formu aynı geceye ait değildir.”",
+  "“Son sefer 04:20. Biletsiz yolcu alınmayacaktır.”",
+  "İlk gecenin siparişi radyodan okunuyor. Ses bu sefer seninki.",
+  "“Büfe 07’deki son yolcuya duyurulur. Kapılar birazdan kapanacak.”",
+  "“Bu son devir bildirimi. Sonraki kayıt bulunamadı.”"
+]);
 const viewScale = 1.35;
 const fog = [.065,.09,.082];
 
@@ -821,7 +1359,7 @@ function rackRound(slot){
 }
 function creature(number){
   const mesh=visitor(number);
-  const x=.32,z=4.83,y=[1.7,1.68,1.74][number===0?0:number===5?1:2];
+  const x=.32,z=4.83,y=[1.7,1.65,1.76,1.78,1.82,1.68,1.74][number];
   oval(mesh,x,y-.017,z-.082,.189,.265,.14,0x41354a);
   for(const side of [-1,1]){
     oval(mesh,x+side*.065,y+.045,z-.211,.038,.025,.022,0xe99857);
@@ -991,6 +1529,34 @@ const scares={
   3:{after:4,text:'Tavan lambası sönmeye yüz tutuyor. Durağın camında kendi yansımanı görüyorsun.'},
   4:{after:3,text:'Arka kapı üç kez vuruluyor. Bekçi hâlâ pencerenin önünde.'}
 };
+scares[1].kind='shadow';scares[3].kind='dim';scares[4].kind='knock';
+Object.assign(scares,{
+  "8": {
+    "after": 3,
+    "kind": "shadow",
+    "text": "Durağın arkasında biri sana el sallıyor, fakat ortada başını görebileceğin kimse yok."
+  },
+  "10": {
+    "after": 3,
+    "kind": "knock",
+    "text": "Arka kapıya üç kez vuruluyor. Kadın o an hiç kıpırdamıyor."
+  },
+  "12": {
+    "after": 4,
+    "kind": "dim",
+    "text": "Lambalar kararırken yazıcı boş kâğıda adını basıyor."
+  },
+  "14": {
+    "after": 3,
+    "kind": "shadow",
+    "text": "Kaldırımda aynı şapkayı takan iki gölge birbirinin içinden geçiyor."
+  },
+  "15": {
+    "after": 3,
+    "kind": "knock",
+    "text": "Kapıya son kez vuruluyor. Otobüsün motoru bu sesin ardından susuyor."
+  }
+});
 function scareProgress(now,dt){
   const scare=scares[stage];
   if(playing&&showVisitor&&scare&&$('panel').hidden&&scareAt===-Infinity){
@@ -1002,12 +1568,12 @@ function scareProgress(now,dt){
     }
   }
   const seconds=(now-scareAt)/1000;
-  if(stage===4&&seconds<1.5&&Math.floor(seconds*4)!==Math.floor((seconds-dt)*4)&&Math.floor(seconds*4)%2===0){
+  if(scares[stage]?.kind==='knock'&&seconds<1.5&&Math.floor(seconds*4)!==Math.floor((seconds-dt)*4)&&Math.floor(seconds*4)%2===0){
     playFoley('knock');
   }
-  if(stage===3&&seconds>.65&&seconds<2) queueJump('Bir yüz camın içine kadar sokuluyor. Göz kırptığında kaybolmuş.');
-  if(stage===finalStage&&activeSeconds>6) queueJump('Kendi yüzün bir anlığına camın öteki tarafında beliriyor.');
-  if(playing&&showVisitor&&stage===finalStage&&$('panel').hidden) activeSeconds+=dt;
+  if(scares[stage]?.kind==='dim'&&seconds>.65&&seconds<2) queueJump('Bir yüz camın içine kadar sokuluyor. Göz kırptığında kaybolmuş.');
+  if(atHandover()&&activeSeconds>6) queueJump('Kendi yüzün bir anlığına camın öteki tarafında beliriyor.');
+  if(playing&&showVisitor&&atHandover()&&$('panel').hidden) activeSeconds+=dt;
   return seconds;
 }
 let previous=0;
@@ -1108,8 +1674,8 @@ function frame(now){
   gl.uniform3f(u.eye,eye.x,eye.y,eye.z);
   gl.uniform4f(u.rotation,Math.sin(eye.angle),Math.cos(eye.angle),Math.sin(eye.pitch),Math.cos(eye.pitch));
   gl.uniform2f(u.scale,viewScale/aspect,viewScale);
-  const dim=stage===3&&!reduceMotion.matches&&scareTime<1.8?.62*Math.sin(scareTime/1.8*Math.PI):0;
-  gl.uniform1f(u.night,lightsOut?.24:1-dim);
+  const dim=scares[stage]?.kind==='dim'&&!reduceMotion.matches&&scareTime<1.8?.62*Math.sin(scareTime/1.8*Math.PI):0;
+  gl.uniform1f(u.night,lightsOut?.24:(1-dim)*[1,.94,.87][nightIndex]);
   gl.uniform1f(u.mono,cctv?.88:0);
   gl.uniform3f(u.fog,...fog);
   gl.uniform3f(u.offset,0,0,0);
@@ -1124,9 +1690,9 @@ function frame(now){
   }
   if(doorLocked) draw(bolt,attributes);
   if(prepared&&!cctv&&showVisitor) draw(props[prepared],attributes);
-  if(showVisitor && (!cctv||(!scene[stage].absent&&stage!==finalStage))){
+  if(showVisitor && (!cctv||(!scene[stage].absent&&!atHandover()))){
     const lean=creatureOffset();
-    const bob=!reduceMotion.matches&&stage!==finalStage;
+    const bob=!reduceMotion.matches&&!atHandover();
     const approach=arrivalOffset(now);
     gl.uniform2f(u.gait,now*.012,bob&&approach>.02?.13:0);
     gl.uniform3f(u.offset,bob?Math.sin(now*.0014+stage)*.022:0,bob?Math.sin(now*.002+stage)*.012:0,lean+approach);
@@ -1140,26 +1706,26 @@ function frame(now){
     draw(steam,attributes,gl.LINES);
     gl.uniform3f(u.offset,0,0,0);
   }
-  if(stage===1&&scareTime<1.5&&!reduceMotion.matches){
+  if(scares[stage]?.kind==='shadow'&&scareTime<1.5&&!reduceMotion.matches){
     gl.uniform3f(u.offset,-3.4+scareTime*4.6,0,3.1);
     gl.uniform1f(u.night,.23);
     draw(creatures[0],attributes);
     gl.uniform1f(u.night,1);
     gl.uniform3f(u.offset,0,0,0);
   }
-  if(stage===2&&showVisitor) draw(bike,attributes);
-  if(stage===5&&(showVisitor||repelled)) draw(cctv?streetUmbrella:nearUmbrella,attributes);
+  if(scene[stage].bike&&showVisitor) draw(bike,attributes);
+  if(scene[stage].umbrella&&(showVisitor||repelled)) draw(cctv?streetUmbrella:nearUmbrella,attributes);
   if(repelled&&now<impactUntil&&!reduceMotion.matches){
     const progress=1-(impactUntil-now)/320;
     gl.uniform3f(u.offset,0,progress*.28,creatureOffset()+progress*.45);
     draw(impact,attributes,gl.LINES);
     gl.uniform3f(u.offset,0,0,0);
   }
-  if(shutterDown || (cctv&&stage===finalStage)) draw(shutter,attributes);
-  if(stage<finalStage){
+  if(shutterDown || (cctv&&atHandover())) draw(shutter,attributes);
+  if(!atHandover()){
     for(let i=0;i<rainSeed.length;i++){
       const [x,y,z]=rainSeed[i];
-      const height=(y+6-(now*.008)%6)%6;
+      const height=(y+6-(now*[.008,.011,.006][nightIndex])%6)%6;
       rainVertices.set([x,height,z,.29,.37,.36,x+.05,height+.24,z+.04,.43,.51,.49],i*12);
     }
     gl.bindBuffer(gl.ARRAY_BUFFER,rain.object);
@@ -1191,7 +1757,7 @@ function panel(title, text, choices=[]){
   $('actions').firstElementChild.focus();
 }
 function closePanel(resumeLook=true){
-  if(cctv&&[0,5].includes(stage)&&showVisitor) queueJump('Kamerayı kapatınca camın önünde bir yüz belirip kayboluyor.');
+  if(cctv&&(scene[stage].absent||atHandover())&&showVisitor) queueJump('Kamerayı kapatınca camın önünde bir yüz belirip kayboluyor.');
   $('panel').hidden=true;
   cctv=false;
   $('cctv').hidden=true;
@@ -1203,8 +1769,8 @@ function orderReady(){
   return prepared===order.recipe && (prepared!=='tea'||sugar===order.sugar);
 }
 function updateTask(){
-  if(stage===finalStage){
-    setText($('task'),'Servis penceresine git. Anahtarı ver veya kepengi indir.');
+  if(atHandover()){
+    setText($('task'),stage===finalStage?'Son kararını servis penceresinde ver. Biletin ve topladığın kanıtlar farklı çıkışlar açabilir.':'Servis penceresine git. Anahtarı ver veya kepengi indir.');
     return;
   }
   const order=scene[stage];
@@ -1295,7 +1861,7 @@ function journal(){
   for(let i=0;i<=stage;i++){
     const row=document.createElement('li');
     const entry=notebook[i];
-    const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.scare,entry.jump,...(entry.questions||[]),entry.decision].filter(Boolean);
+    const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.scare,entry.jump,entry.reward,...(entry.questions||[]),entry.decision].filter(Boolean);
     setText(row,scene[i].time+' · '+scene[i].name+' — '+(details.join(' ')||'Henüz kayıt yok.'));
     list.append(row);
   }
@@ -1306,19 +1872,19 @@ function interact(station=nearest){
   const info=scene[stage];
   if(station.id==='monitor'){
     cctv=true;
-    setText($('cctv'),'● KAMERA 01 / '+(stage===finalStage?'04:08':info.time));
+    setText($('cctv'),'● KAMERA 01 / '+(atHandover()?info.cameraTime:info.time));
     $('cctv').hidden=false;
     notebook[stage].camera=info.camera;
     setText($('note'),info.camera);
-    if(info.absent||stage===finalStage) exposed=true;
+    if(info.absent||atHandover()) exposed=true;
     panel('Kamera 01',info.camera);
   }else if(station.id==='receipt'){
     notebook[stage].receipt=info.receipt;
     setText($('note'),info.receipt);
     playFoley('paper');
-    panel(stage===finalStage?'Vardiya devir formu':'Sipariş fişi',info.receipt);
+    panel(atHandover()?'Vardiya devir formu':'Sipariş fişi',info.receipt);
   }else if(station.id==='tea'){
-    if(stage===finalStage) panel('Hazırlık tezgâhı','Ocak sönmüş. Sokaktan artık yağmur sesi gelmiyor.');
+    if(atHandover()) panel('Hazırlık tezgâhı','Ocak sönmüş. Sokaktan artık yağmur sesi gelmiyor.');
     else prepPanel();
   }else if(station.id==='radio'){
     notebook[stage].radio=radioLines[stage];
@@ -1337,12 +1903,12 @@ function interact(station=nearest){
 }
 function doorPanel(){
   const text=doorLocked
-    ? 'Sürgü kapalı. Kapının diğer tarafından '+(stage===finalStage?'üç hafif tık geliyor.':'yağmur sesi geliyor.')
-    : stage===finalStage?'Sürgü açık. Camın önündeki suret pencereye sokuluyor.':'Sürgü açık. Kapı, rüzgârla kasasına vuruyor.';
+    ? 'Sürgü kapalı. Kapının diğer tarafından '+(atHandover()?'üç hafif tık geliyor.':'yağmur sesi geliyor.')
+    : atHandover()?'Sürgü açık. Camın önündeki suret pencereye sokuluyor.':'Sürgü açık. Kapı, rüzgârla kasasına vuruyor.';
   panel('Arka kapı',text,[
     action(doorLocked?'Sürgüyü aç':'Kapıyı kilitle',()=>{
       doorLocked=!doorLocked;
-      if(stage===finalStage&&!doorLocked){exposed=true;queueJump('Sürgü açılır açılmaz karanlıktan bir yüz üstüne geliyor.');}
+      if(atHandover()&&!doorLocked){exposed=true;queueJump('Sürgü açılır açılmaz karanlıktan bir yüz üstüne geliyor.');}
       playFoley('latch');
       notebook[stage].door=doorLocked?'Arka kapı kilitlendi.':'Arka kapının sürgüsü açıldı.';
       doorPanel();
@@ -1360,7 +1926,7 @@ function prepStatus(){
 }
 function servicePanel(){
   const info=scene[stage];
-  const final=stage===finalStage;
+  const final=atHandover();
   const options=[];
   if(final||orderReady()){
     options.push(action(final?'Anahtarı ver':serviceNames[info.recipe],()=>decide(true),true));
@@ -1374,6 +1940,11 @@ function servicePanel(){
     }));
   }
   options.push(action(final?'Kepengi indir':'Servis kapağını kapat',()=>decide(false)));
+  if(stage===finalStage){
+    if(hasBusTicket) options.push(action('Son otobüse bin',()=>finishStory('bus'),true));
+    if(canBreakLoop()) options.push(action('Yazıcının fişini çek',()=>finishStory('loop'),true));
+    if(!doorLocked) options.push(action('Arka sokaktan kaç',()=>finishStory('alley')));
+  }
   interviews[stage].forEach(([question],index)=>{
     const asked=Boolean(notebook[stage].questions?.[index]);
     const button=action((asked?'✓ ':'')+question,()=>askQuestion(index));
@@ -1414,7 +1985,7 @@ function setWeaponHeld(held){
     : 'Tüfeği arka rafa geri koydun. Kalan fişek: '+rounds+'.');
 }
 function creatureOffset(){
-  return stage===finalStage&&!doorLocked?-.34:0;
+  return atHandover()&&!doorLocked?-.34:0;
 }
 function targetInSight(){
   const dx=.32-player.x,dz=4.83+creatureOffset()+arrivalOffset(performance.now())-player.z;
@@ -1475,14 +2046,14 @@ function updateEncounterTransition(now){
   }
   const remaining=Math.max(0,Math.ceil((encounterTransition.at-now)/1000));
   if(remaining){
-    const text=(stage===finalStage?'Vardiya sonu · ':'Sonraki müşteri · ')+remaining+' sn';
+    const text=(atHandover()?'Vardiya sonu · ':'Sonraki müşteri · ')+remaining+' sn';
     if(readText($('advance'))!==text) setText($('advance'),text);
     return;
   }
   const finished=encounterTransition;
   encounterTransition=null;
   $('advance').hidden=true;
-  if(stage===finalStage) end(finished.served,finished.defended);
+  if(atHandover()) end(finished.served,finished.defended);
   else {stage+=1;next();}
 }
 function next(){
@@ -1500,86 +2071,136 @@ function next(){
   scareAt=-Infinity;
   repelled=false;
   impactUntil=0;
-  exposed=stage===finalStage&&!doorLocked;
-  if(stage!==finalStage) playFoley('step');
+  exposed=atHandover()&&!doorLocked;
+  if(!atHandover()) playFoley('step');
   setText($('clock'),scene[stage].time);
-  setText($('chapter'),'KARŞILAŞMA '+(stage+1)+' / '+scene.length);
+  setText($('chapter'),'GECE '+(nightIndex+1)+' / '+nights.length+' · KARŞILAŞMA '+(stage-nights[nightIndex].start+1)+' / '+(nights[nightIndex].end-nights[nightIndex].start+1));
   setText($('note'),scene[stage].line);
   updateTask();
-  if(rainGain) rainGain.gain.setTargetAtTime(stage===finalStage?0:.095,audio.currentTime,.45);
+  if(rainGain) rainGain.gain.setTargetAtTime(atHandover()?0:.095,audio.currentTime,.45);
 }
 function decide(served,defended=false){
-  if(!showVisitor || (served&&stage!==finalStage&&!orderReady())) return;
+  if(!showVisitor || (served&&!atHandover()&&!orderReady())) return;
   showVisitor=false;
   departedAt=performance.now();
   pendingJump=null;
   jumpAt=-Infinity;
   repelled=defended;
+  if(served&&scene[stage].reward==='ticket'){
+    hasBusTicket=true;
+    notebook[stage].reward='Bilet alındı.';
+    $('ticket').hidden=false;
+    setText($('ticket'),'Otobüs bileti');
+  }
+  if(stage===11&&!served) notebook[stage].receipt=scene[stage].receipt;
   const wounded=defended&&!creatureLines[stage];
   if(wounded) customerHit=true;
   notebook[stage].decision=wounded?'Müşteri vuruldu.':defended?'Canavar geri püskürtüldü.':served?'Sipariş verildi.':'Servis kapatıldı.';
-  if(stage===0) servedFirst=served;
-  if(stage===finalStage){
+  if(atHandover()){
     shutterDown=!served&&!defended;
     lightsOut=served;
   }
   setText($('note'),wounded?'Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny);
   closePanel();
   encounterTransition={stage,served,defended,at:performance.now()+3000};
-  setText($('task'),stage===finalStage?'Vardiya tamamlanıyor.':'Müşteri ayrılıyor. Sıradaki müşteri bekleniyor.');
+  setText($('task'),atHandover()?'Vardiya tamamlanıyor.':'Müşteri ayrılıyor. Sıradaki müşteri bekleniyor.');
   $('advance').hidden=false;
   updateEncounterTransition(performance.now());
 }
-function end(served,defended){
+function canBreakLoop(){
+  return Boolean(notebook[0].camera&&notebook[11].receipt&&notebook[12].questions?.[2]);
+}
+function showNightCompletion(){
   encounterTransition=null;
   $('advance').hidden=true;
   closePanel(false);
   releaseLook();
   playing=false;
+  showVisitor=false;
+  nextNightPending=true;
+  shutterDown=true;
+  setText($('clock'),'06:00');
+  setText($('chapter'),'GECE '+(nightIndex+1)+' TAMAMLANDI');
+  setText($('task'),'Gece tamamlandı. Defterindeki bilgiler sonraki geceye taşınacak.');
+  setText($('coverTag'),'GECE '+(nightIndex+1)+' / '+nights.length+' TAMAMLANDI');
+  setText($('coverTitle'),nights[nightIndex].title);
+  setText($('coverText'),nights[nightIndex+1].intro);
+  setText($('start'),'Sonraki gece');
   $('controls').hidden=true;
   $('journal').hidden=true;
-  setText($('clock'),served?'04:08':'06:00');
-  setText($('chapter'),served?'SON 2 / 3':customerHit?'SON 3 / 3':'SON 1 / 3');
-  setText($('task'),'Vardiya bitti.');
-  setText($('coverTag'),'VARDİYA SONU');
-  setText($('coverTitle'),served?'Yeni vardiya':'Sabah oldu');
-  setText($('coverText'),served?'Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.':servedFirst?'Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.':'İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.');
-  if(defended) setText($('coverText'),'Sabah servisi başladığında kepenk hâlâ açık. Pencerenin dibinde kendi el yazınla tek bir fiş buluyorsun: Vardiya tamamlandı.');
-  if(!served&&!defended&&!doorLocked) setText($('coverText'),readText($('coverText'))+' Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.');
-  if(customerHit&&!served){
-    setText($('coverTitle'),'Sabah ifadesi');
-    setText($('coverText'),'Gün doğarken iki polis servis penceresine geliyor. Biri vardiya defterini açıp yaralanan müşterinin geldiği saati soruyor.');
-  }
   $('cover').hidden=false;
   syncLookButton();
-  setText($('start'),'Yeniden oyna');
   $('start').focus();
 }
-function start(){
+function finishStory(code){
+  if(customerHit&&code!=='taken') code='statement';
+  const ending=endings[code];
+  endingCode=code;
+  nextNightPending=false;
+  encounterTransition=null;
+  pendingJump=null;
+  jumpAt=-Infinity;
+  $('advance').hidden=true;
+  closePanel(false);
+  releaseLook();
+  playing=false;
+  showVisitor=false;
+  $('controls').hidden=true;
+  $('journal').hidden=true;
+  setText($('clock'),code==='bus'?'04:20':code==='alley'?'04:18':code==='taken'?(scene[stage].cameraTime||scene[stage].time):'06:00');
+  setText($('chapter'),'SON '+ending.number+' / 6');
+  setText($('task'),'Vardiya bitti.');
+  setText($('coverTag'),'GECE '+(nightIndex+1)+' · VARDİYA SONU');
+  setText($('coverTitle'),ending.title);
+  setText($('coverText'),ending.text);
+  setText($('start'),'Yeniden oyna');
+  $('cover').hidden=false;
+  syncLookButton();
+  $('start').focus();
+}
+function end(served,defended){
+  if(served){finishStory('taken');return;}
+  if(customerHit){finishStory('statement');return;}
+  if(nightIndex<nights.length-1){showNightCompletion();return;}
+  finishStory('dawn');
+}
+function beginNight(index){
   mousePaused=false;
   enableSound();
+  nightIndex=index;
+  nextNightPending=false;
+  stage=nights[index].start;
   Object.assign(player,{x:0,z:.75,y:1.62,angle:0,pitch:0});
-  stage=0;
-  jumpSeen.clear();
   pendingJump=null;
   jumpAt=-Infinity;
   $('jumpshade').hidden=true;
-  for(let i=0;i<scene.length;i++) notebook[i]={};
   playing=true;
-  servedFirst=shutterDown=lightsOut=customerHit=false;
+  shutterDown=false;
+  lightsOut=false;
   doorLocked=true;
   armed=false;
   rounds=roundCapacity;
   firedAt=-Infinity;
   updateAmmo();
+  $('ticket').hidden=!hasBusTicket;
+  setText($('ticket'),'Otobüs bileti');
   $('cover').hidden=true;
   $('controls').hidden=false;
   $('journal').hidden=false;
   next();
   requestLook();
 }
+function start(){
+  customerHit=false;
+  hasBusTicket=false;
+  endingCode=null;
+  jumpSeen.clear();
+  for(let i=0;i<scene.length;i++) notebook[i]={};
+  beginNight(0);
+}
 
-$('start').onclick=start;
+
+$('start').onclick=()=>{if(nextNightPending) beginNight(nightIndex+1);else start();};
 $('journal').onclick=journal;
 $('use').onclick=()=>interact();
 $('prompt').onclick=()=>interact();
@@ -1768,7 +2389,7 @@ async function enableSound(){
     filter.type='lowpass';
     filter.frequency.value=1700;
     rainGain=audio.createGain();
-    rainGain.gain.value=stage===finalStage?0:.095;
+    rainGain.gain.value=atHandover()?0:.095;
     rainSource=audio.createBufferSource();
     rainSource.buffer=rain;
     rainSource.loop=true;
@@ -1801,7 +2422,7 @@ try{
   if(!gl) throw Error('WebGL kullanılamıyor.');
   renderer=setup();
   set=buffer(geometry());
-  visitors=scene.map((_,number)=>buffer(visitor(number)));
+  visitors=scene.map(entry=>buffer(visitor(entry.look)));
   shutter=buffer(shutters());
   const sparks=[];
   for(let i=0;i<20;i++){
@@ -1818,7 +2439,7 @@ try{
   muzzle=buffer(view.flash);
   jumpFace=buffer(scareFace());
   steam=buffer(steamMesh());
-  creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(creature(Number(key)))]));
+  creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(creature(scene[Number(key)].look))]));
   nearUmbrella=buffer(umbrella(.68,4.9));
   streetUmbrella=buffer(umbrella(-1.95,5.1));
   bike=buffer(motorcycle());
