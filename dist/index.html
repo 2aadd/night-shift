@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
-<header><div class="tag">BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM</div><button id="sound" aria-pressed="false">Ses kapalı</button></header>
+<header><div class="tag">BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM</div><label class="language">Language / Dil <select id="language" aria-label="Language / Dil"><option value="en">English</option><option value="tr">Türkçe</option></select></label><button id="sound" aria-pressed="false">Ses kapalı</button></header>
 <h1>Gece Vardiyası</h1>
 <section class="frame" aria-label="Oyun">
 <div class="bar"><span id="clock">00:00</span><span id="chapter">VARDİYA BEKLİYOR</span><button id="journal" hidden>Vardiya defteri</button></div>
@@ -26,14 +26,319 @@
 <div><div class="tag">VARDİYA DEFTERİ</div><p id="note" aria-live="polite">“Kamera sokağı görür. Fiş saati söyler.”</p></div>
 </div>
 <div class="controls" id="controls" hidden>
-<button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button><button id="fire" class="fire" hidden>F · Ateş et</button><span id="ammo" class="ammo" aria-live="polite" hidden></span>
-<span>WASD ile yürü · Sürükle veya oklarla dön · E ile etkileş · Sol tıkla ateş et</span>
+<button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button><button id="look">Serbest bakış</button><button id="fire" class="fire" hidden>F · Ateş et</button><span id="ammo" class="ammo" aria-live="polite" hidden></span>
+<span>WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak</span>
 </div></section>
 <footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>7 KARŞILAŞMA · 3 SON</span></footer>
 <details class="credits"><summary>Ses kaynakları</summary><p>Av tüfeği kaydı · Vincent Sevedge, “Gunshot Sounds”. Ses seviyesi oyun için ayarlandı. <a href="https://opengameart.org/content/gunshot-sounds" target="_blank" rel="noopener">Kaynak</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p></details>
 </main>
 <script>
 'use strict';
+const english={
+  "Fötr şapkalı adam": "The man in the fedora",
+  "“Her zamankinden.” Şapkasında tek damla yağmur yok.": "“The usual.” There is not a single drop of rain on his hat.",
+  "Şekersiz çay": "Tea, no sugar",
+  "Kamera aynı dakikayı gösteriyor. Pencerenin önü boş.": "The camera shows the same time. Nobody is standing at the window.",
+  "Adam çayı alıyor. Camda bir anlığına avucunun izi kalıyor.": "The man takes the tea. For a moment, his palm leaves a mark on the glass.",
+  "Servis kapağını kapatınca adam, geri çekilmeden kayboluyor.": "When you close the serving hatch, he disappears without stepping back.",
+  "BÜFE 07 · SİPARİŞ FİŞİ\nNo. 001 · 00:17\n1 × Çay — şekersiz\nDurum: Teslim edildi\nNot: Fiş, sen servis yapmadan basılmış.": "KIOSK 07 · ORDER TICKET\nNo. 001 · 00:17\n1 × Tea — no sugar\nStatus: Served\nNote: Printed before you served anything.",
+  "Yağmurluklu kadın": "The woman in the raincoat",
+  "“Bir çay alabilir miyim? Son otobüsü kaçırdım. İki şeker olsun.”": "“Could I have a tea? I missed the last bus. Two sugars, please.”",
+  "İki şekerli çay": "Tea, two sugars",
+  "Kadın kamera görüntüsünde de var. Durağa kadar ıslak ayak izleri uzanıyor.": "The woman also appears on the camera. Wet footprints lead back to the bus stop.",
+  "Bardağı iki eliyle kavrıyor. “Yağmur kesilince kepengi indir,” diyor.": "She holds the glass in both hands. “When the rain stops, lower the shutter,” she says.",
+  "Kadın paralarını toplayıp durağa dönüyor. Her adımında bir su birikintisi sıçrıyor.": "She picks up her coins and returns to the bus stop, splashing through the puddles.",
+  "BÜFE 07 · SİPARİŞ FİŞİ\nNo. 002 · 01:42\n1 × Çay — 2 şeker\nDurum: Hazırlanacak\nNot: Müşteri durakta bekleyecek.": "KIOSK 07 · ORDER TICKET\nNo. 002 · 01:42\n1 × Tea — 2 sugars\nStatus: To prepare\nNote: Customer will wait at the bus stop.",
+  "Motorlu kurye": "The motorcycle courier",
+  "“Bir gazoz. Şişeyi açma. Telefonum beni yarım saat sonrasına götürüyor.”": "“One soda. Leave the bottle sealed. My phone keeps taking me half an hour into the future.”",
+  "Kapalı gazoz": "Sealed soda",
+  "Kaskı ve motoru ekranda. Farı, kontak kapalıyken iki kez yanıp sönüyor.": "His helmet and motorcycle are on screen. The headlight blinks twice with the ignition off.",
+  "Şişeyi çantasına sıkıştırıyor. Motor çalışırken telefonundan büfenin yazıcı sesi geliyor.": "He puts the bottle in his bag. As the engine starts, you hear your receipt printer through his phone.",
+  "Kaskının vizörünü indirip gidiyor. Telefonu birkaç saniye daha kaldırımda çalıyor.": "He lowers his visor and leaves. His phone keeps ringing on the pavement for a few seconds.",
+  "BÜFE 07 · SİPARİŞ FİŞİ\nNo. 003 · 02:11\n1 × Gazoz — kapalı şişe\nDurum: Hazırlanacak\nNot: Şişenin kapağı açılmayacak.": "KIOSK 07 · ORDER TICKET\nNo. 003 · 02:11\n1 × Soda — sealed bottle\nStatus: To prepare\nNote: Do not open the bottle.",
+  "Gri paltolu yolcu": "The passenger in the grey coat",
+  "“Bir mercimek çorbası. Sıcak olsun. Durağın tabelasında hâlâ dün yazıyor.”": "“Lentil soup. Make it hot. The bus stop display still says yesterday.”",
+  "Mercimek çorbası": "Lentil soup",
+  "Yolcu canlı görüntüde var. Durağın camında ise onun yerine boş bir koltuk yansıyor.": "The passenger is on the live feed. In the bus shelter glass, an empty seat appears in his place.",
+  "Çorbanın buharı cama vuruyor. Buğuda durağın boş koltuğu beliriyor.": "Steam from the soup fogs the window. An empty seat at the bus stop takes shape in the mist.",
+  "Durağa dönüyor. Bir otobüs yaklaşır gibi oluyor, sonra ışıkları sönüyor.": "He returns to the stop. A bus seems to approach, then its lights go out.",
+  "BÜFE 07 · SİPARİŞ FİŞİ\nNo. 004 · 02:38\n1 × Mercimek çorbası — sıcak\nDurum: Hazırlanacak\nNot: Kâse ve kaşıkla servis.": "KIOSK 07 · ORDER TICKET\nNo. 004 · 02:38\n1 × Lentil soup — hot\nStatus: To prepare\nNote: Serve with a bowl and spoon.",
+  "Gece bekçisi": "The night watchman",
+  "“Bir sade kahve. Arka kapıyı bugün kaç kere kilitledin?”": "“One black coffee. How many times have you locked the back door tonight?”",
+  "Sade kahve": "Black coffee",
+  "Bekçi ekranda görünüyor. El feneri arka kapıya çevrili ve kapı kolu kendi kendine oynuyor.": "The watchman appears on screen. His torch points at the back door, whose handle is moving by itself.",
+  "Kahveyi içmeden önce mandalı kontrol ediyor. “Biri mesaiyi devraldığını söylerse saati karşılaştır,” diyor.": "He checks the latch before drinking. “If someone says they are taking over, compare the clocks,” he says.",
+  "El fenerini kısa bir an yüzüne tutuyor. Ardından arka sokağa gidiyor.": "He briefly shines his torch in your face, then heads down the back street.",
+  "BÜFE 07 · SİPARİŞ FİŞİ\nNo. 005 · 03:12\n1 × Kahve — sade\nDurum: Hazırlanacak\nNot: Şeker eklenmeyecek.": "KIOSK 07 · ORDER TICKET\nNo. 005 · 03:12\n1 × Coffee — black\nStatus: To prepare\nNote: No sugar.",
+  "Kırmızı şemsiyeli kadın": "The woman with the red umbrella",
+  "“Bir kaşarlı tost. Sonra şemsiyemi geri almaya geleceğim.” Şemsiyesi açık ama altında yağmur yağıyor.": "“One cheese toastie. I will come back for my umbrella.” It is open, yet rain falls underneath it.",
+  "Kaşarlı tost": "Cheese toastie",
+  "Kaldırım boş. Şemsiye, kadının durduğu yerden iki metre ötede kendi başına bekliyor.": "The pavement is empty. Her umbrella stands alone, two metres from where she is standing.",
+  "Tostun içinden kuru bir şemsiye etiketi çıkıyor. Kadın şemsiyesini bırakıp karanlıkta kayboluyor.": "A dry umbrella tag comes out of the toastie. She leaves the umbrella and vanishes into the dark.",
+  "Kadın başını kaldırıyor. Camda yüzü yerine büfenin içi yansıyor.": "She raises her head. The glass reflects the inside of the kiosk where her face should be.",
+  "BÜFE 07 · SİPARİŞ FİŞİ\nNo. 006 · 03:46\n1 × Kaşarlı tost\nDurum: Hazırlanacak\nNot: Yazıcı aynı siparişten ikinci bir fiş daha çıkarmış.": "KIOSK 07 · ORDER TICKET\nNo. 006 · 03:46\n1 × Cheese toastie\nStatus: To prepare\nNote: The printer has produced a second copy of this order.",
+  "Mesai devri": "Shift handover",
+  "Camdaki siluet senin önlüğünü takıyor. “Kapıyı aç. Ben geldim, sen çıkabilirsin.”": "The figure at the window is wearing your apron. “Open up. I am here. You can go.”",
+  "Arka kapının anahtarı": "The back door key",
+  "Sokak boş. Kamera saati 04:08. Görüntüde kepenk çoktan inmiş.": "The street is empty. The camera clock reads 04:08. Its image shows the shutter already closed.",
+  "Anahtarı uzattığın anda ışık sönüyor. Arkandaki kilit dönüyor.": "The moment you hand over the key, the lights go out. The lock turns behind you.",
+  "Anahtarı cebine sıkıştırıp kepengi indiriyorsun. Diğer taraftan kendi sesin geliyor.": "You pocket the key and lower the shutter. Your own voice calls from the other side.",
+  "BÜFE 07 · VARDİYA DEVİR FORMU\nSaat: 04:08\nAnahtar teslimi: Bekliyor\nDevreden: __________\nDevralan: __________\nNot: Formdaki saat, duvar saatinden bir dakika ileride.": "KIOSK 07 · SHIFT HANDOVER FORM\nTime: 04:08\nKey handover: Pending\nOutgoing staff: __________\nIncoming staff: __________\nNote: The form is one minute ahead of the wall clock.",
+  "Daha önce burada alışveriş yaptın mı?": "Have you shopped here before?",
+  "“Her gece. Sen dün de buradaydın.” Bu senin ilk vardiyan.": "“Every night. You were here yesterday, too.” This is your first shift.",
+  "Siparişini tekrar söyler misin?": "Could you repeat your order?",
+  "“Şekersiz çay. Fişi çoktan yazdın.” Henüz yazıcıya dokunmadın.": "“Tea, no sugar. You already printed the receipt.” You have not touched the printer.",
+  "Kameraya bir bakar mısın?": "Could you look at the camera?",
+  "Adam kameraya dönmeden “Beni zaten görüyorsun,” diyor.": "Without turning, he says, “You can already see me.”",
+  "Nereden geliyorsun?": "Where have you come from?",
+  "“Karşıdaki hastaneden. Annemin yanındaydım, son otobüsü kaçırdım.”": "“The hospital across the road. I was visiting my mother and missed the last bus.”",
+  "“Bir çay, iki şeker. Biraz ısınsam yeter.”": "“A tea with two sugars. I just need to warm up.”",
+  "Kadın kameraya bakıp el sallıyor. “Böyle mi?”": "She looks up and waves. “Like this?”",
+  "Teslimat adresin neresi?": "What is your delivery address?",
+  "“Depo sokağı, 12 numara. Telefonun saati yanlış ama adresi biliyorum.”": "“12 Warehouse Street. My phone has the wrong time, but I know the address.”",
+  "Şişeyi açmamı ister misin?": "Would you like me to open the bottle?",
+  "“Kapalı kalsın. Yola çıkınca içerim.”": "“Leave it sealed. I will drink it on the road.”",
+  "Kaskını kaldırıp kameraya dönüyor. “Siparişi şirket hesabına mı yazacaksın?”": "He lifts his helmet and turns towards it. “Are you charging this to the company?”",
+  "Hangi otobüsü bekliyorsun?": "Which bus are you waiting for?",
+  "“İlk 34’ü. Şoförle konuştum, gün doğarken geçecek.”": "“The first number 34. The driver said he would pass at dawn.”",
+  "Siparişin nasıl olsun?": "How would you like your order?",
+  "“Mercimek çorbası sıcak olsun. Ekmek istemiyorum.”": "“Hot lentil soup. No bread, thanks.”",
+  "Bileti ne zaman aldın?": "When did you buy the ticket?",
+  "“Dün akşam terminalden. Dönüş için de geçerli olduğunu söylediler.”": "“Yesterday evening at the terminal. They said it was valid for the return trip.”",
+  "Hangi bölgeden sorumlusun?": "Which area do you patrol?",
+  "“Bu sokak ve arka depo. Kontrol listesi kulübede asılı.”": "“This street and the warehouse behind it. The checklist is up in the guard hut.”",
+  "“Sade kahve. Şeker ekleme.”": "“Black coffee. No sugar.”",
+  "Arka kapıda birini gördün mü?": "Did you see anyone at the back door?",
+  "“Bir gölge gördüm. El fenerini tutunca duvarda kimse yoktu.”": "“I saw a shadow. When I shone my torch on the wall, nobody was there.”",
+  "Şemsiyenin altında neden ıslaksın?": "Why are you wet under your umbrella?",
+  "“Yağmur yukarıdan gelmiyor.” Şemsiyenin içinden kaldırıma su damlıyor.": "“The rain is not coming from above.” Water drips from inside the umbrella.",
+  "Şemsiyeni ne zaman geri alacaksın?": "When will you collect your umbrella?",
+  "“Senin vardiyan bittikten sonra. Zaten daha önce de burada bıraktım.”": "“After your shift ends. I have left it here before.”",
+  "Kadın sana bakmayı sürdürüyor. “Kameranın baktığı yerde değilim.”": "She keeps watching you. “I am not where the camera is looking.”",
+  "Adın ne? Seni kim gönderdi?": "What is your name? Who sent you?",
+  "Siluet senin adını söylüyor. “Burada çalışan başka biri yok.”": "The figure says your name. “Nobody else works here.”",
+  "Devir saatin kaç?": "What time is your handover?",
+  "“04:08.” Duvar saati hâlâ 04:07 gösteriyor.": "“04:08.” The wall clock still reads 04:07.",
+  "“Önce kapıyı aç. Görüntü sonra düzelir.”": "“Open the door first. The picture will fix itself.”",
+  "Gece Vardiyası 3B": "Night Shift 3D",
+  "Gece Vardiyası": "Night Shift",
+  "BÜFE 07 / BİRİNCİ ŞAHIS GERİLİM": "KIOSK 07 / FIRST-PERSON HORROR",
+  "VARDİYA BEKLİYOR": "AWAITING SHIFT",
+  "00:00 / BÜFE 07": "00:00 / KIOSK 07",
+  "İlk gecen.": "Your first night.",
+  "Dışarıdaki ilk müşteri ne içtiğini senden iyi biliyor. Gece tuhaflaşırsa arka raftaki tüfeği alabilirsin.": "The first customer knows your usual order better than you do. If the night takes a turn, there is a shotgun on the back shelf.",
+  "Vardiyayı aç": "Start shift",
+  "GÖREV": "OBJECTIVE",
+  "VARDİYA DEFTERİ": "SHIFT LOG",
+  "Vardiya başlamayı bekliyor.": "Waiting for the shift to start.",
+  "“Kamera sokağı görür. Fiş saati söyler.”": "“The camera sees the street. The receipt tells the time.”",
+  "GECE VARDİYASI / 3B SÜRÜM": "NIGHT SHIFT / 3D EDITION",
+  "7 KARŞILAŞMA · 3 SON": "7 ENCOUNTERS · 3 ENDINGS",
+  "WASD ile yürü · Sürükle veya oklarla dön · E ile etkileş · Sol tıkla ateş et": "WASD to walk · Move mouse to look · E to interact · Left click to fire · Esc releases mouse",
+  "E · Etkileş": "E · Interact",
+  "F · Ateş et": "F · Fire",
+  "Sola yürü": "Walk left",
+  "İleri yürü": "Walk forward",
+  "Geri yürü": "Walk backward",
+  "Sağa yürü": "Walk right",
+  "Sola dön": "Turn left",
+  "Sağa dön": "Turn right",
+  "Oyun": "Game",
+  "Büfenin üç boyutlu görünümü": "Three-dimensional view of the kiosk",
+  "Ses kaynakları": "Audio credits",
+  "Av tüfeği kaydı · Vincent Sevedge, “Gunshot Sounds”. Ses seviyesi oyun için ayarlandı.": "Shotgun recording · Vincent Sevedge, “Gunshot Sounds”. Volume adjusted for this game.",
+  "Kaynak": "Source",
+  "Ses açık": "Sound on",
+  "Ses kapalı": "Sound off",
+  "Ses kullanılamıyor": "Sound unavailable",
+  "Kamera": "Camera",
+  "Fiş": "Receipt",
+  "Servis penceresi": "Serving window",
+  "Hazırlık tezgâhı": "Prep counter",
+  "Radyo": "Radio",
+  "Arka kapı": "Back door",
+  "Tüfek rafı": "Gun rack",
+  "Adamın yüzü bir anlığına şapkanın altına doğru uzuyor. Bir adım geri atıp yağmurun içinde dağılıyor.": "For a moment, his face stretches up beneath his hat. He steps back and dissolves into the rain.",
+  "Şemsiyenin altından çıkan gölge kaldırıma yayılıyor. Kırmızı şemsiye olduğu yerde kalıyor.": "A shadow spills from under the umbrella across the pavement. The red umbrella stays where it is.",
+  "Camdaki suret parçalanıp pencerenin önünden çekiliyor. Sokağın öbür ucunda ilk otobüsün ışıkları beliriyor.": "The figure breaks apart and pulls away from the window. At the end of the street, the first bus lights appear.",
+  "Çay": "Tea",
+  "Gazoz": "Soda",
+  "Kahve": "Coffee",
+  "Çayı servis et": "Serve tea",
+  "Tostu servis et": "Serve toastie",
+  "Gazozu servis et": "Serve soda",
+  "Kahveyi servis et": "Serve coffee",
+  "Çorbayı servis et": "Serve soup",
+  "“…Bu gece son sefer 01:40’ta. Durağın yanında bekleyen yolculara duyurulur.”": "“…The last service tonight leaves at 01:40. Passengers waiting by the stop, please take note.”",
+  "Parazit arasından bir anlığına müşterinin sesini duyuyorsun: “Yağmur kesilince…”": "Through the static, you briefly hear the customer's voice. “When the rain stops…”",
+  "“…02:41 teslimatı Büfe 07’ye. Alıcı, kendi imzasını tanıyacak.”": "“…02:41 delivery to Kiosk 07. The recipient will recognise their own signature.”",
+  "Radyodan boş bir otobüsün kapı sesi geliyor. Sonra bir anons: “Güzergâh burada biter.”": "An empty bus door opens on the radio. Then an announcement. “This is the end of the route.”",
+  "“…Büfe 07, arka kapıyı kilitle. Bir sonraki kontrol saatini kimseye söyleme.”": "“…Kiosk 07, lock the back door. Do not tell anyone the time of the next inspection.”",
+  "Tek bir cümle tekrar ediyor: “Kırmızı şemsiye kayıp eşya bürosuna bırakılmıştır.”": "One sentence repeats. “The red umbrella has been handed in to lost property.”",
+  "İbre kendi kendine sonuna kadar kayıyor. Kendi sesin duyuluyor: “Kapıyı aç.”": "The dial slides to the end by itself. Your own voice says, “Open the door.”",
+  "Sokağın karşısında bir gölge hızla geçiyor.": "A shadow hurries past on the other side of the street.",
+  "Tavan lambası sönmeye yüz tutuyor. Durağın camında kendi yansımanı görüyorsun.": "The ceiling light starts to fade. You see your own reflection in the bus shelter.",
+  "Arka kapı üç kez vuruluyor. Bekçi hâlâ pencerenin önünde.": "Three knocks at the back door. The watchman is still standing at the window.",
+  "Bir yüz camın içine kadar sokuluyor. Göz kırptığında kaybolmuş.": "A face presses right through the glass. You blink, and it is gone.",
+  "Kendi yüzün bir anlığına camın öteki tarafında beliriyor.": "Your own face appears on the other side of the glass for an instant.",
+  "Kamerayı kapatınca camın önünde bir yüz belirip kayboluyor.": "As you leave the camera, a face appears at the window and vanishes.",
+  "Servis penceresine git. Anahtarı ver veya kepengi indir.": "Go to the serving window. Hand over the key or lower the shutter.",
+  "Sipariş hazır. Servis penceresinden ver.": "Order ready. Hand it over at the serving window.",
+  "Servis penceresine yaklaş ve E’ye bas. Sipariş: ": "Approach the serving window and press E. Order: ",
+  "Sipariş · ": "Order · ",
+  "Hazır · ": "Prepared · ",
+  " şeker)": " sugar)",
+  "Tezgâh boş.": "The counter is empty.",
+  "Çayı demle": "Brew tea",
+  "Tostu pişir": "Grill toastie",
+  "Gazozu çıkar": "Take a soda",
+  "Kahveyi hazırla": "Make coffee",
+  "Çorbayı ısıt": "Heat soup",
+  "Şeker ekle": "Add sugar",
+  "Şekeri sıfırla": "Remove sugar",
+  "Servis penceresine dön": "Return to the window",
+  "Vardiya defteri": "Shift log",
+  "Kamera ve fiş bulguları bu gece boyunca burada birikir.": "Camera findings, receipts and conversations from this shift are collected here.",
+  "Henüz kayıt yok.": "No entries yet.",
+  "● KAMERA 01 / ": "● CAMERA 01 / ",
+  "Kamera 01": "Camera 01",
+  "Ocak sönmüş. Sokaktan artık yağmur sesi gelmiyor.": "The stove has gone out. You can no longer hear rain outside.",
+  "Radyo · 88.7 FM": "Radio · 88.7 FM",
+  " fişek kaldı.": " rounds remaining.",
+  "Fişek kalmadı.": "No rounds left.",
+  "Tüfeği geri koy": "Put the shotgun back",
+  "Av tüfeği rafta. ": "The shotgun is on the rack. ",
+  "Tüfeği al": "Take the shotgun",
+  "Arka raf": "Back shelf",
+  "Sürgü kapalı. Kapının diğer tarafından ": "The bolt is closed. From the other side of the door, you hear ",
+  "üç hafif tık geliyor.": "three quiet knocks.",
+  "yağmur sesi geliyor.": "the rain.",
+  "Sürgü açık. Camın önündeki suret pencereye sokuluyor.": "The bolt is open. The figure at the window leans closer.",
+  "Sürgü açık. Kapı, rüzgârla kasasına vuruyor.": "The bolt is open. The wind knocks the door against its frame.",
+  "Sürgüyü aç": "Unbolt the door",
+  "Kapıyı kilitle": "Lock the door",
+  "Sürgü açılır açılmaz karanlıktan bir yüz üstüne geliyor.": "The moment the bolt opens, a face rushes at you from the dark.",
+  "Arka kapı kilitlendi.": "The back door is locked.",
+  "Arka kapının sürgüsü açıldı.": "The back door is unbolted.",
+  "Sipariş hazır.": "Order ready.",
+  " şeker daha ekle.": " more sugar cube(s) needed.",
+  "Şekeri sıfırla ve siparişteki miktarı ekle.": "Remove the sugar and add the amount requested.",
+  "Tezgahta ": "On the counter: ",
+  " var. Müşterinin istediği ürünü hazırla.": ". Prepare the product the customer ordered.",
+  "Anahtarı ver": "Hand over the key",
+  "Çay hazırlığına geç": "Prepare the tea",
+  "Sipariş hazırlığına geç": "Prepare the order",
+  "Tüfeği doğrult": "Aim the shotgun",
+  "Nişangâhı müşteriye getir ve sol tıkla.": "Aim at the customer and left click.",
+  "Kepengi indir": "Lower the shutter",
+  "Servis kapağını kapat": "Close the serving hatch",
+  " · Sipariş: ": " · Order: ",
+  "Müşteriye dön": "Back to the customer",
+  " fişek": " rounds",
+  "Av tüfeği alındı. Nişangâhı hedefe getir ve sol tıkla. F veya Ateş et düğmesi de çalışır.": "Shotgun taken. Aim and left click. You can also press F or use the Fire button.",
+  "Tüfeği arka rafa geri koydun. Kalan fişek: ": "You put the shotgun back. Rounds remaining: ",
+  "Atış boşa gitti. Nişangâhı pencereye getir.": "The shot missed. Aim at the window.",
+  "Fişek kalmadı. Servis kapağını hâlâ kapatabilirsin.": "No rounds left. You can still close the serving hatch.",
+  "KARŞILAŞMA ": "ENCOUNTER ",
+  "Müşteri vuruldu.": "The customer was shot.",
+  "Canavar geri püskürtüldü.": "The creature was driven back.",
+  "Sipariş verildi.": "Order served.",
+  "Servis kapatıldı.": "Serving hatch closed.",
+  "Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.": "The customer staggers back and collapses sideways. Someone in the street calls for help.",
+  "Vardiyayı bitir": "End the shift",
+  "Biraz bekle": "Wait",
+  "SON 2 / 3": "ENDING 2 / 3",
+  "SON 3 / 3": "ENDING 3 / 3",
+  "SON 1 / 3": "ENDING 1 / 3",
+  "Vardiya bitti.": "Shift complete.",
+  "VARDİYA SONU": "END OF SHIFT",
+  "Yeni vardiya": "The new shift",
+  "Sabah oldu": "Morning comes",
+  "Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.": "You are standing in the street. Behind the glass, someone fills in a new receipt in your handwriting.",
+  "Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.": "When you raise the shutter in the morning, the first glass of tea is on the counter. Still hot.",
+  "İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.": "You raise the shutter as the first bus passes. The ink on the 00:17 receipt has washed away in the rain.",
+  "Sabah servisi başladığında kepenk hâlâ açık. Pencerenin dibinde kendi el yazınla tek bir fiş buluyorsun: Vardiya tamamlandı.": "The shutter is still open when the morning service starts. At the window, a single receipt in your handwriting reads: Shift complete.",
+  " Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.": " When you turn around, you find the door bolted from inside.",
+  "Sabah ifadesi": "A statement at dawn",
+  "Gün doğarken iki polis servis penceresine geliyor. Biri vardiya defterini açıp yaralanan müşterinin geldiği saati soruyor.": "At dawn, two police officers come to the window. One opens your shift log and asks when the injured customer arrived.",
+  "Yeniden oyna": "Play again",
+  "Kapat": "Close",
+  "Sipariş fişi": "Order ticket",
+  "Vardiya devir formu": "Shift handover form",
+  "WebGL kullanılamıyor.": "WebGL is unavailable.",
+  "3B sahne bu tarayıcıda açılamadı. WebGL destekli bir tarayıcıda tekrar deneyebilirsin.": "The 3D scene could not open in this browser. Try a browser with WebGL support.",
+  "“Her zamankinden”": "“The usual”",
+  "Kamera ve fiş bulguları": "Camera and receipt findings",
+  "çay": "tea",
+  "kaşarlı tost": "cheese toastie",
+  "gazoz": "soda",
+  "kahve": "coffee",
+  "mercimek çorbası": "lentil soup",
+  "Serbest bakış": "Mouse look",
+  "Bakışı etkinleştir": "Enable mouse look",
+  "Fareyi hareket ettir · Esc ile imleci bırak": "Move mouse to look · Esc releases cursor"
+};
+english['WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak']='WASD to walk · Move mouse to look · E to interact · Left click to fire · Esc releases mouse';
+let language='en';
+try{
+  const saved=localStorage.getItem('night-shift-language');
+  if(saved==='tr'||saved==='en') language=saved;
+}catch{}
+const translationPattern=new RegExp(Object.keys(english).sort((a,b)=>b.length-a.length)
+  .map(key=>key.replace(/[.*+?^$()|[\]{}\\]/g,character=>'\\'+character)).join('|'),'g');
+function translate(value){
+  const text=String(value);
+  if(language==='tr') return text;
+  if(Object.hasOwn(english,text)) return english[text];
+  return text.replace(translationPattern,key=>english[key]);
+}
+function setText(element,value){
+  const source=String(value);
+  element.dataset.source=source;
+  element.textContent=translate(source);
+}
+function readText(element){
+  return element.dataset.source??element.textContent;
+}
+const staticText=[];
+const textWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+while(textWalker.nextNode()){
+  const node=textWalker.currentNode;
+  if(node.parentElement?.closest('script,style,select')) continue;
+  if(node.textContent.trim()) staticText.push({node,source:node.textContent});
+}
+const staticAttributes=[];
+for(const element of document.querySelectorAll('[aria-label],[title]')){
+  for(const attribute of ['aria-label','title']){
+    if(element.hasAttribute(attribute)) staticAttributes.push({element,attribute,source:element.getAttribute(attribute)});
+  }
+}
+function changeLanguage(next,save=true){
+  language=next==='tr'?'tr':'en';
+  document.documentElement.lang=language;
+  document.title=translate('Gece Vardiyası 3B');
+  document.getElementById('language').value=language;
+  for(const {node,source} of staticText){
+    if(node.isConnected) node.textContent=source.replace(/\S[\s\S]*\S|\S/,text=>translate(text));
+  }
+  for(const {element,attribute,source} of staticAttributes){
+    element.setAttribute(attribute,translate(source));
+  }
+  for(const element of document.querySelectorAll('[data-source]')){
+    element.textContent=translate(element.dataset.source);
+  }
+  if(save){
+    try{localStorage.setItem('night-shift-language',language);}catch{}
+  }
+  if(renderer&&set){
+    const replacement=buffer(geometry());
+    gl.deleteBuffer(set.object);
+    set=replacement;
+  }
+}
+document.getElementById('language').onchange=event=>changeLanguage(event.target.value);
+
+
 const $ = id => document.getElementById(id);
 const canvas = $('world');
 const gl = canvas.getContext('webgl', {antialias:true, alpha:false});
@@ -163,6 +468,7 @@ function box(mesh, x,y,z, w,h,d, color) {
   }
 }
 const glyphs={
+  D:['110','101','101','101','110'],P:['110','101','110','100','100'],I:['111','010','010','010','111'],
   K:['101','101','110','101','101'],H:['101','101','111','101','101'],V:['101','101','101','101','010'],R:['110','101','110','101','101'],
   B:['110','101','110','101','110'],U:['101','101','101','101','111'],
   F:['111','100','110','100','100'],E:['111','100','110','100','111'],
@@ -254,13 +560,14 @@ function geometry() {
   }
   put(0,2.76,3.76,2.46,.31,.072,0x8b6b41);
   put(0,2.76,3.713,2.39,.246,.028,0x343e37);
-  lettering(mesh,'BUFE 07',-.73,2.85,3.694,.057,0xffd390);
+  lettering(mesh,language==='en'?'KIOSK 07':'BUFE 07',-.9,2.85,3.694,.057,0xffd390);
   put(-.464,2.893,3.694,.027,.015,.009,0xffd390);
   put(-.407,2.893,3.694,.027,.015,.009,0xffd390);
   put(2.4,2.31,3.73,1.36,.94,.078,0xa57a47);
   put(2.4,2.31,3.684,1.3,.88,.024,0x2b3834);
+  const boardWords={CAY:'TEA',TOST:'TOAST',GAZOZ:'SODA',KAHVE:'COFFEE',CORBA:'SOUP'};
   for(const [text,y,width] of [['CAY',2.66,.25],['TOST',2.49,.33],['GAZOZ',2.32,.22],['KAHVE',2.15,.26],['CORBA',1.98,.27]]){
-    lettering(mesh,text,1.87,y,3.665,.026,0xf0c999);
+    lettering(mesh,language==='en'?boardWords[text]:text,1.87,y,3.665,.026,0xf0c999);
     put(2.54+width/2,y-.048,3.669,width,.021,.009,0x9da58b);
   }
   for(const x of [-2.8,1.4]){
@@ -633,7 +940,7 @@ function updateJump(now){
     jumpAt=now;
     jumpSeen.add(pendingJump.key);
     notebook[stage].jump=pendingJump.text;
-    $('note').textContent=pendingJump.text;
+    setText($('note'),pendingJump.text);
     pendingJump=null;
     jumpSound();
   }
@@ -676,7 +983,7 @@ function scareProgress(now,dt){
     if(activeSeconds>=scare.after){
       scareAt=now;
       notebook[stage].scare=scare.text;
-      $('note').textContent=scare.text;
+      setText($('note'),scare.text);
     }
   }
   const seconds=(now-scareAt)/1000;
@@ -735,7 +1042,7 @@ function updateMarkers(aspect){
     }
   }
   $('prompt').hidden=!nearest;
-  if(nearest) $('prompt').textContent='E · '+nearest.label;
+  if(nearest) setText($('prompt'),'E · '+nearest.label);
 }
 function drawDeparture(now,attributes,u){
   if(showVisitor||!Number.isFinite(departedAt)) return;
@@ -849,27 +1156,29 @@ function frame(now){
 
 function action(label,run,primary=false){
   const button=document.createElement('button');
-  button.textContent=label;
+  setText(button,label);
   if(primary) button.className='gold';
   button.onclick=run;
   return button;
 }
 function panel(title, text, choices=[]){
+  releaseLook();
   held.clear();
   $('panel').querySelector('.log')?.remove();
   $('panelText').classList.toggle('receipt-text',title==='Sipariş fişi'||title==='Vardiya devir formu');
-  $('panelTitle').textContent=title;
-  $('panelText').textContent=text;
+  setText($('panelTitle'),title);
+  setText($('panelText'),text);
   $('actions').replaceChildren(...choices,action('Kapat',closePanel));
   $('panel').hidden=false;
   $('actions').firstElementChild.focus();
 }
-function closePanel(){
+function closePanel(resumeLook=true){
   if(cctv&&[0,5].includes(stage)&&showVisitor) queueJump('Kamerayı kapatınca camın önünde bir yüz belirip kayboluyor.');
   $('panel').hidden=true;
   cctv=false;
   $('cctv').hidden=true;
   $('use').focus({preventScroll:true});
+  if(resumeLook) requestLook();
 }
 function orderReady(){
   const order=scene[stage];
@@ -877,11 +1186,11 @@ function orderReady(){
 }
 function updateTask(){
   if(stage===finalStage){
-    $('task').textContent='Servis penceresine git. Anahtarı ver veya kepengi indir.';
+    setText($('task'),'Servis penceresine git. Anahtarı ver veya kepengi indir.');
     return;
   }
   const order=scene[stage];
-  $('task').textContent=orderReady()?'Sipariş hazır. Servis penceresinden ver.':'Servis penceresine yaklaş ve E’ye bas. Sipariş: '+order.order+'.';
+  setText($('task'),orderReady()?'Sipariş hazır. Servis penceresinden ver.':'Servis penceresine yaklaş ve E’ye bas. Sipariş: '+order.order+'.');
 }
 // Short filtered noise layers give each physical action a different envelope.
 const foley={
@@ -969,7 +1278,7 @@ function journal(){
     const row=document.createElement('li');
     const entry=notebook[i];
     const details=[entry.camera,entry.receipt,entry.radio,entry.door,entry.scare,entry.jump,...(entry.questions||[]),entry.decision].filter(Boolean);
-    row.textContent=scene[i].time+' · '+scene[i].name+' — '+(details.join(' ')||'Henüz kayıt yok.');
+    setText(row,scene[i].time+' · '+scene[i].name+' — '+(details.join(' ')||'Henüz kayıt yok.'));
     list.append(row);
   }
   $('panelText').after(list);
@@ -979,15 +1288,15 @@ function interact(station=nearest){
   const info=scene[stage];
   if(station.id==='monitor'){
     cctv=true;
-    $('cctv').textContent='● KAMERA 01 / '+(stage===finalStage?'04:08':info.time);
+    setText($('cctv'),'● KAMERA 01 / '+(stage===finalStage?'04:08':info.time));
     $('cctv').hidden=false;
     notebook[stage].camera=info.camera;
-    $('note').textContent=info.camera;
+    setText($('note'),info.camera);
     if(info.absent||stage===finalStage) exposed=true;
     panel('Kamera 01',info.camera);
   }else if(station.id==='receipt'){
     notebook[stage].receipt=info.receipt;
-    $('note').textContent=info.receipt;
+    setText($('note'),info.receipt);
     playFoley('paper');
     panel(stage===finalStage?'Vardiya devir formu':'Sipariş fişi',info.receipt);
   }else if(station.id==='tea'){
@@ -995,7 +1304,7 @@ function interact(station=nearest){
     else prepPanel();
   }else if(station.id==='radio'){
     notebook[stage].radio=radioLines[stage];
-    $('note').textContent=radioLines[stage];
+    setText($('note'),radioLines[stage]);
     playFoley('radio');
     panel('Radyo · 88.7 FM',radioLines[stage]);
   }else if(station.id==='rack'){
@@ -1043,7 +1352,7 @@ function servicePanel(){
   if(armed&&rounds){
     options.push(action('Tüfeği doğrult',()=>{
       closePanel();
-      $('note').textContent='Nişangâhı müşteriye getir ve sol tıkla.';
+      setText($('note'),'Nişangâhı müşteriye getir ve sol tıkla.');
     }));
   }
   options.push(action(final?'Kepengi indir':'Servis kapağını kapat',()=>decide(false)));
@@ -1059,7 +1368,7 @@ function askQuestion(index){
   const [question,answer]=interviews[stage][index];
   notebook[stage].questions??=[];
   notebook[stage].questions[index]=question+' '+answer;
-  $('note').textContent=answer;
+  setText($('note'),answer);
   panel(question,answer,[action('Müşteriye dön',servicePanel,true)]);
 }
 function syncWeapon(){
@@ -1071,7 +1380,7 @@ function syncWeapon(){
   $('cross').toggleAttribute('data-target',Boolean(ready&&rounds&&exposed&&showVisitor&&creatureLines[stage]&&targetInSight()));
 }
 function updateAmmo(){
-  $('ammo').textContent=rounds+' / '+roundCapacity+' fişek';
+  setText($('ammo'),rounds+' / '+roundCapacity+' fişek');
   syncWeapon();
 }
 function setWeaponHeld(held){
@@ -1082,9 +1391,9 @@ function setWeaponHeld(held){
   }
   closePanel();
   updateAmmo();
-  $('note').textContent=held
+  setText($('note'),held
     ? 'Av tüfeği alındı. Nişangâhı hedefe getir ve sol tıkla. F veya Ateş et düğmesi de çalışır.'
-    : 'Tüfeği arka rafa geri koydun. Kalan fişek: '+rounds+'.';
+    : 'Tüfeği arka rafa geri koydun. Kalan fişek: '+rounds+'.');
 }
 function creatureOffset(){
   return stage===finalStage&&!doorLocked?-.34:0;
@@ -1136,7 +1445,7 @@ function fire(){
     impactUntil=performance.now()+320;
     decide(false,true);
   }else if(showVisitor){
-    $('note').textContent=rounds?'Atış boşa gitti. Nişangâhı pencereye getir.':'Fişek kalmadı. Servis kapağını hâlâ kapatabilirsin.';
+    setText($('note'),rounds?'Atış boşa gitti. Nişangâhı pencereye getir.':'Fişek kalmadı. Servis kapağını hâlâ kapatabilirsin.');
   }
 }
 function next(){
@@ -1155,9 +1464,9 @@ function next(){
   impactUntil=0;
   exposed=stage===finalStage&&!doorLocked;
   if(stage!==finalStage) playFoley('step');
-  $('clock').textContent=scene[stage].time;
-  $('chapter').textContent='KARŞILAŞMA '+(stage+1)+' / '+scene.length;
-  $('note').textContent=scene[stage].line;
+  setText($('clock'),scene[stage].time);
+  setText($('chapter'),'KARŞILAŞMA '+(stage+1)+' / '+scene.length);
+  setText($('note'),scene[stage].line);
   updateTask();
   if(rainGain) rainGain.gain.setTargetAtTime(stage===finalStage?0:.095,audio.currentTime,.45);
 }
@@ -1176,7 +1485,7 @@ function decide(served,defended=false){
     shutterDown=!served&&!defended;
     lightsOut=served;
   }
-  $('note').textContent=wounded?'Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny;
+  setText($('note'),wounded?'Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny);
   const label=stage===finalStage?'Vardiyayı bitir':'Biraz bekle';
   const advance=()=>{
     $('advance').hidden=true;
@@ -1185,33 +1494,34 @@ function decide(served,defended=false){
   };
   if(defended){
     const button=$('advance');
-    button.textContent=label;
+    setText(button,label);
     button.onclick=advance;
     button.hidden=false;
     return;
   }
-  panel(scene[stage].name,$('note').textContent,[action(label,advance,true)]);
+  panel(scene[stage].name,readText($('note')),[action(label,advance,true)]);
   $('actions').lastElementChild.remove();
 }
 function end(served,defended){
-  closePanel();
+  closePanel(false);
+  releaseLook();
   playing=false;
   $('controls').hidden=true;
   $('journal').hidden=true;
-  $('clock').textContent=served?'04:08':'06:00';
-  $('chapter').textContent=served?'SON 2 / 3':customerHit?'SON 3 / 3':'SON 1 / 3';
-  $('task').textContent='Vardiya bitti.';
-  $('coverTag').textContent='VARDİYA SONU';
-  $('coverTitle').textContent=served?'Yeni vardiya':'Sabah oldu';
-  $('coverText').textContent=served?'Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.':servedFirst?'Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.':'İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.';
-  if(defended) $('coverText').textContent='Sabah servisi başladığında kepenk hâlâ açık. Pencerenin dibinde kendi el yazınla tek bir fiş buluyorsun: Vardiya tamamlandı.';
-  if(!served&&!defended&&!doorLocked) $('coverText').textContent+=' Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.';
+  setText($('clock'),served?'04:08':'06:00');
+  setText($('chapter'),served?'SON 2 / 3':customerHit?'SON 3 / 3':'SON 1 / 3');
+  setText($('task'),'Vardiya bitti.');
+  setText($('coverTag'),'VARDİYA SONU');
+  setText($('coverTitle'),served?'Yeni vardiya':'Sabah oldu');
+  setText($('coverText'),served?'Sokağın ortasındasın. Camın arkasındaki kişi kendi el yazınla yeni bir fiş dolduruyor.':servedFirst?'Sabah kepengi kaldırdığında ilk çayın bardağı tezgahta duruyor. Hâlâ sıcak.':'İlk otobüs geçerken kepengi kaldırıyorsun. 00:17 fişinin mürekkebi yağmurda akıp gitmiş.');
+  if(defended) setText($('coverText'),'Sabah servisi başladığında kepenk hâlâ açık. Pencerenin dibinde kendi el yazınla tek bir fiş buluyorsun: Vardiya tamamlandı.');
+  if(!served&&!defended&&!doorLocked) setText($('coverText'),readText($('coverText'))+' Arkana döndüğünde kapının sürgüsünü içeriden çekilmiş buluyorsun.');
   if(customerHit&&!served){
-    $('coverTitle').textContent='Sabah ifadesi';
-    $('coverText').textContent='Gün doğarken iki polis servis penceresine geliyor. Biri vardiya defterini açıp yaralanan müşterinin geldiği saati soruyor.';
+    setText($('coverTitle'),'Sabah ifadesi');
+    setText($('coverText'),'Gün doğarken iki polis servis penceresine geliyor. Biri vardiya defterini açıp yaralanan müşterinin geldiği saati soruyor.');
   }
   $('cover').hidden=false;
-  $('start').textContent='Yeniden oyna';
+  setText($('start'),'Yeniden oyna');
   $('start').focus();
 }
 function start(){
@@ -1233,6 +1543,7 @@ function start(){
   $('controls').hidden=false;
   $('journal').hidden=false;
   next();
+  requestLook();
 }
 
 $('start').onclick=start;
@@ -1241,9 +1552,9 @@ $('use').onclick=()=>interact();
 $('prompt').onclick=()=>interact();
 $('fire').onclick=fire;
 document.addEventListener('keydown',event=>{
-  if(!playing) return;
+  if(!playing||event.target instanceof HTMLSelectElement) return;
   const key=event.key.toLowerCase();
-  if(key==='escape'&&!$('panel').hidden&&showVisitor){closePanel();return;}
+  if(key==='escape'&&!$('panel').hidden&&showVisitor){closePanel(false);return;}
   if(!$('panel').hidden) return;
   if(key==='f'&&!event.repeat){event.preventDefault();fire();return;}
   if(key==='e'&&!event.repeat){event.preventDefault();interact();return;}
@@ -1258,31 +1569,95 @@ for(const button of document.querySelectorAll('[data-key]')){
   button.onpointerdown=event=>{button.setPointerCapture(event.pointerId);held.add(key);};
   button.onpointerup=button.onpointercancel=button.onlostpointercapture=()=>held.delete(key);
 }
-let drag=null;
+let drag=null,lastHover=null,mouseFallback=false,lockPending=false;
+function rotateLook(dx,dy){
+  player.angle+=dx*.0034;
+  player.pitch=Math.max(-.65,Math.min(.55,player.pitch-dy*.0034));
+}
+function syncLookButton(){
+  const locked=document.pointerLockElement===canvas;
+  setText($('look'),locked?'Fareyi hareket ettir · Esc ile imleci bırak':'Serbest bakış');
+  $('look').setAttribute('aria-pressed',String(locked));
+}
+function requestLook(){
+  if(!playing||!$('panel').hidden||!$('cover').hidden||document.pointerLockElement===canvas||lockPending) return false;
+  if(!canvas.requestPointerLock){mouseFallback=true;return false;}
+  if(!navigator.userActivation?.isActive) return false;
+  lockPending=true;
+  try{
+    const pending=canvas.requestPointerLock();
+    if(pending?.then){
+      pending.then(()=>{lockPending=false;}).catch(()=>{
+        mouseFallback=true;
+        lockPending=false;
+        syncLookButton();
+      });
+    }
+    return true;
+  }catch{
+    mouseFallback=true;
+    lockPending=false;
+    return false;
+  }
+}
+function releaseLook(){
+  if(document.pointerLockElement===canvas) document.exitPointerLock();
+  lastHover=null;
+  drag=null;
+}
+$('look').onclick=requestLook;
+document.addEventListener('pointerlockchange',()=>{
+  lockPending=false;
+  lastHover=null;
+  held.clear();
+  syncLookButton();
+});
+document.addEventListener('pointerlockerror',()=>{
+  lockPending=false;
+  mouseFallback=true;
+  syncLookButton();
+});
+document.addEventListener('mousemove',event=>{
+  if(document.pointerLockElement!==canvas||!playing||!$('panel').hidden) return;
+  rotateLook(event.movementX,event.movementY);
+});
+canvas.onpointerenter=event=>{
+  if(event.pointerType==='mouse') lastHover={x:event.clientX,y:event.clientY};
+};
+canvas.onpointerleave=()=>{lastHover=null;};
 canvas.onpointerdown=event=>{
-  if(!playing||!$('panel').hidden||event.button!==0||drag) return;
+  if(!playing||!$('panel').hidden||event.button!==0) return;
+  if(event.pointerType==='mouse'){
+    if(document.pointerLockElement===canvas||mouseFallback){fire();return;}
+    if(!requestLook()) fire();
+    return;
+  }
+  if(drag) return;
   canvas.setPointerCapture(event.pointerId);
   drag={id:event.pointerId,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,moved:false};
 };
 canvas.onpointermove=event=>{
+  if(!playing||!$('panel').hidden) return;
+  if(event.pointerType==='mouse'){
+    if(document.pointerLockElement===canvas) return;
+    if(lastHover) rotateLook(event.clientX-lastHover.x,event.clientY-lastHover.y);
+    lastHover={x:event.clientX,y:event.clientY};
+    return;
+  }
   if(!drag||event.pointerId!==drag.id) return;
   if(!drag.moved&&Math.hypot(event.clientX-drag.startX,event.clientY-drag.startY)<6) return;
   drag.moved=true;
-  player.angle+=(event.clientX-drag.x)*.008;
-  player.pitch=Math.max(-.65,Math.min(.55,player.pitch-(event.clientY-drag.y)*.006));
+  rotateLook((event.clientX-drag.x)*1.7,(event.clientY-drag.y)*1.7);
   drag.x=event.clientX;
   drag.y=event.clientY;
 };
-canvas.onpointerup=event=>{
-  if(!drag||event.pointerId!==drag.id) return;
-  const click=event.pointerType==='mouse'&&event.button===0&&!drag.moved
-    &&Math.hypot(event.clientX-drag.startX,event.clientY-drag.startY)<6;
-  drag=null;
-  if(click) fire();
-};
-canvas.onpointercancel=canvas.onlostpointercapture=event=>{
+canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=event=>{
   if(drag?.id===event.pointerId) drag=null;
 };
+canvas.oncontextmenu=event=>event.preventDefault();
+window.addEventListener('blur',()=>{lastHover=null;drag=null;});
+syncLookButton();
+
 
 $('sound').onclick=async()=>{
   const button=$('sound');
@@ -1319,8 +1694,8 @@ $('sound').onclick=async()=>{
       rainSource.start();
     }
     button.setAttribute('aria-pressed',String(Boolean(rainSource)));
-    button.textContent=rainSource?'Ses açık':'Ses kapalı';
-  }catch{button.textContent='Ses kullanılamıyor';}
+    setText(button,rainSource?'Ses açık':'Ses kapalı');
+  }catch{setText(button,'Ses kullanılamıyor');}
   finally{button.disabled=false;}
 };
 try{
@@ -1358,19 +1733,21 @@ try{
     station.marker.tabIndex=-1;
     station.marker.onclick=()=>interact(station);
     station.marker.className='marker';
-    station.marker.textContent=station.label;
+    setText(station.marker,station.label);
     station.marker.hidden=true;
     $('markers').append(station.marker);
   }
   requestAnimationFrame(frame);
 }catch(error){
-  $('coverText').textContent='3B sahne bu tarayıcıda açılamadı. WebGL destekli bir tarayıcıda tekrar deneyebilirsin.';
+  setText($('coverText'),'3B sahne bu tarayıcıda açılamadı. WebGL destekli bir tarayıcıda tekrar deneyebilirsin.');
   $('start').hidden=true;
   console.error(error);
 }
+changeLanguage(language,false);
 </script>
 </body>
 </html>
+
 
 
 
