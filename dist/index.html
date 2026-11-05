@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}.game.mouse-look,.game.mouse-look *{cursor:none!important}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#advance{position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
@@ -433,7 +433,12 @@ function setup() {
       float fragment=fract(sin(dot(floor(position*38.0),vec3(12.21,29.47,73.19)))*4193.27);
       if(dissolve>fragment) discard;
       float grain=fract(sin(dot(floor(position*115.0),vec3(12.989,37.719,78.233)))*4375.85);
-      float lamp=1.0/(1.0+dot(position-vec3(0.0,2.8,1.4),position-vec3(0.0,2.8,1.4))*.15);
+      vec3 leftLight=position-vec3(-2.2,2.85,.9);
+      vec3 centreLight=position-vec3(0.0,2.85,.9);
+      vec3 rightLight=position-vec3(2.2,2.85,.9);
+      float lamp=.5/(1.0+dot(leftLight,leftLight)*.28)
+        +.5/(1.0+dot(centreLight,centreLight)*.28)
+        +.5/(1.0+dot(rightLight,rightLight)*.28);
       float street=1.0/(1.0+dot(position-vec3(3.65,3.35,8.0),position-vec3(3.65,3.35,8.0))*.17);
       float interior=1.0-step(3.95,position.z);
       vec3 tint=mix(vec3(.78,.93,1.02)+vec3(.58,.29,.07)*street,
@@ -520,7 +525,11 @@ function geometry() {
   put(-2.82,1.2,-1.54,.9,.12,.65,0x8e6c44);
   put(-2.82,1.8,-1.54,.9,.12,.65,0x8e6c44);
   for(let i=0;i<5;i++) put(-3.13+i*.15,1.34,-1.53,.1,.17,.18,i%2?0xc2a176:0x647c5e);
-  put(0,2.93,.6,2.6,.075,.24,0xffdc9b);
+  for(const x of [-2.2,0,2.2]){
+    put(x,2.976,.9,1.35,.072,.32,0x41473d);
+    put(x,2.934,.9,1.24,.04,.26,0xa6a58c);
+    put(x,2.908,.9,1.12,.018,.215,0xffdc9b);
+  }
   put(2.5,1.05,-1.86,1.16,2.06,.08,0x323b31);
   put(2.15,1.04,-1.79,.13,.047,.08,0xb79b66);
   for(let i=0;i<8;i++){
@@ -569,11 +578,6 @@ function geometry() {
   for(const [text,y,width] of [['CAY',2.66,.25],['TOST',2.49,.33],['GAZOZ',2.32,.22],['KAHVE',2.15,.26],['CORBA',1.98,.27]]){
     lettering(mesh,language==='en'?boardWords[text]:text,1.87,y,3.665,.026,0xf0c999);
     put(2.54+width/2,y-.048,3.669,width,.021,.009,0x9da58b);
-  }
-  for(const x of [-2.8,1.4]){
-    put(x,2.86,1.05,.05,.27,.05,0x41443a);
-    oval(mesh,x,2.73,1.05,.23,.105,.23,0x4e5548);
-    oval(mesh,x,2.663,1.05,.18,.033,.18,0xffd8a4);
   }
   put(-2.84,1.94,-1.48,.52,.26,.25,0x594c3a);
   put(-2.84,1.96,-1.343,.47,.205,.031,0x877654);
@@ -1554,7 +1558,11 @@ $('fire').onclick=fire;
 document.addEventListener('keydown',event=>{
   if(!playing||event.target instanceof HTMLSelectElement) return;
   const key=event.key.toLowerCase();
-  if(key==='escape'&&!$('panel').hidden&&showVisitor){closePanel(false);return;}
+  if(key==='escape'){
+    if(!$('panel').hidden&&showVisitor) closePanel(false);
+    releaseLook();
+    return;
+  }
   if(!$('panel').hidden) return;
   if(key==='f'&&!event.repeat){event.preventDefault();fire();return;}
   if(key==='e'&&!event.repeat){event.preventDefault();interact();return;}
@@ -1569,18 +1577,22 @@ for(const button of document.querySelectorAll('[data-key]')){
   button.onpointerdown=event=>{button.setPointerCapture(event.pointerId);held.add(key);};
   button.onpointerup=button.onpointercancel=button.onlostpointercapture=()=>held.delete(key);
 }
-let drag=null,lastHover=null,mouseFallback=false,lockPending=false;
+let drag=null,lastHover=null,mouseFallback=false,lockPending=false,lookEnabled=false;
 function rotateLook(dx,dy){
   player.angle+=dx*.0034;
   player.pitch=Math.max(-.65,Math.min(.55,player.pitch-dy*.0034));
 }
 function syncLookButton(){
-  const locked=document.pointerLockElement===canvas;
-  setText($('look'),locked?'Fareyi hareket ettir · Esc ile imleci bırak':'Serbest bakış');
-  $('look').setAttribute('aria-pressed',String(locked));
+  const active=lookEnabled&&playing&&$('panel').hidden&&$('cover').hidden;
+  $('game').classList.toggle('mouse-look',active);
+  setText($('look'),active?'Fareyi hareket ettir · Esc ile imleci bırak':'Serbest bakış');
+  $('look').setAttribute('aria-pressed',String(active));
 }
 function requestLook(){
-  if(!playing||!$('panel').hidden||!$('cover').hidden||document.pointerLockElement===canvas||lockPending) return false;
+  if(!playing||!$('panel').hidden||!$('cover').hidden) return false;
+  lookEnabled=true;
+  syncLookButton();
+  if(document.pointerLockElement===canvas||lockPending) return false;
   if(!canvas.requestPointerLock){mouseFallback=true;return false;}
   if(!navigator.userActivation?.isActive) return false;
   lockPending=true;
@@ -1601,12 +1613,15 @@ function requestLook(){
   }
 }
 function releaseLook(){
+  lookEnabled=false;
   if(document.pointerLockElement===canvas) document.exitPointerLock();
   lastHover=null;
   drag=null;
+  syncLookButton();
 }
 $('look').onclick=requestLook;
 document.addEventListener('pointerlockchange',()=>{
+  lookEnabled=document.pointerLockElement===canvas;
   lockPending=false;
   lastHover=null;
   held.clear();
@@ -1618,7 +1633,7 @@ document.addEventListener('pointerlockerror',()=>{
   syncLookButton();
 });
 document.addEventListener('mousemove',event=>{
-  if(document.pointerLockElement!==canvas||!playing||!$('panel').hidden) return;
+  if(document.pointerLockElement!==canvas||!lookEnabled||!playing||!$('panel').hidden) return;
   rotateLook(event.movementX,event.movementY);
 });
 canvas.onpointerenter=event=>{
@@ -1628,6 +1643,7 @@ canvas.onpointerleave=()=>{lastHover=null;};
 canvas.onpointerdown=event=>{
   if(!playing||!$('panel').hidden||event.button!==0) return;
   if(event.pointerType==='mouse'){
+    if(!lookEnabled){requestLook();return;}
     if(document.pointerLockElement===canvas||mouseFallback){fire();return;}
     if(!requestLook()) fire();
     return;
@@ -1637,7 +1653,7 @@ canvas.onpointerdown=event=>{
   drag={id:event.pointerId,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,moved:false};
 };
 canvas.onpointermove=event=>{
-  if(!playing||!$('panel').hidden) return;
+  if(!playing||!$('panel').hidden||!lookEnabled) return;
   if(event.pointerType==='mouse'){
     if(document.pointerLockElement===canvas) return;
     if(lastHover) rotateLook(event.clientX-lastHover.x,event.clientY-lastHover.y);
@@ -1747,6 +1763,7 @@ changeLanguage(language,false);
 </script>
 </body>
 </html>
+
 
 
 
