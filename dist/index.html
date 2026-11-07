@@ -973,10 +973,11 @@ function setup() {
   const derivatives=gl.getExtension('OES_standard_derivatives');
   gl.attachShader(program, compile(gl.VERTEX_SHADER, `
     attribute vec3 point; attribute vec3 tint;
-    uniform mediump vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform mediump float night; uniform vec3 offset; uniform vec2 gait; uniform float fall;
+    uniform mediump vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform mediump float night; uniform vec3 offset; uniform vec2 gait; uniform float fall; uniform float jawMotion;
     varying vec3 color; varying vec3 position; varying float distanceToEye;
     void main(){
       vec3 posed=point;
+      posed.y-=jawMotion*(1.0-smoothstep(-.29,-.09,point.y))*smoothstep(-.53,-.33,point.y);
       float limb=(1.0-smoothstep(.55,.9,point.y))*smoothstep(.05,.13,abs(point.x-.32));
       posed.z+=sin(gait.x+step(.32,point.x)*3.14159)*gait.y*limb;
       if(fall>0.0){
@@ -1101,7 +1102,7 @@ function setup() {
   const attributes = ['point','tint'].map(name => gl.getAttribLocation(program,name));
   for (const id of attributes) gl.enableVertexAttribArray(id);
   const uniforms = Object.fromEntries(['eye','rotation','scale','night','fog','mono','offset','gait','fall','dissolve',
-    'scenery','time','glass','shadowMap'].map(name => [name,gl.getUniformLocation(program,name)]));
+    'scenery','time','glass','shadowMap','jawMotion'].map(name => [name,gl.getUniformLocation(program,name)]));
   return {program,attributes,uniforms};
 }
 
@@ -1379,108 +1380,224 @@ function oval(mesh,x,y,z,rx,ry,rz,color,rings=7,sides=12){
     point(r,s);point(r+1,s+1);point(r,s+1);
   }
 }
-function visitor(number){
-  const mesh=[];
-  const styles=[
-    [0x424438,0x98765b,.30,1.70],
-    [0xc49b4c,0xa88365,.25,1.65],
-    [0x513d47,0x926f53,.32,1.76],
-    [0x777975,0xa18470,.27,1.78],
-    [0x395b64,0x9f7857,.32,1.82],
-    [0x673b43,0x947568,.24,1.68],
-    [0x40594a,0x7e6b60,.27,1.74]
+const visitorStyles=[
+  // Coat, trim, skin, hair, shoulder width, head height, face width, build.
+  [0x41443c,0x2d342e,0xa28b75,0x3c362e,.255,1.70,.128,1.00],
+  [0x9f793d,0x6e522f,0x907560,0x342c27,.213,1.64,.112,.96],
+  [0x514148,0x322e33,0x967763,0x302824,.265,1.75,.126,1.05],
+  [0x676960,0x56524a,0xab9082,0x736b63,.231,1.77,.116,.93],
+  [0x3a5358,0x293d42,0xa58365,0x3f392f,.258,1.81,.132,1.10],
+  [0x604249,0x422a33,0xa5897d,0x312829,.205,1.68,.105,.93],
+  [0x425648,0x303d34,0x93796b,0x4c4139,.233,1.73,.121,1.04]
+];
+const visitorX=.32, visitorZ=4.83;
+
+// Each band connects edge to edge to make a continuous sewn or sculpted surface.
+function visitorBand(mesh,rows){
+  const count=rows[0].length;
+  for(let row=0;row<rows.length-1;row++){
+    for(let column=0;column<count;column++){
+      const a=rows[row],b=rows[row+1],next=(column+1)%count;
+      mesh.push(...a[column],...a[next],...b[next],...a[column],...b[next],...b[column]);
+    }
+  }
+}
+function visitorVertex(x,y,z,color,shade=1){
+  return [visitorX+x,y,visitorZ+z,(color>>16&255)*shade/255,(color>>8&255)*shade/255,(color&255)*shade/255];
+}
+const clothSection=[
+  [0,-1],[.53,-.97],[.82,-.71],[1,-.27],[.98,.39],[.67,.85],
+  [0,1],[-.67,.85],[-.98,.39],[-1,-.27],[-.82,-.71],[-.53,-.97]
+];
+function visitorCloth(mesh,profile,color){
+  visitorBand(mesh,profile.map(([y,x,z,width,depth,shade=1])=>
+    clothSection.map(([across,back],index)=>visitorVertex(
+      x+across*width,y,z+back*depth,color,shade*(index%3===1?.91:1)
+    ))
+  ));
+}
+function visitorPatch(mesh,points,color){
+  const vertices=points.map(point=>visitorVertex(...point,color));
+  for(let i=1;i<vertices.length-1;i++) mesh.push(...vertices[0],...vertices[i],...vertices[i+1]);
+}
+function visitorFace(mesh,head,width,build,skin,hair,number,exposed){
+  // From chin to crown. The depth samples run from the bridge of the nose to the temple.
+  const profile=[
+    [-.139,.35,.055,.068,.074,.069,.050,.010,.060],
+    [-.120,.65,.102,.102,.097,.087,.066,.005,.097],
+    [-.095,.84,.112,.113,.102,.093,.070,.000,.112],
+    [-.067,.93,.127,.123,.106,.098,.079,-.005,.118],
+    [-.041,1.00,.159,.141,.112,.109,.090,-.006,.121],
+    [-.018,1.00,.153,.132,.114,.116,.096,-.004,.124],
+    [ .007,.98,.141,.123,.099,.098,.083,-.001,.126],
+    [ .030,.97,.129,.117,.099,.096,.086,.004,.129],
+    [ .051,1.00,.119,.111,.108,.109,.093,.006,.131],
+    [ .075,1.01,.116,.115,.112,.107,.092,.007,.134],
+    [ .111,.96,.107,.107,.103,.094,.076,.009,.130],
+    [ .144,.76,.085,.084,.082,.073,.059,.016,.109],
+    [ .165,.39,.046,.046,.043,.039,.034,.021,.066],
+    [ .171,0,-.024,-.024,-.024,-.024,-.024,-.024,.024]
   ];
-  const [coat,skin,width,head]=styles[number];
-  const trim=[0x2e3530,0x997036,0x34262d,0x605950,0x27434d,0x4a272f,0x2b4337][number];
-  const x=.32,z=4.83;
-  const shape=(dx,y,dz,rx,ry,rz,c,rings=8,sides=14)=>oval(mesh,x+dx,y,z+dz,rx,ry,rz,c,rings,sides);
-  const detail=(dx,y,dz,w,h,d,c)=>box(mesh,x+dx,y,z+dz,w,h,d,c);
+  const front=[-1,-.8,-.6,-.39,-.18,0,.18,.39,.6,.8,1];
+  const stretched=exposed?build*1.18:build;
+  const jawShape=[1.04,.91,1.08,.94,1.12,.90,1][number];
+  const noseShape=[.004,-.008,.001,.010,.005,-.009,-.002][number];
+  const rows=profile.map(([y,size,...depths])=>{
+    const back=depths.pop();
+    const face=front.map((across,index)=>{
+      const side=Math.abs(index-5);
+      const socket=y>=.007&&y<=.030&&side>=2&&side<=4;
+      const shade=socket?(exposed?.40:.73):y<-.095?.89:y<-.025&&side>=3?.91:1;
+      const hollow=exposed&&socket?.016:0;
+      const chin=y<-.065?jawShape*(exposed?1+(y+.065)*2.3:1):1;
+      const feature=exposed&&y<-.018?.013:0;
+      const nose=y>=-.067&&y<=.051&&side<2?noseShape*(1-side*.55):0;
+      const color=y>.11&&side>=3?hair:skin;
+      return visitorVertex(width*size*across*chin,head+y*stretched,-depths[side]+hollow-feature-nose,color,shade);
+    });
+    const rear=Array.from({length:9},(_,index)=>{
+      const angle=(index+1)*Math.PI/10;
+      const color=y>(number===5?-.1:.045)?hair:skin;
+      return visitorVertex(Math.cos(angle)*width*size,head+y*stretched,
+        Math.sin(angle)*(back+depths[5])-depths[5],color,.88);
+    });
+    return face.concat(rear);
+  });
+  visitorBand(mesh,rows);
+  // Follow the same triangles for small, nearly flush facial details.
+  const surface=(x,y)=>{
+    let row=profile.findIndex(([height])=>height>=y)-1;
+    row=Math.max(0,Math.min(row,profile.length-2));
+    const t=(y-profile[row][0])/(profile[row+1][0]-profile[row][0]);
+    const a=rows[row],b=rows[row+1];
+    const at=column=>a[column][0]+(b[column][0]-a[column][0])*t-visitorX;
+    let column=0;
+    while(column<9&&at(column+1)<x) column++;
+    const diagonal=a[column][0]*(1-t)+b[column+1][0]*t-visitorX;
+    const span=at(column+1)-at(column);
+    const d=span>0?Math.max(0,Math.min(1,(x-at(column))/span)):0;
+    const az=a[column][2]*(1-t)+b[column][2]*t-visitorZ;
+    const bz=a[column+1][2]*(1-t)+b[column+1][2]*t-visitorZ;
+    const dz=a[column][2]*(1-t)+b[column+1][2]*t-visitorZ;
+    const split=span>0?(diagonal-at(column))/span:0;
+    const z=d<split?az+(dz-az)*d/split:dz+(bz-dz)*(d-split)/Math.max(.001,1-split);
+    return [x,head+y*stretched,z-.006];
+  };
+  const patch=(points,color,bias=0)=>{
+    const midpoint=(a,b)=>[(a[0]+b[0])*.5,(a[1]+b[1])*.5];
+    const vertex=([x,y])=>{
+      const point=surface(x,y);
+      point[2]-=bias;
+      return point;
+    };
+    for(let i=1;i<points.length-1;i++){
+      const a=points[0],b=points[i],c=points[i+1];
+      const ab=midpoint(a,b),bc=midpoint(b,c),ca=midpoint(c,a);
+      for(const triangle of [[a,ab,ca],[ab,b,bc],[ca,bc,c],[ab,bc,ca]]) visitorPatch(mesh,triangle.map(vertex),color);
+    }
+  };
   for(const side of [-1,1]){
-    shape(side*.13,.45,.025,.115,.42,.12,0x31393a);
-    shape(side*.13,.36,-.049,.094,.219,.051,0x3d4543);
-    shape(side*.13,.062,-.076,.124,.045,.208,0x172222);
-    shape(side*.13,.105,-.07,.125,.1,.205,0x222927);
-    for(let lace=0;lace<4;lace++) shape(side*.13,.168+lace*.006,-.175+lace*.025,.044,.007,.011,0x51564c,4,8);
-    shape(side*(width+.018),1.29,.026,.098,.178,.105,coat);
-    shape(side*(width+.045),1.09,.014,.078,.181,.092,coat);
-    shape(side*(width+.046),.954,-.003,.076,.036,.089,trim);
-    shape(side*(width+.037),.87,-.015,.061,.09,.065,skin);
-    shape(side*(width+.002),.892,-.062,.026,.043,.03,skin,7,12);
-    for(let finger=0;finger<3;finger++) shape(side*(width+.021+finger*.018),.827+finger*.004,-.04,.012,.041,.022,skin,6,10);
+    const eye=points=>points.map(([x,y])=>[x*side*width/.125,y]);
+    patch(eye([[.026,.018],[.049,.032],[.075,.031],[.098,.020],[.078,.009],[.049,.008]]),exposed?0x19181d:0x443830);
+    patch(eye([[.035,.019],[.054,.026],[.075,.025],[.091,.019],[.071,.013],[.053,.013]]),exposed?0x34262a:0x9c9284,.002);
+    const iris=surface(side*width*.50,.020);
+    visitorPatch(mesh,[[iris[0]-.007,iris[1],iris[2]-.002],[iris[0],iris[1]+.006,iris[2]-.002],
+      [iris[0]+.007,iris[1],iris[2]-.002],[iris[0],iris[1]-.006,iris[2]-.002]],exposed?0xc27d4d:0x33382e);
+    patch(eye([[.027,.049],[.047,.057],[.078,.054],[.101,.043],[.074,.048],[.044,.049]]),hair);
+    patch(eye([[.014,-.046],[.029,-.047],[.041,-.054],[.027,-.057]]),exposed?0x352731:0x655147);
+    // The ear is shallow and joins the temple at its front edge.
+    visitorPatch(mesh,[[side*width*.93,head+.020,.006],[side*width*1.12,head+.017,.016],
+      [side*width*1.11,head-.018,.007],[side*width*1.01,head-.046,.001],[side*width*.92,head-.04,-.014]],skin);
   }
-  shape(0,1.13,0,width,.43,.205,coat,14,24);
-  if(number===3||number===5) shape(0,.92,.012,width*.92,.42,.195,coat);
-  shape(0,head-.191,.005,.079,.121,.092,skin);
-  shape(0,head+.025,.007,.154,.198,.151,skin,16,28);
-  shape(0,head-.083,-.033,.126,.115,.113,skin,12,24);
-  shape(0,head+.125,.039,.163,.127,.142,number===3?0x76736b:0x3d3730);
-  for(const side of [-1,1]){
-    shape(side*.15,head-.023,.002,.032,.054,.037,skin);
-    shape(side*.168,head-.022,-.019,.011,.031,.015,0x70544a,6,10);
-    shape(side*.082,head-.041,-.116,.059,.048,.029,skin);
-    shape(side*.059,head+.023,-.128,.045,.028,.027,0x72574c);
-    shape(side*.059,head+.022,-.15,.034,.014,.014,0xd9c4a4);
-    shape(side*.058,head+.022,-.162,.014,.014,.006,number%2===0?0x565948:0x745e44,7,12);
-    shape(side*.058,head+.022,-.167,.007,.01,.003,0x1c2321,6,10);
-    shape(side*.054,head+.027,-.169,.003,.003,.002,0xd3d2b6,4,8);
-    shape(side*.061,head+.062,-.137,.047,.012,.018,number===3?0x686156:0x40362e);
-    shape(side*.021,head-.056,-.155,.018,.018,.021,skin);
-    shape(side*.019,head-.065,-.169,.007,.004,.008,0x58443c,6,10);
-    shape(side*.083,head-.108,-.121,.031,.039,.024,skin);
-  }
-  shape(0,head-.006,-.143,.022,.063,.024,skin);
-  shape(0,head-.045,-.166,.026,.026,.026,skin);
-  shape(0,head-.101,-.142,.052,.014,.017,0x745248);
-  shape(0,head-.103,-.154,.046,.004,.007,0x473530,7,12);
-  shape(0,head-.148,-.113,.076,.043,.047,skin);
-  if(number===0||number===4) shape(0,head-.083,-.145,.062,.013,.018,number===0?0x45382e:0x554a3e);
-  shape(.006,1.135,-.195,.014,.282,.02,trim);
-  for(let i=0;i<4;i++){
-    shape(.012,1.002+i*.097,-.212,.015,.015,.009,0xbda880,6,10);
-    shape(.012,1.002+i*.097,-.219,.005,.005,.003,trim,4,8);
-  }
-  for(const side of [-1,1]){
-    shape(side*.147,1.118,-.161,.083,.083,.032,coat);
-    shape(side*.147,1.18,-.171,.084,.017,.034,trim);
-    shape(side*(width-.02),1.372,.016,.08,.081,.088,coat);
-    shape(side*.094,1.45,-.08,.076,.044,.097,trim);
-  }
-  shape(0,1.449,-.059,.127,.075,.111,number===4?0x2f454d:0x474639);
-  shape(0,head-.134,-.073,.095,.057,.072,skin);
-  if(number===0){
-    shape(0,head+.145,0,.267,.032,.215,0x5b5141);
-    shape(0,head+.22,.012,.144,.111,.133,0x4f493c);
-    shape(0,head+.16,0,.155,.022,.138,0x252c29);
-  }else if(number===1){
-    shape(0,head+.06,.086,.192,.246,.157,coat);
-    shape(0,head+.194,-.048,.146,.046,.104,trim);
-    shape(0,1.46,-.025,.22,.079,.177,0x9a7538);
-  }else if(number===2){
-    shape(0,head+.038,.01,.207,.245,.205,0x8d4f3b);
-    shape(0,head+.058,-.139,.175,.078,.09,0x283c41);
-    shape(0,head+.087,-.178,.157,.011,.054,0x55777a);
-    shape(0,head+.19,-.015,.021,.069,.15,0xba8b62);
-    detail(-.24,1.2,.18,.48,.53,.31,0x685d4a);
-    detail(.185,1.23,-.145,.065,.45,.038,0xc69861);
-  }else if(number===3){
-    shape(0,1.49,-.04,.185,.079,.16,0x8f6049);
-    detail(-.165,1.25,-.16,.115,.39,.055,0x8f6049);
-    detail(.36,.75,-.03,.33,.38,.18,0x554a3b);
-    detail(.36,.975,-.03,.14,.105,.06,0x665941);
-  }else if(number===4){
-    shape(0,head+.141,0,.191,.074,.164,0x364e52);
-    shape(0,head+.086,-.103,.165,.027,.165,0x27393e);
-    detail(-.14,1.3,-.174,.11,.089,.039,0xcfb47c);
-    detail(.34,.885,-.146,.07,.085,.25,0x384640);
-    detail(.34,.885,-.28,.066,.073,.019,0xf6d393);
-  }else if(number===5){
-    shape(0,head+.02,.067,.179,.221,.145,0x392c2c);
-    for(const side of [-1,1]) shape(side*.139,head-.059,.012,.044,.164,.073,0x493633);
-    shape(0,1.49,-.02,.19,.069,.16,0xa35f58);
-    for(let i=0;i<4;i++) shape(-.092+i*.035,1.449,-.162,.019,.069,.024,0x8c4b48,6,10);
+  if(exposed){
+    patch([[-.028,-.069],[.014,-.067],[.031,-.087],[.014,-.128],[-.005,-.132],[-.024,-.111]],0x201921,.006);
+    patch([[-.016,-.077],[-.006,-.075],[-.010,-.089],[-.018,-.086]],0xa48a74,.009);
+    patch([[.001,-.075],[.010,-.076],[.012,-.090],[.003,-.086]],0x967c68,.009);
   }else{
-    detail(0,1.14,-.199,.34,.47,.033,0xa29d7c);
-    detail(.04,1.04,-.222,.15,.102,.01,0x706f56);
+    patch([[-.037,-.078],[-.014,-.075],[.008,-.077],[.038,-.077],[.017,-.084],[-.009,-.085]],0x67483f);
+    if(number===0||number===4) patch([[-.041,-.076],[-.025,-.063],[-.005,-.068],[.023,-.065],[.040,-.076],[.010,-.073]],hair);
+  }
+}
+function visitor(number,exposed=false){
+  const mesh=[];
+  const [coat,trim,skin,hair,width,head,faceWidth,build]=visitorStyles[number];
+  const longCoat=number===1||number===3||number===5;
+  const waist=longCoat?.72:.86;
+  const shoulder=head-.229;
+  const cloth=(profile,color)=>visitorCloth(mesh,profile,color);
+  const detail=(x,y,z,w,h,d,color)=>box(mesh,visitorX+x,y,visitorZ+z,w,h,d,color);
+  const patch=(points,color)=>visitorPatch(mesh,points,color);
+  const skinColor=exposed?0x776571:skin;
+  for(const side of [-1,1]){
+    cloth([[.045,side*.12,0,.064,.076],[.12,side*.12,.003,.068,.075],
+      [.38,side*.115,.018,.076,.081],[.49,side*.113,.005,.089,.086],
+      [.69,side*.109,.017,.091,.099],[.94,side*.104,.019,.102,.104]],0x343a39);
+    cloth([[.028,side*.12,-.055,0,0],[.034,side*.12,-.055,.071,.149,.7],
+      [.072,side*.12,-.055,.074,.15],[.112,side*.12,-.032,.07,.12],
+      [.16,side*.12,.01,.059,.074],[.174,side*.12,.01,0,0]],0x272d2b);
+    cloth([[.912,side*(width+.018),-.026,.047,.051,.84],
+      [.979,side*(width+.022),-.012,.049,.056],[1.11,side*(width+.023),.013,.058,.067,.91],
+      [1.16,side*(width+.02),.014,.057,.07],[shoulder-.14,side*(width+.002),.017,.067,.078,.93],
+      [shoulder-.06,side*(width-.026),.016,.073,.084],
+      [shoulder+.012,side*(width-.07),.013,.067,.065]],coat);
+    const handY=exposed?.76:.801;
+    cloth([[handY,side*(width+.009),-.047,.018,.016,.86],
+      [handY+.033,side*(width+.013),-.043,.033,.023],[.897,side*(width+.017),-.035,.038,.031],
+      [.928,side*(width+.018),-.025,.035,.037]],skinColor);
+  }
+  cloth([[waist,0,.011,0,0],[waist,0,.011,width*.82,.119,.82],
+    [waist+.055,0,.014,width*.86,.125],[1.05,0,.021,width*.78,.116,.88],
+    [1.18,0,.015,width*.80,.125],[shoulder-.095,0,.015,width*.90,.132],
+    [shoulder-.037,0,.014,width,.112],[shoulder+.008,0,.015,width*.88,.083],
+    [shoulder+.038,0,.014,.085,.071],[shoulder+.04,0,.014,0,0]],coat);
+  cloth([[shoulder-.012,0,.012,.076,.069],[shoulder+.043,0,.012,.058,.062],
+    [head-.103,0,.005,.061,.062]],skinColor);
+  cloth([[shoulder-.033,0,.009,.099,.086],[shoulder+.019,0,.009,.09,.078],
+    [shoulder+.039,0,.009,.075,.072]],trim);
+  for(const side of [-1,1]){
+    patch([[side*.068,shoulder+.027,-.070],[side*.119,shoulder-.013,-.088],
+      [side*.116,shoulder-.047,-.108],[side*.036,shoulder-.14,-.121]],trim);
+    patch([[side*.077,1.128,-.111],[side*.155,1.156,-.107],
+      [side*.156,1.143,-.111],[side*.078,1.114,-.115]],trim);
+  }
+  const fastener=number===1?0xa58250:0x8b8774;
+  patch([[-.009,.987,-.101],[.009,.987,-.101],[.009,1.05,-.099],[-.009,1.05,-.099]],trim);
+  patch([[-.009,1.05,-.099],[.009,1.05,-.099],[.009,1.18,-.114],[-.009,1.18,-.114]],trim);
+  for(let i=0;i<4;i++) detail(.003,1.017+i*.051,-.107-i*.004,.013,.013,.012,fastener);
+  visitorFace(mesh,head,faceWidth,build,skinColor,hair,number,exposed);
+  const hat=(profile,color)=>cloth(profile.map(([y,w,d,z=0])=>[head+y,0,z,w,d]),color);
+  if(number===0){
+    hat([[.116,.137,.135],[.114,.222,.182,-.01],[.124,.222,.182,-.01],[.130,.137,.138]],0x50483a);
+    hat([[.123,.143,.135],[.147,.137,.134]],0x292c28);
+    hat([[.147,.137,.134],[.214,.125,.116],[.231,.096,.09],[.237,0,0]],0x4d4639);
+  }else if(number===1){
+    hat([[-.13,.144,.097,.052],[-.047,.156,.139,.058],[.083,.162,.138,.057],
+      [.144,.141,.134,.042],[.188,.10,.091,.026],[.191,0,0,.025]],coat);
+    for(const side of [-1,1]) patch([[side*.112,head+.096,-.079],[side*.149,head+.07,-.036],
+      [side*.151,head-.075,-.024],[side*.117,head-.127,-.069],[side*.11,head-.053,-.081]],trim);
+  }else if(number===2){
+    hat([[-.084,.137,.104,.068],[.018,.167,.154,.047],[.087,.173,.154,.033],
+      [.149,.145,.133,.025],[.185,.10,.093,.02],[.194,0,0,.02]],0x744839);
+    hat([[.039,.132,.156,-.019],[.063,.146,.158,-.023],[.091,.144,.156,-.02]],0x33484a);
+    detail(-.064,1.20,.18,.39,.47,.24,0x675a46);
+    detail(.122,1.23,-.119,.038,.29,.026,0xa18260);
+  }else if(number===3){
+    detail(-.148,1.23,-.108,.035,.31,.018,0x85604b);
+    detail(.288,.74,-.033,.24,.32,.145,0x51463b);
+    detail(.288,.91,-.033,.10,.067,.05,0x665a4c);
+  }else if(number===4){
+    hat([[.110,.148,.129],[.151,.159,.143,.013],[.178,.137,.122,.021],[.182,0,0,.02]],0x2c4449);
+    hat([[.106,.122,.107,-.071],[.116,.142,.127,-.063],[.129,.122,.102,-.049]],0x25363a);
+    detail(-.112,1.29,-.124,.063,.047,.016,0xbc9e67);
+    detail(.276,.88,-.138,.049,.05,.204,0x384640);
+    detail(.276,.88,-.246,.046,.046,.016,0xf6d393);
+  }else if(number===5){
+    hat([[-.142,.091,.070,.092],[-.092,.135,.105,.070],[.028,.128,.130,.052],
+      [.101,.123,.130,.025],[.150,.096,.093,.021],[.169,0,0,.015]],hair);
+    detail(0,shoulder+.009,-.059,.187,.056,.075,0x82555b);
+  }else{
+    patch([[-.12,1.31,-.131],[.12,1.31,-.131],[.176,.87,-.12],[-.17,.87,-.12]],0x9b967b);
+    detail(.031,1.027,-.139,.125,.077,.012,0x73735c);
   }
   return mesh;
 }
@@ -1578,52 +1695,19 @@ function rackRound(slot){
   box(mesh,x,1.373,-1.635,.051,.02,.05,0xc7a376);
   return mesh;
 }
-function creature(number){
-  const mesh=visitor(number);
-  const x=.32,z=4.83,y=[1.7,1.65,1.76,1.78,1.82,1.68,1.74][number];
-  oval(mesh,x,y-.017,z-.082,.189,.265,.14,0x41354a,16,26);
-  oval(mesh,x,y-.157,z-.164,.078,.102,.066,0x251d2a,12,18);
-  for(const side of [-1,1]){
-    oval(mesh,x+side*.079,y+.044,z-.194,.058,.041,.042,0x241d2b,10,18);
-    oval(mesh,x+side*.071,y+.042,z-.231,.023,.018,.012,0xe99857,8,14);
-    oval(mesh,x+side*.071,y+.042,z-.242,.006,.015,.004,0x241c28,7,10);
-    oval(mesh,x+side*.124,y-.086,z-.166,.037,.096,.043,0x62515c,10,16);
-    oval(mesh,x+side*.33,1.09,z-.016,.065,.31,.07,0x473c49,11,18);
-    for(let i=0;i<3;i++) oval(mesh,x+side*(.31+i*.022),.76,z-.04,.014,.072,.02,0x78605d);
-  }
-  return mesh;
-}
 function scareFace(){
-  const head=[],jaw=[];
-  oval(head,.04,-.69,.16,.57,.25,.22,0x272527,8,16);
-  oval(head,.06,-.48,.08,.115,.29,.124,0x4b4640,8,14);
-  oval(head,-.035,.108,.015,.321,.47,.23,0x6c685c,11,20);
-  oval(head,.114,.115,.003,.22,.43,.21,0x514e48,9,16);
-  oval(head,-.04,-.15,-.202,.15,.17,.057,0x161417,8,16);
-  oval(head,-.046,-.233,-.243,.099,.176,.018,0x0d0d10,8,14);
-
-  const sockets=[
-    {x:-.165,y:.136,width:.119},
-    {x:.132,y:.094,width:.102}
-  ];
-  for(const {x,y,width} of sockets){
-    oval(head,x,y,-.181,width,.09,.067,0x171619,8,14);
-    oval(head,x+.016,y-.014,-.244,.037,.029,.016,0x898b74,6,12);
-    oval(head,x+.019,y-.014,-.258,.009,.016,.007,0x17191a,5,10);
-    oval(head,x+.011,y-.005,-.264,.006,.006,.004,0xd8cfaa,5,8);
-    oval(head,x,y+.093,-.157,width+.025,.049,.068,0x454239,7,12);
-    oval(head,x*1.4,y-.16,-.16,.056,.145,.05,0x4c453f,7,12);
+  const head=[];
+  visitorFace(head,0,.127,1,0x777165,0x383531,6,true);
+  visitorCloth(head,[[-.33,0,.09,.23,.13],[-.244,0,.081,.233,.126],
+    [-.195,0,.069,.168,.10],[-.160,0,.053,.085,.083],[-.137,0,.047,.070,.079]],0x34302d);
+  visitorCloth(head,[[-.19,0,.035,.062,.059],[-.119,0,.023,.055,.062]],0x534b45);
+  for(let i=0;i<head.length;i+=6){
+    const x=head[i]-visitorX,y=head[i+1],z=head[i+2]-visitorZ;
+    head[i]=x*2.35+y*.17-.025;
+    head[i+1]=y*2.52+x*.19+.065;
+    head[i+2]=z*1.53+x*.18;
   }
-  oval(head,-.019,.001,-.222,.058,.109,.064,0x666052,8,14);
-  oval(head,-.023,-.067,-.277,.033,.022,.017,0x272426,6,10);
-  for(let tooth=0;tooth<5;tooth++){
-    const x=-.12+tooth*.035;
-    oval(head,x,-.153+(tooth%2)*.011,-.255,.012,.028+(tooth%3)*.008,.014,0xa49a7b,5,9);
-    oval(jaw,x-.011,-.352-(tooth%2)*.012,-.245,.011,.02,.013,0x827b63,5,9);
-  }
-  oval(jaw,-.045,-.427,-.097,.185,.143,.153,0x585049,9,16);
-  oval(jaw,-.093,-.451,-.206,.094,.066,.045,0x494541,7,12);
-  return {head,jaw};
+  return head;
 }
 function steamMesh(){
   const mesh=[];
@@ -1722,7 +1806,7 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
   gl.vertexAttribPointer(attributes[1],3,gl.FLOAT,false,24,12);
   gl.drawArrays(mode,0,mesh.count);
 }
-let renderer,set,panes,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,jumpJaw,steam;
+let renderer,set,panes,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,steam;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let showVisitor=false,shutterDown=false,lightsOut=false,customerHit=false;
 let encounterTransition=null;
@@ -1773,7 +1857,7 @@ function drawJump(now,aspect,attributes,u,visible=updateJump(now)){
   const retreat=still?0:1.35*withdraw*withdraw;
   const stagger=still?0:Math.sin(progress*27)*.022*(1-progress);
   const tilt=still?0:Math.sin(progress*9)*.036;
-  const jawDrop=still?.038:.026+.1*Math.sin(Math.PI*Math.min(1,progress/.56));
+  const jawDrop=still?.022:.015+.066*Math.sin(Math.PI*Math.min(1,progress/.56));
   const depth=.89+approach+retreat;
   gl.clear(gl.DEPTH_BUFFER_BIT);
   gl.uniform3f(u.eye,0,0,0);
@@ -1783,9 +1867,9 @@ function drawJump(now,aspect,attributes,u,visible=updateJump(now)){
   gl.uniform1f(u.mono,0);
   gl.uniform2f(u.gait,0,0);
   gl.uniform3f(u.offset,stagger,.035,depth);
+  gl.uniform1f(u.jawMotion,jawDrop);
   draw(jumpFace,attributes);
-  gl.uniform3f(u.offset,stagger,.035-jawDrop,depth);
-  draw(jumpJaw,attributes);
+  gl.uniform1f(u.jawMotion,0);
 }
 const scares={
   1:{after:3,text:'Sokağın karşısında bir gölge hızla geçiyor.'},
@@ -2774,7 +2858,7 @@ try{
   set=buffer(geometry());
   bakeShadows(set);
   panes=buffer(windowGlass());
-  const visitorModels=Array.from({length:7},(_,look)=>buffer(visitor(look)));
+  const visitorModels=Array.from({length:visitorStyles.length},(_,look)=>buffer(visitor(look)));
   visitors=scene.map(entry=>visitorModels[entry.look]);
   shutter=buffer(shutters());
   const sparks=[];
@@ -2790,11 +2874,9 @@ try{
   const view=weaponView();
   heldWeapon=buffer(view.mesh);
   muzzle=buffer(view.flash);
-  const scare=scareFace();
-  jumpFace=buffer(scare.head);
-  jumpJaw=buffer(scare.jaw);
+  jumpFace=buffer(scareFace());
   steam=buffer(steamMesh());
-  creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(creature(scene[Number(key)].look))]));
+  creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(visitor(scene[Number(key)].look,true))]));
   nearUmbrella=buffer(umbrella(.68,4.9));
   streetUmbrella=buffer(umbrella(-1.95,5.1));
   bike=buffer(motorcycle());
