@@ -6,6 +6,8 @@
 <title>Gece Vardiyası 3B</title>
 <style>
 :root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}body.mouse-look,body.mouse-look *,.game.mouse-look,.game.mouse-look *{cursor:none!important}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,transparent 17%,#10080d55 45%,#040306ed 88%);box-shadow:inset 0 0 105px 36px #050306c4}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#lookCapture{position:absolute;z-index:2;top:14px;right:14px;font-size:.78rem}#advance{background:#151d13eb;padding:9px 14px;pointer-events:none;position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+.game:after{background:none;box-shadow:inset 0 0 64px #0006}
+.game.camera-view:after{background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b36 4px 5px)}
 </style>
 </head>
 <body><main>
@@ -30,7 +32,7 @@
 <span>WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak</span>
 </div></section>
 <footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>3 GECE · 17 KARŞILAŞMA · 7 SON</span></footer>
-<details class="credits"><summary>Ses kaynakları</summary><p>Av tüfeği kaydı · Vincent Sevedge, “Gunshot Sounds”. Ses seviyesi oyun için ayarlandı. <a href="https://opengameart.org/content/gunshot-sounds" target="_blank" rel="noopener">Kaynak</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p></details>
+<details class="credits"><summary>Ses kaynakları</summary><p>Av tüfeği kaydı · Vincent Sevedge, “Gunshot Sounds”. Ses seviyesi oyun için ayarlandı. <a href="https://opengameart.org/content/gunshot-sounds" target="_blank" rel="noopener">Kaynak</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p><p>Gerilim müziği · Kevin MacLeod, “Unnatural Situation”. Oyun için ses seviyesi ve frekansları ayarlandı. <a href="https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1100464" target="_blank" rel="noopener">Kaynak</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p></details>
 </main>
 <script>
 'use strict';
@@ -475,6 +477,7 @@ Object.assign(english,{
   "İçeriden biri servis camına vuruyor. Camda artık senin yüzün yok.": "Someone knocks on the glass from inside. The face in the glass is no longer yours.",
   "Yazıcı durmadan fiş basıyor.": "The printer will not stop issuing receipts."
 });
+english["Gerilim müziği · Kevin MacLeod, “Unnatural Situation”. Oyun için ses seviyesi ve frekansları ayarlandı."]="Tension score · Kevin MacLeod, “Unnatural Situation”. Level and frequency balance adjusted for this game.";
 let language='en';
 try{
   const saved=localStorage.getItem('night-shift-language');
@@ -913,8 +916,8 @@ const camera = {x:5.7,z:9.4,y:3.4,angle:-2.22,pitch:-.3};
 const held = new Set();
 let stage=0, playing=false, cctv=false, sugar=0, prepared='';
 let rainGain,rainSource,audio,soundBus,audioNoise,gunRecording,reverseShot;
-let scoreBuffer,scoreAccent,scoreSource,scoreGain;
-const scoreLevel=.122;
+let scoreBuffer,scoreLoad,scoreSource,scoreGain;
+const scoreLevel=.19;
 const rainLevel=.027;
 const rainCutoff=1300;
 let soundWanted=true,soundJob=null,soundFailed=false;
@@ -967,9 +970,10 @@ function compile(type, source) {
 }
 function setup() {
   const program = gl.createProgram();
+  const derivatives=gl.getExtension('OES_standard_derivatives');
   gl.attachShader(program, compile(gl.VERTEX_SHADER, `
     attribute vec3 point; attribute vec3 tint;
-    uniform vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform float night; uniform vec3 offset; uniform vec2 gait; uniform float fall;
+    uniform mediump vec3 eye; uniform vec4 rotation; uniform vec2 scale; uniform mediump float night; uniform vec3 offset; uniform vec2 gait; uniform float fall;
     varying vec3 color; varying vec3 position; varying float distanceToEye;
     void main(){
       vec3 posed=point;
@@ -989,33 +993,104 @@ function setup() {
       float up=d.y*rotation.w-front*rotation.z;
       float depth=front*rotation.w+d.y*rotation.z;
       gl_Position=vec4(side*scale.x,up*scale.y,1.003*depth-.13,depth);
-      color=tint*night; position=point+offset; distanceToEye=depth;
+      color=tint*night; position=posed+offset; distanceToEye=depth;
     }`));
-  gl.attachShader(program, compile(gl.FRAGMENT_SHADER, `
-    precision mediump float;
+  gl.attachShader(program, compile(gl.FRAGMENT_SHADER,
+    (derivatives?'#extension GL_OES_standard_derivatives : enable\n#define SURFACE_NORMALS\n':'')+`
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+      precision highp float;
+    #else
+      precision mediump float;
+    #endif
     varying vec3 color; varying vec3 position; varying float distanceToEye;
-    uniform vec3 fog; uniform float mono; uniform float dissolve;
+    uniform vec3 fog; uniform mediump vec3 eye; uniform mediump float night; uniform float mono; uniform float dissolve;
+    uniform float scenery; uniform float time; uniform float glass;
+    uniform sampler2D shadowMap;
+    float hash(vec2 p){
+      vec3 q=fract(vec3(p.xyx)*.1031);
+      q+=dot(q,q.yzx+19.19);
+      return fract((q.x+q.y)*q.z);
+    }
+    float noise(vec2 p){
+      vec2 i=floor(p),f=fract(p);
+      f=f*f*(3.0-2.0*f);
+      return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),
+        mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);
+    }
+    vec3 lamp(vec3 source,vec3 normal,vec3 view,vec3 hue,float spread,float gloss){
+      vec3 delta=source-position;
+      float range=max(dot(delta,delta),.01);
+      vec3 ray=delta*inversesqrt(range);
+      float diffuse=max(dot(normal,ray),0.0);
+      float specular=pow(max(dot(normal,normalize(ray+view)),0.0),24.0)*gloss;
+      return hue*(.19+.73*diffuse+specular)/(1.0+range*spread);
+    }
+    float shadowAt(vec2 uv){
+      float height=texture2D(shadowMap,uv).r*3.0;
+      return smoothstep(.038,.115,height-position.y);
+    }
+    float shadow(){
+      vec2 uv=vec2((position.x+position.y*.18)/4.3,(position.z-position.y*.22-.85)/3.6)*.5+.5;
+      if(uv.x<.01||uv.x>.99||uv.y<.01||uv.y>.99) return 0.0;
+      vec2 tap=vec2(.0039,.00195);
+      return (shadowAt(uv+tap)+shadowAt(uv-tap)+shadowAt(uv+tap.yx)+shadowAt(uv-tap.yx))*.25;
+    }
     void main(){
-      float fragment=fract(sin(dot(floor(position*38.0),vec3(12.21,29.47,73.19)))*4193.27);
-      if(dissolve>fragment) discard;
-      float grain=fract(sin(dot(floor(position*115.0),vec3(12.989,37.719,78.233)))*4375.85);
-      vec3 leftLight=position-vec3(-2.2,2.85,.9);
-      vec3 centreLight=position-vec3(0.0,2.85,.9);
-      vec3 rightLight=position-vec3(2.2,2.85,.9);
-      float lamp=.5/(1.0+dot(leftLight,leftLight)*.28)
-        +.5/(1.0+dot(centreLight,centreLight)*.28)
-        +.5/(1.0+dot(rightLight,rightLight)*.28);
-      float street=1.0/(1.0+dot(position-vec3(3.65,3.35,8.0),position-vec3(3.65,3.35,8.0))*.17);
-      float interior=1.0-step(3.95,position.z);
-      vec3 tint=mix(vec3(.78,.93,1.02)+vec3(.58,.29,.07)*street,
-        vec3(.76,.83,.84)+vec3(.73,.54,.29)*lamp,interior);
-      float counter=interior*step(.37,color.r)*step(color.g,color.r*.86);
-      float fibers=sin(position.y*290.0+sin(position.x*8.5+position.z*5.0)*1.8);
-      float wet=(1.0-interior)*(1.0-smoothstep(.03,.16,position.y));
-      float glint=pow(max(0.0,sin(position.z*62.0+sin(position.x*5.3))),9.0);
-      vec3 textured=color*tint*(.93+grain*.11+counter*fibers*.035);
-      textured+=vec3(.16,.12,.075)*wet*street*glint;
-      vec3 c=mix(textured,fog,1.0-exp(-max(0.0,distanceToEye)*.038));
+      vec3 view=normalize(eye-position);
+      if(glass>.5){
+        float column=floor(position.x*26.0);
+        float seed=hash(vec2(column,7.0));
+        float along=fract(position.y*3.1+time*(.11+seed*.23)+seed);
+        float across=abs(fract(position.x*26.0)-.5-(seed-.5)*.44);
+        float trail=(1.0-smoothstep(.02,.10,across))*smoothstep(.44,.98,along);
+        float fleck=noise(position.xy*vec2(88.0,50.0));
+        float edge=pow(1.0-abs(view.z),2.0);
+        gl_FragColor=vec4(vec3(.29,.42,.40)*night,.075+edge*.13+trail*.38+fleck*.045);
+        return;
+      }
+      if(dissolve>0.0&&dissolve>hash(floor(position.xy*38.0)+floor(position.z*38.0))) discard;
+      vec3 normal=vec3(0.0,1.0,0.0);
+      #ifdef SURFACE_NORMALS
+        vec3 crossNormal=cross(dFdx(position),dFdy(position));
+        float area=length(crossNormal);
+        if(area>0.0) normal=crossNormal/area;
+        if(dot(normal,view)<0.0) normal=-normal;
+      #endif
+      float interior=1.0-smoothstep(3.65,5.3,position.z);
+      vec3 ambient=mix(vec3(.63,.78,.85),vec3(.64,.65,.60),interior);
+      ambient+=max(normal.y,0.0)*vec3(.11,.13,.14);
+      vec3 warm=vec3(.78,.65,.43);
+      vec3 ceiling=lamp(vec3(-2.2,2.9,.9),normal,view,warm,.38,.11)
+        +lamp(vec3(0,2.9,.9),normal,view,warm,.38,.11)
+        +lamp(vec3(2.2,2.9,.9),normal,view,warm,.38,.11);
+      vec3 street=lamp(vec3(3.65,4.9,8.0),normal,view,vec3(1.34,1.01,.65),.062,.18);
+      vec3 spill=lamp(vec3(.0,2.25,3.4),normal,view,vec3(.52,.38,.25),.35,.02);
+      float textureValue=1.0;
+      vec3 reflection=vec3(0.0);
+      if(scenery>.5){
+        vec2 surface=position.xz+position.y*vec2(.7,.83);
+        float grain=noise(surface*44.0);
+        float wear=noise(surface*3.1);
+        textureValue=.89+grain*.14+wear*.09;
+        float wood=interior*smoothstep(.045,.14,color.r-color.b);
+        float fibers=noise(vec2(position.x*2.7,position.y*95.0+position.z*64.0));
+        textureValue+=wood*(fibers-.5)*.18;
+        ceiling*=1.0-shadow()*.44;
+        if(position.z>4.05&&position.y<.05&&normal.y>.65){
+          float puddle=smoothstep(.37,.65,noise(position.xz*vec2(1.8,.8)))*.83+.17;
+          float grazing=.35+.65*pow(1.0-max(view.y,0.0),2.0);
+          vec3 mirror=reflect(-view,vec3(0,1,0));
+          float amber=pow(max(0.0,dot(mirror,normalize(vec3(3.65,4.9,8.0)-position))),20.0);
+          float ripple=.67+.33*noise(position.xz*vec2(7.0,24.0)+time*.45);
+          float windowGlow=exp(-abs(position.x)*.71)*exp(-(position.z-4.05)*.49);
+          reflection=puddle*grazing*ripple*(vec3(.62,.37,.16)*amber+vec3(.15,.105,.062)*windowGlow
+            +vec3(.047,.073,.088))*night;
+          textureValue*=1.0-puddle*.19;
+        }
+      }
+      vec3 textured=color*(ambient+ceiling*interior+street*(1.0-interior)+spill)*textureValue+reflection;
+      float haze=1.0-exp(-max(0.0,distanceToEye-1.0)*mix(.067,.032,interior));
+      vec3 c=mix(textured,fog*night,haze);
       float l=dot(c,vec3(.3,.55,.15));
       gl_FragColor=vec4(mix(c,vec3(l*.77,l*1.12,l*.83),mono),1.0);
     }`));
@@ -1025,8 +1100,72 @@ function setup() {
   gl.enable(gl.DEPTH_TEST);
   const attributes = ['point','tint'].map(name => gl.getAttribLocation(program,name));
   for (const id of attributes) gl.enableVertexAttribArray(id);
-  const uniforms = Object.fromEntries(['eye','rotation','scale','night','fog','mono','offset','gait','fall','dissolve'].map(name => [name,gl.getUniformLocation(program,name)]));
-  return {attributes,uniforms};
+  const uniforms = Object.fromEntries(['eye','rotation','scale','night','fog','mono','offset','gait','fall','dissolve',
+    'scenery','time','glass','shadowMap'].map(name => [name,gl.getUniformLocation(program,name)]));
+  return {program,attributes,uniforms};
+}
+
+// Bake the static shop fixtures into a small height map from the overhead light direction.
+function bakeShadows(mesh){
+  const size=512;
+  const texture=gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D,texture);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,size,size,0,gl.RGBA,gl.UNSIGNED_BYTE,null);
+  const depth=gl.createRenderbuffer();
+  gl.bindRenderbuffer(gl.RENDERBUFFER,depth);
+  gl.renderbufferStorage(gl.RENDERBUFFER,gl.DEPTH_COMPONENT16,size,size);
+  const framebuffer=gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER,framebuffer);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,texture,0);
+  gl.framebufferRenderbuffer(gl.FRAMEBUFFER,gl.DEPTH_ATTACHMENT,gl.RENDERBUFFER,depth);
+  if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)===gl.FRAMEBUFFER_COMPLETE){
+    const program=gl.createProgram();
+    const vertex=compile(gl.VERTEX_SHADER,`
+      attribute vec3 point;
+      varying vec3 position;
+      void main(){
+        position=point;
+        gl_Position=vec4((point.x+point.y*.18)/4.3,(point.z-point.y*.22-.85)/3.6,
+          1.0-(point.y+.12)*.65,1.0);
+      }`);
+    const fragment=compile(gl.FRAGMENT_SHADER,`
+      precision mediump float;
+      varying vec3 position;
+      void main(){
+        if(position.y>2.7||position.z>3.92) discard;
+        gl_FragColor=vec4(position.y/3.0,0.0,0.0,1.0);
+      }`);
+    gl.attachShader(program,vertex);
+    gl.attachShader(program,fragment);
+    gl.linkProgram(program);
+    if(gl.getProgramParameter(program,gl.LINK_STATUS)){
+      gl.useProgram(program);
+      gl.viewport(0,0,size,size);
+      gl.clearColor(0,0,0,1);
+      gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+      gl.bindBuffer(gl.ARRAY_BUFFER,mesh.object);
+      const point=gl.getAttribLocation(program,'point');
+      for(const attribute of renderer.attributes) gl.disableVertexAttribArray(attribute);
+      gl.enableVertexAttribArray(point);
+      gl.vertexAttribPointer(point,3,gl.FLOAT,false,24,0);
+      gl.drawArrays(gl.TRIANGLES,0,mesh.count);
+      gl.disableVertexAttribArray(point);
+      for(const attribute of renderer.attributes) gl.enableVertexAttribArray(attribute);
+    }
+    gl.deleteShader(vertex);
+    gl.deleteShader(fragment);
+    gl.deleteProgram(program);
+  }
+  gl.bindFramebuffer(gl.FRAMEBUFFER,null);
+  gl.bindRenderbuffer(gl.RENDERBUFFER,null);
+  gl.deleteFramebuffer(framebuffer);
+  gl.deleteRenderbuffer(depth);
+  gl.useProgram(renderer.program);
+  gl.uniform1i(renderer.uniforms.shadowMap,0);
 }
 
 const faces = [[0,1,2,3,.77],[5,4,7,6,.98],[4,0,3,7,.79],[1,5,6,2,.66],[3,2,6,7,1],[4,5,1,0,.48]];
@@ -1076,6 +1215,12 @@ function geometry() {
   for(const x of [-3.2,-1.65,1.57,3.2]) put(x,1.63,3.93,.115,1.6,.16,0x4b493d);
   put(0,1.0,3.58,6.65,.17,.73,0x907553);
   put(0,.45,3.56,6.6,.9,.62,0x514537);
+  put(0,1.054,3.209,6.64,.042,.022,0xb9a785);
+  put(0,.12,3.237,6.62,.15,.025,0x383f37);
+  for(const x of [-3.18,3.18]){
+    put(x,1.63,3.859,.029,1.59,.024,0x9c9b83);
+    put(x,2.4,3.84,.027,.022,.06,0xc2b193);
+  }
   put(-2.39,.99,2.89,1.24,.16,.75,0x73634a);
   put(-2.4,1.38,2.8,.74,.55,.32,0x2b3128);
   put(-2.4,1.4,2.63,.62,.42,.025,0x76a080);
@@ -1094,7 +1239,9 @@ function geometry() {
   for(const x of [-2.2,0,2.2]){
     put(x,2.976,.9,1.35,.072,.32,0x41473d);
     put(x,2.934,.9,1.24,.04,.26,0xa6a58c);
-    put(x,2.908,.9,1.12,.018,.215,0xffdc9b);
+    put(x,2.908,.9,1.12,.018,.215,0xe8d5a7);
+    for(const z of [.845,.955]) oval(mesh,x,2.896,z,.536,.011,.023,0xffe8bd,6,12);
+    for(const end of [-.6,.6]) put(x+end,2.912,.9,.072,.031,.248,0x6d705f);
   }
   put(2.5,1.05,-1.86,1.16,2.06,.08,0x323b31);
   put(2.15,1.04,-1.79,.13,.047,.08,0xb79b66);
@@ -1125,6 +1272,15 @@ function geometry() {
   put(2.85,.64,1.81,.66,1.23,.74,0x4b5853);
   put(2.85,.69,1.425,.62,1.05,.045,0x343f3e);
   put(2.61,.82,1.39,.047,.22,.047,0xc4b295);
+  for(let row=0;row<5;row++) put(2.85,.17+row*.033,1.398,.49,.012,.018,0x202d2c);
+  for(const x of [-1.9,-1.45,-1.0]){
+    put(x,1.88,-1.73,.4,.05,.36,0x8b785e);
+    for(let i=0;i<4;i++){
+      oval(mesh,x,1.935+i*.023,-1.72,.131,.013,.119,0xc1bba4,5,14);
+      oval(mesh,x,1.947+i*.023,-1.72,.114,.007,.104,0x998d73,5,14);
+    }
+  }
+  put(-3.317,2.1,1,.045,.043,4.8,0x908d74);
   put(1.53,1.23,3.16,.45,.16,.4,0x303530);
   put(1.53,1.327,3.16,.45,.05,.4,0x747768);
   put(1.53,1.36,3.08,.3,.035,.065,0xaa8561);
@@ -1174,6 +1330,7 @@ function geometry() {
     if(i%2===0) put(x,.024,11.13,.72,.012,.17,0x4d524d);
   }
   put(-5.1,2.43,11.2,3.1,.11,1.25,0x475957);
+  put(-5.1,2.355,10.81,2.81,.035,.066,0x98aa88);
   for(const x of [-6.54,-3.66]){
     put(x,1.22,10.73,.085,2.44,.08,0x546a61);
     put(x,1.22,11.76,.085,2.44,.08,0x546a61);
@@ -1191,6 +1348,20 @@ function geometry() {
   for(let i=0;i<43;i++){
     const x=Math.sin(i*123)*8,z=4.7+(i%27)*.29;
     put(x,.028,z,.15+(i%5)*.135,.005,.035+(i%3)*.04,i%6===0?0x6e684e:0x323e3d);
+  }
+  for(const x of [-2.8,1.9]){
+    put(x,.007,6.14,.48,.017,.31,0x505951);
+    for(let slat=0;slat<7;slat++) put(x-.195+slat*.065,.018,6.14,.029,.008,.26,0x273735);
+  }
+  for(let i=0;i<18;i++) put(-7.6+i*.88,.064,7.88,.864,.11,.205,i%4===0?0x666a5f:0x4b554e);
+  return mesh;
+}
+function windowGlass(){
+  const mesh=[];
+  for(const [left,right] of [[-3.14,-1.71],[1.65,3.14]]){
+    for(const [x,y] of [[left,1.09],[right,1.09],[right,2.42],[left,1.09],[right,2.42],[left,2.42]]){
+      mesh.push(x,y,3.925,.3,.42,.39);
+    }
   }
   return mesh;
 }
@@ -1220,32 +1391,59 @@ function visitor(number){
     [0x40594a,0x7e6b60,.27,1.74]
   ];
   const [coat,skin,width,head]=styles[number];
+  const trim=[0x2e3530,0x997036,0x34262d,0x605950,0x27434d,0x4a272f,0x2b4337][number];
   const x=.32,z=4.83;
-  const shape=(dx,y,dz,rx,ry,rz,c)=>oval(mesh,x+dx,y,z+dz,rx,ry,rz,c);
+  const shape=(dx,y,dz,rx,ry,rz,c,rings=8,sides=14)=>oval(mesh,x+dx,y,z+dz,rx,ry,rz,c,rings,sides);
   const detail=(dx,y,dz,w,h,d,c)=>box(mesh,x+dx,y,z+dz,w,h,d,c);
   for(const side of [-1,1]){
     shape(side*.13,.45,.025,.115,.42,.12,0x31393a);
+    shape(side*.13,.36,-.049,.094,.219,.051,0x3d4543);
+    shape(side*.13,.062,-.076,.124,.045,.208,0x172222);
     shape(side*.13,.105,-.07,.125,.1,.205,0x222927);
-    shape(side*(width+.025),1.16,.025,.09,.28,.105,coat);
+    for(let lace=0;lace<4;lace++) shape(side*.13,.168+lace*.006,-.175+lace*.025,.044,.007,.011,0x51564c,4,8);
+    shape(side*(width+.018),1.29,.026,.098,.178,.105,coat);
+    shape(side*(width+.045),1.09,.014,.078,.181,.092,coat);
+    shape(side*(width+.046),.954,-.003,.076,.036,.089,trim);
     shape(side*(width+.037),.87,-.015,.061,.09,.065,skin);
+    shape(side*(width+.002),.892,-.062,.026,.043,.03,skin,7,12);
+    for(let finger=0;finger<3;finger++) shape(side*(width+.021+finger*.018),.827+finger*.004,-.04,.012,.041,.022,skin,6,10);
   }
-  shape(0,1.14,0,width,.43,.205,coat);
+  shape(0,1.13,0,width,.43,.205,coat,14,24);
   if(number===3||number===5) shape(0,.92,.012,width*.92,.42,.195,coat);
-  shape(0,head-.23,0,.09,.19,.097,skin);
-  shape(0,head,0,.157,.213,.151,skin);
-  shape(0,head+.114,.038,.165,.126,.142,number===3?0x76736b:0x3d3730);
+  shape(0,head-.191,.005,.079,.121,.092,skin);
+  shape(0,head+.025,.007,.154,.198,.151,skin,16,28);
+  shape(0,head-.083,-.033,.126,.115,.113,skin,12,24);
+  shape(0,head+.125,.039,.163,.127,.142,number===3?0x76736b:0x3d3730);
   for(const side of [-1,1]){
-    shape(side*.151,head-.02,0,.034,.055,.041,skin);
-    shape(side*.058,head+.022,-.135,.037,.015,.017,0xc3aa85);
-    shape(side*.059,head+.022,-.151,.013,.013,.007,0x2e2925);
-    shape(side*.061,head+.052,-.132,.044,.014,.014,0x40362e);
+    shape(side*.15,head-.023,.002,.032,.054,.037,skin);
+    shape(side*.168,head-.022,-.019,.011,.031,.015,0x70544a,6,10);
+    shape(side*.082,head-.041,-.116,.059,.048,.029,skin);
+    shape(side*.059,head+.023,-.128,.045,.028,.027,0x72574c);
+    shape(side*.059,head+.022,-.15,.034,.014,.014,0xd9c4a4);
+    shape(side*.058,head+.022,-.162,.014,.014,.006,number%2===0?0x565948:0x745e44,7,12);
+    shape(side*.058,head+.022,-.167,.007,.01,.003,0x1c2321,6,10);
+    shape(side*.054,head+.027,-.169,.003,.003,.002,0xd3d2b6,4,8);
+    shape(side*.061,head+.062,-.137,.047,.012,.018,number===3?0x686156:0x40362e);
+    shape(side*.021,head-.056,-.155,.018,.018,.021,skin);
+    shape(side*.019,head-.065,-.169,.007,.004,.008,0x58443c,6,10);
+    shape(side*.083,head-.108,-.121,.031,.039,.024,skin);
   }
-  shape(0,head-.025,-.152,.035,.046,.035,skin);
-  shape(0,head-.09,-.126,.056,.014,.014,0x66483d);
-  for(let i=0;i<4;i++) shape(.015,1.04+i*.1,-.193,.013,.014,.01,0xbda880);
+  shape(0,head-.006,-.143,.022,.063,.024,skin);
+  shape(0,head-.045,-.166,.026,.026,.026,skin);
+  shape(0,head-.101,-.142,.052,.014,.017,0x745248);
+  shape(0,head-.103,-.154,.046,.004,.007,0x473530,7,12);
+  shape(0,head-.148,-.113,.076,.043,.047,skin);
+  if(number===0||number===4) shape(0,head-.083,-.145,.062,.013,.018,number===0?0x45382e:0x554a3e);
+  shape(.006,1.135,-.195,.014,.282,.02,trim);
+  for(let i=0;i<4;i++){
+    shape(.012,1.002+i*.097,-.212,.015,.015,.009,0xbda880,6,10);
+    shape(.012,1.002+i*.097,-.219,.005,.005,.003,trim,4,8);
+  }
   for(const side of [-1,1]){
-    detail(side*.106,1.22,-.176,.097,.037,.014,number===4?0x718888:0x726b55);
-    shape(side*(width+.016),1.398,.009,.073,.061,.081,coat);
+    shape(side*.147,1.118,-.161,.083,.083,.032,coat);
+    shape(side*.147,1.18,-.171,.084,.017,.034,trim);
+    shape(side*(width-.02),1.372,.016,.08,.081,.088,coat);
+    shape(side*.094,1.45,-.08,.076,.044,.097,trim);
   }
   shape(0,1.449,-.059,.127,.075,.111,number===4?0x2f454d:0x474639);
   shape(0,head-.134,-.073,.095,.057,.072,skin);
@@ -1255,10 +1453,13 @@ function visitor(number){
     shape(0,head+.16,0,.155,.022,.138,0x252c29);
   }else if(number===1){
     shape(0,head+.06,.086,.192,.246,.157,coat);
+    shape(0,head+.194,-.048,.146,.046,.104,trim);
     shape(0,1.46,-.025,.22,.079,.177,0x9a7538);
   }else if(number===2){
     shape(0,head+.038,.01,.207,.245,.205,0x8d4f3b);
     shape(0,head+.058,-.139,.175,.078,.09,0x283c41);
+    shape(0,head+.087,-.178,.157,.011,.054,0x55777a);
+    shape(0,head+.19,-.015,.021,.069,.15,0xba8b62);
     detail(-.24,1.2,.18,.48,.53,.31,0x685d4a);
     detail(.185,1.23,-.145,.065,.45,.038,0xc69861);
   }else if(number===3){
@@ -1274,7 +1475,9 @@ function visitor(number){
     detail(.34,.885,-.28,.066,.073,.019,0xf6d393);
   }else if(number===5){
     shape(0,head+.02,.067,.179,.221,.145,0x392c2c);
+    for(const side of [-1,1]) shape(side*.139,head-.059,.012,.044,.164,.073,0x493633);
     shape(0,1.49,-.02,.19,.069,.16,0xa35f58);
+    for(let i=0;i<4;i++) shape(-.092+i*.035,1.449,-.162,.019,.069,.024,0x8c4b48,6,10);
   }else{
     detail(0,1.14,-.199,.34,.47,.033,0xa29d7c);
     detail(.04,1.04,-.222,.15,.102,.01,0x706f56);
@@ -1378,10 +1581,14 @@ function rackRound(slot){
 function creature(number){
   const mesh=visitor(number);
   const x=.32,z=4.83,y=[1.7,1.65,1.76,1.78,1.82,1.68,1.74][number];
-  oval(mesh,x,y-.017,z-.082,.189,.265,.14,0x41354a);
+  oval(mesh,x,y-.017,z-.082,.189,.265,.14,0x41354a,16,26);
+  oval(mesh,x,y-.157,z-.164,.078,.102,.066,0x251d2a,12,18);
   for(const side of [-1,1]){
-    oval(mesh,x+side*.065,y+.045,z-.211,.038,.025,.022,0xe99857);
-    oval(mesh,x+side*.33,1.09,z-.016,.065,.31,.07,0x473c49);
+    oval(mesh,x+side*.079,y+.044,z-.194,.058,.041,.042,0x241d2b,10,18);
+    oval(mesh,x+side*.071,y+.042,z-.231,.023,.018,.012,0xe99857,8,14);
+    oval(mesh,x+side*.071,y+.042,z-.242,.006,.015,.004,0x241c28,7,10);
+    oval(mesh,x+side*.124,y-.086,z-.166,.037,.096,.043,0x62515c,10,16);
+    oval(mesh,x+side*.33,1.09,z-.016,.065,.31,.07,0x473c49,11,18);
     for(let i=0;i<3;i++) oval(mesh,x+side*(.31+i*.022),.76,z-.04,.014,.072,.02,0x78605d);
   }
   return mesh;
@@ -1438,10 +1645,23 @@ function weaponView(){
   box(mesh,0,-.055,.643,.06,.016,.081,0x393f36);
   box(mesh,0,-.026,.915,.081,.045,.326,0x856144);
   for(let i=0;i<8;i++) box(mesh,0,-.047,.784+i*.031,.084,.008,.009,0xb48a60);
+  box(mesh,0,.05,.978,.008,.021,.56,0x68716a);
   for(const x of [-.018,.018]){
-    oval(mesh,x,.037,.974,.02,.022,.3,0x70756a,8,16);
-    box(mesh,x,.037,1.248,.032,.032,.065,0x60695e);
-    box(mesh,x,.038,1.282,.024,.024,.003,0x212a27);
+    const ring=(index,r,z,shade)=>{
+      const angle=index/20*Math.PI*2;
+      mesh.push(x+Math.cos(angle)*r,.037+Math.sin(angle)*r,z,shade*.92,shade,shade*.97);
+    };
+    for(let i=0;i<20;i++){
+      for(const [inner,outer] of [
+        [[.019,.694,.42],[.019,1.283,.5]],
+        [[.019,1.283,.5],[.0125,1.283,.34]],
+        [[.0125,1.283,.34],[.0125,1.243,.09]]
+      ]){
+        ring(i,...inner);ring(i+1,...inner);ring(i+1,...outer);
+        ring(i,...inner);ring(i+1,...outer);ring(i,...outer);
+      }
+    }
+    oval(mesh,x,.037,1.241,.0127,.0127,.002,0x141c1b,5,12);
   }
   box(mesh,0,.064,1.21,.016,.018,.025,0xd6a774);
   box(mesh,0,.072,.694,.049,.016,.017,0x727469);
@@ -1502,7 +1722,7 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
   gl.vertexAttribPointer(attributes[1],3,gl.FLOAT,false,24,12);
   gl.drawArrays(mode,0,mesh.count);
 }
-let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,jumpJaw,steam;
+let renderer,set,panes,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,jumpJaw,steam;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let showVisitor=false,shutterDown=false,lightsOut=false,customerHit=false;
 let encounterTransition=null;
@@ -1518,7 +1738,7 @@ function queueJump(text,key='visitor-'+stage){
 function jumpSound(){
   surgeScore();
   playFoley('jump');
-  if(reverseShot) recordedShot(reverseShot,.24,.78,1900);
+  if(reverseShot) recordedShot(reverseShot,.11,.78,1450);
 }
 function updateJump(now){
   if(playing&&pendingJump&&$('panel').hidden){
@@ -1723,12 +1943,16 @@ function frame(now){
   const dim=scares[stage]?.kind==='dim'&&!reduceMotion.matches&&scareTime<1.8?.62*Math.sin(scareTime/1.8*Math.PI):0;
   gl.uniform1f(u.night,(lightsOut?.24:(1-dim)*[1,.94,.87][nightIndex])*jumpDark);
   gl.uniform1f(u.mono,cctv?.88:0);
+  $('game').classList.toggle('camera-view',cctv);
+  gl.uniform1f(u.time,reduceMotion.matches||atHandover()?0:now*.001);
   gl.uniform3f(u.fog,...fog);
   gl.uniform3f(u.offset,0,0,0);
   gl.uniform2f(u.gait,0,0);
   gl.uniform1f(u.fall,0);
   gl.uniform1f(u.dissolve,0);
+  gl.uniform1f(u.scenery,1);
   draw(set,attributes);
+  gl.uniform1f(u.scenery,0);
   draw(rack,attributes);
   if(!armed){
     draw(weaponMesh,attributes);
@@ -1777,6 +2001,16 @@ function frame(now){
     gl.bindBuffer(gl.ARRAY_BUFFER,rain.object);
     gl.bufferSubData(gl.ARRAY_BUFFER,0,rainVertices);
     draw(rain,attributes,gl.LINES);
+  }
+  if(!cctv){
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+    gl.depthMask(false);
+    gl.uniform1f(u.glass,1);
+    draw(panes,attributes);
+    gl.uniform1f(u.glass,0);
+    gl.depthMask(true);
+    gl.disable(gl.BLEND);
   }
   if(!jumping) drawWeapon(now,aspect,attributes,u);
   drawJump(now,aspect,attributes,u,jumping);
@@ -1836,7 +2070,7 @@ const foley={
   step:[[0,.13,210,.14,'lowpass'],[.13,.12,180,.095,'lowpass']],
   knock:[[0,.12,160,.24,'lowpass'],[.025,.04,920,.055,'bandpass']],
   shot:[[0,.018,3600,.43,'highpass'],[.008,.07,680,.26,'lowpass'],[.065,.19,2200,.07,'bandpass']],
-  jump:[[0,.1,480,.42,'lowpass'],[.025,.58,1350,.3,'bandpass'],[.05,.18,3300,.17,'highpass'],[.24,.4,650,.17,'bandpass']]
+  jump:[[0,.1,430,.27,'lowpass'],[.025,.42,940,.17,'bandpass'],[.07,.15,1900,.045,'highpass'],[.24,.3,570,.09,'bandpass']]
 };
 function playFoley(kind){
   if(!audio||!rainSource||!soundBus||!audioNoise) return;
@@ -1873,65 +2107,28 @@ function buildSoundBus(){
   const samples=audioNoise.getChannelData(0);
   for(let i=0;i<samples.length;i++) samples[i]=Math.random()*2-1;
 }
-function createTensionLoop(){
-  const rate=16000;
-  const duration=24;
-  const buffer=audio.createBuffer(1,rate*duration,rate);
-  const samples=buffer.getChannelData(0);
-  const tau=2*Math.PI;
-  const cycle=tau/duration;
-  const root=cycle*Math.round(46.25*duration);
-  const fifth=cycle*Math.round(69.3*duration);
-  const undertone=cycle*Math.round(44.9*duration);
-  for(let i=0;i<samples.length;i++){
-    const time=i/rate;
-    const breath=.8+.14*Math.cos(cycle*time*2);
-    const wobble=.13*Math.sin(cycle*time*7);
-    samples[i]=breath*(.20*Math.sin(root*time)+.085*Math.sin(undertone*time+wobble)
-      +.11*Math.sin(2*root*time-wobble)+.095*Math.sin(3*root*time)
-      +.07*Math.sin(3*fifth*time)+.045*Math.sin(5*root*time+wobble));
+async function startScore(){
+  if(!scoreBuffer){
+    scoreLoad??=fetch('./assets/unnatural-situation.mp3').then(response=>{
+      if(!response.ok) throw Error('Music could not be loaded');
+      return response.arrayBuffer();
+    }).then(bytes=>audio.decodeAudioData(bytes)).finally(()=>{scoreLoad=null;});
+    try{scoreBuffer=await scoreLoad;}
+    catch(error){console.warn(error);return;}
   }
-  // A sparse motif sits above the low, continuously looping chord.
-  const motif=[[.6,138.59],[5.9,185],[10.3,174.61],[15.4,196],[20.4,138.59]];
-  const noteLength=2.7;
-  for(const [start,hertz] of motif){
-    const offset=Math.round(start*rate);
-    for(let i=0;i<noteLength*rate;i++){
-      const time=i/rate;
-      const envelope=Math.min(1,time/.24,(noteLength-time)/.55)*Math.exp(-time*.68);
-      const phase=tau*hertz*time;
-      samples[offset+i]+=envelope*(.18*Math.sin(phase)+.10*Math.sin(phase*2)
-        +.023*Math.sin(phase*.994)+.02*Math.sin(phase*3));
-    }
-  }
-  return buffer;
-}
-function createScoreAccent(){
-  const rate=16000;
-  const duration=.58;
-  const buffer=audio.createBuffer(1,Math.round(rate*duration),rate);
-  const samples=buffer.getChannelData(0);
-  for(let i=0;i<samples.length;i++){
-    const time=i/rate;
-    const envelope=Math.min(1,time/.017,(duration-time)/.08)*Math.exp(-time*5);
-    const phase=2*Math.PI*time;
-    const slide=24*time*time;
-    samples[i]=envelope*(.27*Math.sin(65.41*phase)+.21*Math.sin(69.3*phase)
-      +.21*Math.sin(185*phase+slide)+.17*Math.sin(196*phase+slide*.8)
-      +.064*Math.sin(370*phase+slide));
-  }
-  return buffer;
-}
-function startScore(){
-  scoreBuffer??=createTensionLoop();
-  scoreAccent??=createScoreAccent();
+  if(!soundWanted||!rainSource||scoreSource) return;
   const source=audio.createBufferSource();
+  const filter=audio.createBiquadFilter();
   const gain=audio.createGain();
-  gain.gain.value=playing?scoreLevel:0;
+  filter.type='lowpass';
+  filter.frequency.value=2600;
+  filter.Q.value=.55;
+  gain.gain.value=0;
+  gain.gain.setTargetAtTime(playing?scoreLevel:0,audio.currentTime,.13);
   source.buffer=scoreBuffer;
   source.loop=true;
-  source.connect(gain).connect(soundBus);
-  source.onended=()=>{source.disconnect();gain.disconnect();};
+  source.connect(filter).connect(gain).connect(soundBus);
+  source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
   source.start();
   scoreSource=source;
   scoreGain=gain;
@@ -1948,19 +2145,15 @@ function surgeScore(){
   const volume=scoreGain.gain;
   volume.cancelScheduledValues(now);
   volume.setValueAtTime(volume.value,now);
-  volume.linearRampToValueAtTime(.24,now+.024);
-  volume.exponentialRampToValueAtTime(scoreLevel,now+.48);
+  volume.linearRampToValueAtTime(.254,now+.075);
+  volume.exponentialRampToValueAtTime(scoreLevel,now+.56);
   if(rainGain&&!atHandover()){
     const weather=rainGain.gain;
     weather.cancelScheduledValues(now);
     weather.setTargetAtTime(rainLevel*.22,now,.035);
     weather.setTargetAtTime(rainLevel,now+.42,.21);
   }
-  const accent=audio.createBufferSource();
-  accent.buffer=scoreAccent;
-  accent.connect(scoreGain);
-  accent.onended=()=>accent.disconnect();
-  accent.start(now);
+
 }
 function prepPanel(fromService=false){
   const order=scene[stage];
@@ -2579,7 +2772,10 @@ try{
   if(!gl) throw Error('WebGL kullanılamıyor.');
   renderer=setup();
   set=buffer(geometry());
-  visitors=scene.map(entry=>buffer(visitor(entry.look)));
+  bakeShadows(set);
+  panes=buffer(windowGlass());
+  const visitorModels=Array.from({length:7},(_,look)=>buffer(visitor(look)));
+  visitors=scene.map(entry=>visitorModels[entry.look]);
   shutter=buffer(shutters());
   const sparks=[];
   for(let i=0;i<20;i++){
