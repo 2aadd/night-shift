@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gece Vardiyası 3B</title>
 <style>
-:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}body.mouse-look,body.mouse-look *,.game.mouse-look,.game.mouse-look *{cursor:none!important}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;box-shadow:inset 0 0 120px 45px #230c1299;background:radial-gradient(ellipse at center,transparent 30%,#160b1399)}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#lookCapture{position:absolute;z-index:2;top:14px;right:14px;font-size:.78rem}#advance{background:#151d13eb;padding:9px 14px;pointer-events:none;position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
+:root{color-scheme:dark;--fg:#eee8d8;--muted:#b5b4a5;--gold:#ffce88;--green:#a9c6a4}*{box-sizing:border-box}body{margin:0;background:#111612;color:var(--fg);font:16px/1.5 system-ui,sans-serif}button{font:inherit;color:inherit;background:#252d25;border:1px solid #666856;border-radius:3px;padding:.6em 1em;cursor:pointer}button:hover{border-color:var(--gold)}select{font:inherit;background:#252d25;color:var(--fg);border:1px solid #666856;border-radius:3px;padding:.4em}.language{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:8px}button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.gold{background:var(--gold);color:#211a11;font-weight:700}main{max-width:1320px;margin:auto;padding:clamp(12px,3vw,34px)}header,.bar,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tag,.bar,footer,.marker,#prompt,.cross{font-family:ui-monospace,monospace;letter-spacing:.11em;font-size:.78rem}.tag,#clock{color:var(--gold)}h1,h2{font-family:Georgia,serif;line-height:1;margin:.2em 0 .45em}h1{font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.06em}h2{font-size:clamp(1.7rem,4vw,3rem)}.frame{border:1px solid #444d40;background:#1a211a}.bar{padding:9px 14px}.game{position:relative;height:clamp(310px,58vh,690px);overflow:hidden;background:#111b17;isolation:isolate}.game:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px #000a;background:repeating-linear-gradient(0deg,transparent 0 3px,#12180b24 4px 5px)}body.mouse-look,body.mouse-look *,.game.mouse-look,.game.mouse-look *{cursor:none!important}canvas{width:100%;height:100%;display:block;touch-action:none}.game.jumping .marker,.game.jumping .cross,.game.jumping #prompt{visibility:hidden}#jumpshade{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,transparent 17%,#10080d55 45%,#040306ed 88%);box-shadow:inset 0 0 105px 36px #050306c4}.cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;color:#f0e3b4}.marker{position:absolute;z-index:1;pointer-events:auto;transform:translate(-50%,-50%);color:#f6d197;background:#151811dd;padding:4px 7px;border:1px solid #aa8754;white-space:nowrap}.cross{z-index:1}.cross[data-target]{color:#ffd28a}.cross[data-armed]{font-size:1.03rem;text-shadow:0 0 5px #090e0a}.ammo{color:var(--gold);white-space:nowrap}.fire{color:#ffddad;border-color:#ac8054}#prompt{bottom:15px}.marker:disabled{pointer-events:none;opacity:.68}.cover{position:absolute;inset:0;z-index:2;display:grid;align-content:center;padding:clamp(16px,6vw,65px);background:linear-gradient(90deg,#101610fa,#101610d9 46%,#10161022);overflow:auto}.cover p{max-width:49ch;margin:0 0 1em}.cover button{justify-self:start}.window{position:absolute;z-index:3;inset:auto 14px 14px;max-width:660px;margin:auto;padding:14px 18px;border:1px solid #85816a;background:#141b16f5;box-shadow:0 5px 24px #0009;max-height:95%;overflow:auto}.log{max-height:17vh;overflow:auto;padding-left:1.2em;font-size:.87rem}.log li{margin:.45em 0}#journal{font-size:.75rem;padding:.35em .65em}.window h2{font-size:1.6rem}.window p{margin:.4em 0 .9em}.window .receipt-text{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#d5c7a8;color:#28271f;padding:14px 18px;border-bottom:3px dashed #9b8f73;font-size:.88rem;line-height:1.6}.actions{display:flex;gap:8px;flex-wrap:wrap}.cctv{position:absolute;z-index:1;inset:10px auto auto 12px;background:#0d140f;color:#b1d1a7;padding:5px 9px}.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:12px 14px;border-top:1px solid #444d40}.info p{margin:.2em 0}.info .tag{color:var(--green)}#lookCapture{position:absolute;z-index:2;top:14px;right:14px;font-size:.78rem}#advance{background:#151d13eb;padding:9px 14px;pointer-events:none;position:absolute;z-index:2;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap}#prompt{position:absolute;z-index:1;bottom:18px;left:50%;transform:translateX(-50%);background:#121911e8;color:#f0d3a4;white-space:nowrap}.controls{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #444d40;touch-action:none}.controls button{padding:.35em .75em;user-select:none}.controls span:last-child{margin-left:auto;color:var(--muted);font-size:.8rem}footer{margin-top:12px;color:var(--muted)}.credits{margin-top:12px;font-size:.75rem;color:var(--muted)}.credits a{color:var(--gold)}[hidden]{display:none!important}@media(max-width:650px){.info{grid-template-columns:1fr;gap:7px}.game{height:54vh}.controls span:last-child{width:100%;margin:0}.window{inset:auto 7px 7px}.bar{font-size:.7rem}}
 </style>
 </head>
 <body><main>
@@ -29,7 +29,7 @@
 <button data-key="a" aria-label="Sola yürü">A</button><button data-key="w" aria-label="İleri yürü">W</button><button data-key="s" aria-label="Geri yürü">S</button><button data-key="d" aria-label="Sağa yürü">D</button><button data-key="arrowleft" aria-label="Sola dön">↶</button><button data-key="arrowright" aria-label="Sağa dön">↷</button><button id="use">E · Etkileş</button><button id="look">Serbest bakış</button><button id="fire" class="fire" hidden>F · Ateş et</button><span id="ammo" class="ammo" aria-live="polite" hidden></span>
 <span>WASD ile yürü · Fareyle bak · E ile etkileş · Sol tıkla ateş et · Esc ile imleci bırak</span>
 </div></section>
-<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>3 GECE · 17 KARŞILAŞMA · 6 SON</span></footer>
+<footer><span>GECE VARDİYASI / 3B SÜRÜM</span><span>3 GECE · 17 KARŞILAŞMA · 7 SON</span></footer>
 <details class="credits"><summary>Ses kaynakları</summary><p>Av tüfeği kaydı · Vincent Sevedge, “Gunshot Sounds”. Ses seviyesi oyun için ayarlandı. <a href="https://opengameart.org/content/gunshot-sounds" target="_blank" rel="noopener">Kaynak</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p></details>
 </main>
 <script>
@@ -466,6 +466,15 @@ Object.assign(english,{
   ' sn':'s'
 });
 english['Son kararını servis penceresinde ver. Biletin ve topladığın kanıtlar farklı çıkışlar açabilir.']='Make your final decision at the serving window. Your ticket and collected evidence may open different exits.';
+Object.assign(english,{
+  "3 GECE · 17 KARŞILAŞMA · 7 SON": "3 NIGHTS · 17 ENCOUNTERS · 7 ENDINGS",
+  "Son sipariş": "The Last Order",
+  "İkinci canavar siparişini alınca servis zili büfenin içinden çalıyor. Yazıcı bir fiş daha çıkarıyor. Bu sefer ürün hanesinde senin adın var. Kepenk kendiliğinden açılıyor. Müşteriler camın önünde, siparişlerinin hazırlanmasını bekliyor.": "When the second creature takes its order, the serving bell rings from inside the kiosk. The printer issues one more ticket. This time, your name is in the item field. The shutter rises by itself. The customers are waiting at the glass for their order.",
+  "Fişteki hesap kapandı.": "The tab on the receipt is closed.",
+  "Fişin altına “Açık hesap” yazılmış. Müşteriler bir sipariş daha bekliyor.": "“Open tab” appears at the bottom of the receipt. The customers are waiting for one more order.",
+  "İçeriden biri servis camına vuruyor. Camda artık senin yüzün yok.": "Someone knocks on the glass from inside. The face in the glass is no longer yours.",
+  "Yazıcı durmadan fiş basıyor.": "The printer will not stop issuing receipts."
+});
 let language='en';
 try{
   const saved=localStorage.getItem('night-shift-language');
@@ -877,6 +886,11 @@ const endings={
     "number": 6,
     "title": "Arka sokak",
     "text": "Arka kapıdan çıkıp koşmaya başlıyorsun. Her köşenin sonunda aynı kapalı büfe duruyor. Pencerelerinden birinin arkasında, biraz önce bıraktığın önlük asılı. Telefonun 04:18’de kalmış."
+  },
+  "lastOrder": {
+    "number": 7,
+    "title": "Son sipariş",
+    "text": "İkinci canavar siparişini alınca servis zili büfenin içinden çalıyor. Yazıcı bir fiş daha çıkarıyor. Bu sefer ürün hanesinde senin adın var. Kepenk kendiliğinden açılıyor. Müşteriler camın önünde, siparişlerinin hazırlanmasını bekliyor."
   }
 };
 let nightIndex=0,nextNightPending=false,hasBusTicket=false,endingCode=null;
@@ -1369,23 +1383,36 @@ function creature(number){
   return mesh;
 }
 function scareFace(){
-  const mesh=[];
-  oval(mesh,0,.04,0,.38,.51,.2,0x827864,10,18);
-  oval(mesh,0,-.28,-.06,.27,.27,.19,0x9b8e77,8,16);
-  oval(mesh,0,-.2,-.232,.15,.187,.045,0x171a1a,8,16);
-  for(const side of [-1,1]){
-    oval(mesh,side*.16,.135,-.171,.13,.083,.065,0x25252a,7,12);
-    oval(mesh,side*.16,.137,-.235,.044,.035,.025,0xe7b577,6,12);
-    oval(mesh,side*.165,.136,-.26,.017,.022,.008,0xffe3a9,5,9);
-    oval(mesh,side*.29,-.025,-.109,.065,.15,.068,0x595247);
-    oval(mesh,side*.16,.25,-.15,.15,.034,.052,0x534b43);
+  const head=[],jaw=[];
+  oval(head,.04,-.69,.16,.57,.25,.22,0x272527,8,16);
+  oval(head,.06,-.48,.08,.115,.29,.124,0x4b4640,8,14);
+  oval(head,-.035,.108,.015,.321,.47,.23,0x6c685c,11,20);
+  oval(head,.114,.115,.003,.22,.43,.21,0x514e48,9,16);
+  oval(head,-.04,-.15,-.202,.15,.17,.057,0x161417,8,16);
+  oval(head,-.046,-.233,-.243,.099,.176,.018,0x0d0d10,8,14);
+
+  const sockets=[
+    {x:-.165,y:.136,width:.119},
+    {x:.132,y:.094,width:.102}
+  ];
+  for(const {x,y,width} of sockets){
+    oval(head,x,y,-.181,width,.09,.067,0x171619,8,14);
+    oval(head,x+.016,y-.014,-.244,.037,.029,.016,0x898b74,6,12);
+    oval(head,x+.019,y-.014,-.258,.009,.016,.007,0x17191a,5,10);
+    oval(head,x+.011,y-.005,-.264,.006,.006,.004,0xd8cfaa,5,8);
+    oval(head,x,y+.093,-.157,width+.025,.049,.068,0x454239,7,12);
+    oval(head,x*1.4,y-.16,-.16,.056,.145,.05,0x4c453f,7,12);
   }
-  oval(mesh,0,.015,-.235,.052,.1,.062,0x716957);
-  for(let i=0;i<7;i++){
-    box(mesh,-.12+i*.04,-.069,-.263,.027,.05+(i%2)*.025,.02,0xddd0aa);
-    box(mesh,-.114+i*.038,-.329,-.253,.024,.053,.02,0xc6b999);
+  oval(head,-.019,.001,-.222,.058,.109,.064,0x666052,8,14);
+  oval(head,-.023,-.067,-.277,.033,.022,.017,0x272426,6,10);
+  for(let tooth=0;tooth<5;tooth++){
+    const x=-.12+tooth*.035;
+    oval(head,x,-.153+(tooth%2)*.011,-.255,.012,.028+(tooth%3)*.008,.014,0xa49a7b,5,9);
+    oval(jaw,x-.011,-.352-(tooth%2)*.012,-.245,.011,.02,.013,0x827b63,5,9);
   }
-  return mesh;
+  oval(jaw,-.045,-.427,-.097,.185,.143,.153,0x585049,9,16);
+  oval(jaw,-.093,-.451,-.206,.094,.066,.045,0x494541,7,12);
+  return {head,jaw};
 }
 function steamMesh(){
   const mesh=[];
@@ -1471,16 +1498,16 @@ function draw(mesh,attributes, mode=gl.TRIANGLES){
   gl.vertexAttribPointer(attributes[1],3,gl.FLOAT,false,24,12);
   gl.drawArrays(mode,0,mesh.count);
 }
-let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,steam;
+let renderer,set,visitors,shutter,rain,nearUmbrella,streetUmbrella,bike,props,bolt,rack,weaponMesh,rackRounds,creatures,impact,heldWeapon,muzzle,jumpFace,jumpJaw,steam;
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let showVisitor=false,shutterDown=false,lightsOut=false,customerHit=false;
 let encounterTransition=null;
 let activeSeconds=0,scareAt=-Infinity;
 let arrivedAt=0,departedAt=-Infinity;
-let jumpAt=-Infinity,pendingJump=null;
+const jumpDuration=1050;
+let jumpAt=-Infinity,pendingJump=null,jumpSoundPlayed=false;
 const jumpSeen=new Set();
-function queueJump(text){
-  const key='visitor-'+stage;
+function queueJump(text,key='visitor-'+stage){
   if(jumpSeen.has(key)||pendingJump) return;
   pendingJump={key,text};
 }
@@ -1495,9 +1522,9 @@ function updateJump(now){
     notebook[stage].jump=pendingJump.text;
     setText($('note'),pendingJump.text);
     pendingJump=null;
-    jumpSound();
+    jumpSoundPlayed=false;
   }
-  const visible=playing&&now>=jumpAt&&now-jumpAt<760;
+  const visible=playing&&now>=jumpAt&&now-jumpAt<jumpDuration;
   $('jumpshade').hidden=!visible;
   $('game').classList.toggle('jumping',visible);
   return visible;
@@ -1507,23 +1534,34 @@ function arrivalOffset(now){
   const progress=Math.min(1,Math.max(0,(now-arrivedAt)/1100));
   return Math.pow(1-progress,2)*2.25;
 }
-function drawJump(now,aspect,attributes,u){
-  if(!updateJump(now)) return;
-  const progress=(now-jumpAt)/760;
-  const approach=reduceMotion.matches?0:Math.max(0,1-progress/.12)*.9;
-  const retreat=reduceMotion.matches?0:Math.max(0,(progress-.66)/.34)*1.15;
+function drawJump(now,aspect,attributes,u,visible=updateJump(now)){
+  if(!visible) return;
+  const progress=(now-jumpAt)/jumpDuration;
+  if(!jumpSoundPlayed&&progress>=.1){
+    jumpSoundPlayed=true;
+    jumpSound();
+  }
+  const still=reduceMotion.matches;
+  const advance=Math.min(1,Math.max(0,(progress-.07)/.15));
+  const approach=still?0:1.04*Math.pow(1-advance,3);
+  const withdraw=Math.max(0,(progress-.73)/.27);
+  const retreat=still?0:1.35*withdraw*withdraw;
+  const stagger=still?0:Math.sin(progress*27)*.022*(1-progress);
+  const tilt=still?0:Math.sin(progress*9)*.036;
+  const jawDrop=still?.038:.026+.1*Math.sin(Math.PI*Math.min(1,progress/.56));
+  const depth=.89+approach+retreat;
   gl.clear(gl.DEPTH_BUFFER_BIT);
   gl.uniform3f(u.eye,0,0,0);
-  gl.uniform4f(u.rotation,0,1,0,1);
+  gl.uniform4f(u.rotation,Math.sin(tilt),Math.cos(tilt),0,1);
   gl.uniform2f(u.scale,viewScale/Math.max(aspect,.8),viewScale);
-  gl.uniform1f(u.night,1.24*(1-Math.max(0,progress-.7)));
+  gl.uniform1f(u.night,(.85+.37*advance)*(1-.65*withdraw));
   gl.uniform1f(u.mono,0);
   gl.uniform2f(u.gait,0,0);
-  const shake=reduceMotion.matches?0:Math.sin(progress*35)*.018;
-  gl.uniform3f(u.offset,shake,Math.sin(progress*11)*.007,.9+approach+retreat);
+  gl.uniform3f(u.offset,stagger,.035,depth);
   draw(jumpFace,attributes);
+  gl.uniform3f(u.offset,stagger,.035-jawDrop,depth);
+  draw(jumpJaw,attributes);
 }
-
 const scares={
   1:{after:3,text:'Sokağın karşısında bir gölge hızla geçiyor.'},
   3:{after:4,text:'Tavan lambası sönmeye yüz tutuyor. Durağın camında kendi yansımanı görüyorsun.'},
@@ -1660,6 +1698,9 @@ function frame(now){
   movement(dt);
   edgeLook(dt);
   const scareTime=scareProgress(now,dt);
+  const jumping=updateJump(now);
+  const recovery=jumping?Math.max(0,((now-jumpAt)/jumpDuration-.8)/.2):0;
+  const jumpDark=jumping?(reduceMotion.matches?.55:.27+.73*recovery):1;
   const ratio=Math.min(window.devicePixelRatio||1,1.6);
   const w=Math.max(1,Math.round(canvas.clientWidth*ratio)), h=Math.max(1,Math.round(canvas.clientHeight*ratio));
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
@@ -1669,13 +1710,13 @@ function frame(now){
   const eye=cctv?camera:player;
   const {attributes,uniforms:u}=renderer;
   gl.viewport(0,0,w,h);
-  gl.clearColor(...fog,1);
+  gl.clearColor(fog[0]*jumpDark,fog[1]*jumpDark,fog[2]*jumpDark,1);
   gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
   gl.uniform3f(u.eye,eye.x,eye.y,eye.z);
   gl.uniform4f(u.rotation,Math.sin(eye.angle),Math.cos(eye.angle),Math.sin(eye.pitch),Math.cos(eye.pitch));
   gl.uniform2f(u.scale,viewScale/aspect,viewScale);
   const dim=scares[stage]?.kind==='dim'&&!reduceMotion.matches&&scareTime<1.8?.62*Math.sin(scareTime/1.8*Math.PI):0;
-  gl.uniform1f(u.night,lightsOut?.24:(1-dim)*[1,.94,.87][nightIndex]);
+  gl.uniform1f(u.night,(lightsOut?.24:(1-dim)*[1,.94,.87][nightIndex])*jumpDark);
   gl.uniform1f(u.mono,cctv?.88:0);
   gl.uniform3f(u.fog,...fog);
   gl.uniform3f(u.offset,0,0,0);
@@ -1732,8 +1773,8 @@ function frame(now){
     gl.bufferSubData(gl.ARRAY_BUFFER,0,rainVertices);
     draw(rain,attributes,gl.LINES);
   }
-  drawWeapon(now,aspect,attributes,u);
-  drawJump(now,aspect,attributes,u);
+  if(!jumping) drawWeapon(now,aspect,attributes,u);
+  drawJump(now,aspect,attributes,u,jumping);
   requestAnimationFrame(frame);
 }
 
@@ -2046,14 +2087,15 @@ function updateEncounterTransition(now){
   }
   const remaining=Math.max(0,Math.ceil((encounterTransition.at-now)/1000));
   if(remaining){
-    const text=(atHandover()?'Vardiya sonu · ':'Sonraki müşteri · ')+remaining+' sn';
+    const text=(encounterTransition.ending||atHandover()?'Vardiya sonu · ':'Sonraki müşteri · ')+remaining+' sn';
     if(readText($('advance'))!==text) setText($('advance'),text);
     return;
   }
   const finished=encounterTransition;
   encounterTransition=null;
   $('advance').hidden=true;
-  if(atHandover()) end(finished.served,finished.defended);
+  if(finished.ending) finishStory(finished.ending);
+  else if(atHandover()) end(finished.served,finished.defended);
   else {stage+=1;next();}
 }
 function next(){
@@ -2096,14 +2138,23 @@ function decide(served,defended=false){
   const wounded=defended&&!creatureLines[stage];
   if(wounded) customerHit=true;
   notebook[stage].decision=wounded?'Müşteri vuruldu.':defended?'Canavar geri püskürtüldü.':served?'Sipariş verildi.':'Servis kapatıldı.';
+  const servedCreature=served&&!atHandover()&&Boolean(creatureLines[stage]);
+  let lastOrder=false;
+  if(servedCreature){
+    notebook[stage].monsterOrder=true;
+    lastOrder=notebook.filter(entry=>entry.monsterOrder).length>=2;
+    notebook[stage].reward=lastOrder?'Fişteki hesap kapandı.':'Fişin altına “Açık hesap” yazılmış. Müşteriler bir sipariş daha bekliyor.';
+  }
   if(atHandover()){
     shutterDown=!served&&!defended;
     lightsOut=served;
   }
-  setText($('note'),wounded?'Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny);
+  const outcome=wounded?'Müşteri geriye sendeleyip yana yığılıyor. Sokaktan yardım isteyen birinin sesi geliyor.':defended?creatureLines[stage]:served?scene[stage].serve:scene[stage].deny;
+  setText($('note'),servedCreature?outcome+' '+notebook[stage].reward:outcome);
   closePanel();
-  encounterTransition={stage,served,defended,at:performance.now()+3000};
-  setText($('task'),atHandover()?'Vardiya tamamlanıyor.':'Müşteri ayrılıyor. Sıradaki müşteri bekleniyor.');
+  if(lastOrder) queueJump('İçeriden biri servis camına vuruyor. Camda artık senin yüzün yok.','last-order');
+  encounterTransition={stage,served,defended,ending:lastOrder?'lastOrder':null,at:performance.now()+3000};
+  setText($('task'),lastOrder?'Yazıcı durmadan fiş basıyor.':atHandover()?'Vardiya tamamlanıyor.':'Müşteri ayrılıyor. Sıradaki müşteri bekleniyor.');
   $('advance').hidden=false;
   updateEncounterTransition(performance.now());
 }
@@ -2133,7 +2184,7 @@ function showNightCompletion(){
   $('start').focus();
 }
 function finishStory(code){
-  if(customerHit&&code!=='taken') code='statement';
+  if(customerHit&&code!=='taken'&&code!=='lastOrder') code='statement';
   const ending=endings[code];
   endingCode=code;
   nextNightPending=false;
@@ -2147,8 +2198,9 @@ function finishStory(code){
   showVisitor=false;
   $('controls').hidden=true;
   $('journal').hidden=true;
-  setText($('clock'),code==='bus'?'04:20':code==='alley'?'04:18':code==='taken'?(scene[stage].cameraTime||scene[stage].time):'06:00');
-  setText($('chapter'),'SON '+ending.number+' / 6');
+  const endingTimes={bus:'04:20',alley:'04:18',taken:scene[stage].cameraTime||scene[stage].time,lastOrder:scene[stage].time};
+  setText($('clock'),endingTimes[code]||'06:00');
+  setText($('chapter'),'SON '+ending.number+' / '+Object.keys(endings).length);
   setText($('task'),'Vardiya bitti.');
   setText($('coverTag'),'GECE '+(nightIndex+1)+' · VARDİYA SONU');
   setText($('coverTitle'),ending.title);
@@ -2437,7 +2489,9 @@ try{
   const view=weaponView();
   heldWeapon=buffer(view.mesh);
   muzzle=buffer(view.flash);
-  jumpFace=buffer(scareFace());
+  const scare=scareFace();
+  jumpFace=buffer(scare.head);
+  jumpJaw=buffer(scare.jaw);
   steam=buffer(steamMesh());
   creatures=Object.fromEntries(Object.keys(creatureLines).map(key=>[key,buffer(creature(scene[Number(key)].look))]));
   nearUmbrella=buffer(umbrella(.68,4.9));
