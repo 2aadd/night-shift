@@ -913,6 +913,8 @@ const camera = {x:5.7,z:9.4,y:3.4,angle:-2.22,pitch:-.3};
 const held = new Set();
 let stage=0, playing=false, cctv=false, sugar=0, prepared='';
 let rainGain,rainSource,audio,soundBus,audioNoise,gunRecording,reverseShot;
+let scoreBuffer,scoreAccent,scoreSource,scoreGain;
+const scoreLevel=.055;
 let soundWanted=true,soundJob=null,soundFailed=false;
 let doorLocked=true;
 const roundCapacity=6;
@@ -1512,6 +1514,7 @@ function queueJump(text,key='visitor-'+stage){
   pendingJump={key,text};
 }
 function jumpSound(){
+  surgeScore();
   playFoley('jump');
   if(reverseShot) recordedShot(reverseShot,.24,.78,1900);
 }
@@ -1868,6 +1871,87 @@ function buildSoundBus(){
   const samples=audioNoise.getChannelData(0);
   for(let i=0;i<samples.length;i++) samples[i]=Math.random()*2-1;
 }
+function createTensionLoop(){
+  const rate=16000;
+  const duration=24;
+  const buffer=audio.createBuffer(1,rate*duration,rate);
+  const samples=buffer.getChannelData(0);
+  const tau=2*Math.PI;
+  const cycle=tau/duration;
+  const root=cycle*Math.round(46.25*duration);
+  const fifth=cycle*Math.round(69.3*duration);
+  const undertone=cycle*Math.round(44.9*duration);
+  for(let i=0;i<samples.length;i++){
+    const time=i/rate;
+    const breath=.8+.14*Math.cos(cycle*time*2);
+    const wobble=.13*Math.sin(cycle*time*7);
+    samples[i]=breath*(.25*Math.sin(root*time)+.12*Math.sin(undertone*time+wobble)
+      +.11*Math.sin(fifth*time)+.043*Math.sin(2*root*time-wobble));
+  }
+  // A sparse motif sits above the low, continuously looping chord.
+  const motif=[[1.7,138.59],[5.9,185],[10.3,174.61],[15.4,196],[20.4,138.59]];
+  const noteLength=2.7;
+  for(const [start,hertz] of motif){
+    const offset=Math.round(start*rate);
+    for(let i=0;i<noteLength*rate;i++){
+      const time=i/rate;
+      const envelope=Math.min(1,time/.24,(noteLength-time)/.55)*Math.exp(-time*.68);
+      const phase=tau*hertz*time;
+      samples[offset+i]+=envelope*(.18*Math.sin(phase)+.041*Math.sin(phase*2)+.018*Math.sin(phase*.994));
+    }
+  }
+  return buffer;
+}
+function createScoreAccent(){
+  const rate=16000;
+  const duration=.58;
+  const buffer=audio.createBuffer(1,Math.round(rate*duration),rate);
+  const samples=buffer.getChannelData(0);
+  for(let i=0;i<samples.length;i++){
+    const time=i/rate;
+    const envelope=Math.min(1,time/.017,(duration-time)/.08)*Math.exp(-time*5);
+    const phase=2*Math.PI*time;
+    const slide=24*time*time;
+    samples[i]=envelope*(.27*Math.sin(65.41*phase)+.21*Math.sin(69.3*phase)
+      +.21*Math.sin(185*phase+slide)+.17*Math.sin(196*phase+slide*.8)
+      +.064*Math.sin(370*phase+slide));
+  }
+  return buffer;
+}
+function startScore(){
+  scoreBuffer??=createTensionLoop();
+  scoreAccent??=createScoreAccent();
+  const source=audio.createBufferSource();
+  const gain=audio.createGain();
+  gain.gain.value=playing?scoreLevel:0;
+  source.buffer=scoreBuffer;
+  source.loop=true;
+  source.connect(gain).connect(soundBus);
+  source.onended=()=>{source.disconnect();gain.disconnect();};
+  source.start();
+  scoreSource=source;
+  scoreGain=gain;
+}
+function setScoreLevel(level){
+  if(!scoreGain) return;
+  const now=audio.currentTime;
+  scoreGain.gain.cancelScheduledValues(now);
+  scoreGain.gain.setTargetAtTime(level,now,.09);
+}
+function surgeScore(){
+  if(!scoreGain) return;
+  const now=audio.currentTime;
+  const volume=scoreGain.gain;
+  volume.cancelScheduledValues(now);
+  volume.setValueAtTime(volume.value,now);
+  volume.linearRampToValueAtTime(.21,now+.024);
+  volume.exponentialRampToValueAtTime(scoreLevel,now+.48);
+  const accent=audio.createBufferSource();
+  accent.buffer=scoreAccent;
+  accent.connect(scoreGain);
+  accent.onended=()=>accent.disconnect();
+  accent.start(now);
+}
 function prepPanel(fromService=false){
   const order=scene[stage];
   const prepare=item=>{
@@ -2119,6 +2203,7 @@ function next(){
   setText($('chapter'),'GECE '+(nightIndex+1)+' / '+nights.length+' · KARŞILAŞMA '+(stage-nights[nightIndex].start+1)+' / '+(nights[nightIndex].end-nights[nightIndex].start+1));
   setText($('note'),scene[stage].line);
   updateTask();
+  setScoreLevel(scoreLevel);
   if(rainGain) rainGain.gain.setTargetAtTime(atHandover()?0:.095,audio.currentTime,.45);
 }
 function decide(served,defended=false){
@@ -2167,6 +2252,7 @@ function showNightCompletion(){
   closePanel(false);
   releaseLook();
   playing=false;
+  setScoreLevel(0);
   showVisitor=false;
   nextNightPending=true;
   shutterDown=true;
@@ -2195,6 +2281,7 @@ function finishStory(code){
   closePanel(false);
   releaseLook();
   playing=false;
+  setScoreLevel(0);
   showVisitor=false;
   $('controls').hidden=true;
   $('journal').hidden=true;
@@ -2447,6 +2534,7 @@ async function enableSound(){
     rainSource.loop=true;
     rainSource.connect(filter).connect(rainGain).connect(soundBus);
     rainSource.start();
+    startScore();
     soundFailed=false;
   })().catch(()=>{
     soundFailed=true;
@@ -2463,6 +2551,9 @@ $('sound').onclick=async()=>{
     soundBus.gain.setTargetAtTime(0,audio.currentTime,.015);
     rainSource.stop();
     rainSource=null;
+    scoreSource?.stop();
+    scoreSource=null;
+    scoreGain=null;
   }
   syncSoundButton();
   if(soundWanted) await enableSound();
