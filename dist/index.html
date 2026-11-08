@@ -566,7 +566,7 @@ for(const element of document.querySelectorAll('[aria-label],[title]')){
 function changeLanguage(next,save=true){
   language=next==='tr'?'tr':'en';
   document.documentElement.lang=language;
-  document.title=translate('Gece Vardiyası 3B');
+  document.title=document.documentElement.dataset.gameTitle||translate('Gece Vardiyası 3B');
   document.getElementById('language').value=language;
   for(const {node,source} of staticText){
     if(node.isConnected) node.textContent=source.replace(/\S[\s\S]*\S|\S/,text=>translate(text));
