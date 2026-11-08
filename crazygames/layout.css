@@ -1,0 +1,26 @@
+html, body { height: 100%; }
+main {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: none;
+  padding: 0;
+}
+main > header { padding: 5px 12px; gap: 8px; }
+main > header button { padding: .3em .7em; }
+main > h1, main > footer { display: none; }
+.frame { display: flex; flex: 1; flex-direction: column; min-height: 0; border-inline: 0; }
+.bar { padding: 4px 12px; }
+.bar button { padding: .3em .65em; }
+.game { flex: 1; height: auto; min-height: 0; }
+.info { padding: 5px 12px; font-size: .84rem; line-height: 1.25; }
+.controls { padding: 4px 12px; }
+.controls button { padding: .2em .55em; }
+.controls span:last-child { font-size: .73rem; }
+.credits { padding-inline: 12px; margin: 0; font-size: .75rem; }
+.credits p { margin: 4px 0; }
+@media (max-height: 550px) {
+  .cover { padding: 16px 28px; }
+  .window { padding: 10px 14px; inset: auto 9px 9px; }
+}
